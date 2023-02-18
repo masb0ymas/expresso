@@ -1,4 +1,4 @@
-import { currency } from '../lib'
+import { currency } from '../src'
 
 describe('helpers currency test', () => {
   test('should format currency IDR', () => {
