@@ -22,7 +22,9 @@
     "url": "git+https://github.com/masb0ymas/expresso.git"
   },
   "scripts": {
-    "test": "node ./__tests__/hooks.test.js"
+    "clean": "npx rimraf dist",
+    "build": "npm run clean && npx tsc --build",
+    "test": "jest"
   },
   "bugs": {
     "url": "https://github.com/masb0ymas/expresso/issues"
