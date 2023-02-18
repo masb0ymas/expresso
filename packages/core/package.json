@@ -14,7 +14,7 @@
     "test": "__tests__"
   },
   "files": [
-    "src"
+    "lib"
   ],
   "repository": {
     "type": "git",

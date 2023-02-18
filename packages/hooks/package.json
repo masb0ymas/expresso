@@ -22,7 +22,7 @@
     "url": "git+https://github.com/masb0ymas/expresso.git"
   },
   "scripts": {
-    "clean": "npx rimraf dist",
+    "clean": "npx rimraf lib tsconfig.tsbuildinfo",
     "build": "npm run clean && npx tsc --build",
     "test": "jest"
   },
