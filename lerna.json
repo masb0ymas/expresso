@@ -3,5 +3,13 @@
   "useWorkspaces": true,
   "version": "0.0.4-alpha.0",
   "npmClient": "yarn",
-  "npmClientArgs": ["--production", "--no-optional"]
+  "npmClientArgs": [
+    "--production",
+    "--no-optional"
+  ],
+  "command": {
+    "publish": {
+      "registry": "https://registry.npmjs.com/"
+    }
+  }
 }
