@@ -1,6 +1,6 @@
 import { currency } from '../src'
 
-describe('helpers currency test', () => {
+describe('core currency test', () => {
   test('should format currency IDR', () => {
     const anyValue = '125000'
     const expectValue = 'Rp 125.000'
