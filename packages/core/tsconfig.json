@@ -11,7 +11,8 @@
     "declarationDir": "./lib",
     "composite": true,
     "paths": {
-      "@expresso/core": ["../core/src"]
+      "@expresso/core": ["../core/src"],
+      "@expresso/hooks": ["../hooks/src"]
     }
   }
 }
