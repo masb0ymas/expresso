@@ -5,10 +5,10 @@
     "packages/*"
   ],
   "scripts": {
-    "clean": "npx rimraf packages/core/dist",
-    "after-build:core": "mv packages/core/dist/* packages/core/dist",
-    "build:core": "npm run clean && npx swc packages/core -d packages/core/dist",
-    "test:core": "npx jest --verbose packages/core"
+    "build:core": "yarn workspace @expresso/core build",
+    "build:hooks": "yarn workspace @expresso/hooks build",
+    "test:core": "npx jest --verbose packages/core",
+    "test:hooks": "npx jest --verbose packages/hooks"
   },
   "devDependencies": {
     "@swc/cli": "^0.1.62",
