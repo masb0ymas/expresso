@@ -5,10 +5,12 @@
     "packages/*"
   ],
   "scripts": {
-    "build:core": "yarn workspace @expresso/core build",
-    "build:hooks": "yarn workspace @expresso/hooks build",
+    "build:core": "yarn workspace expresso-core build",
+    "build:hooks": "yarn workspace expresso-hooks build",
     "test:core": "npx jest --verbose packages/core",
-    "test:hooks": "npx jest --verbose packages/hooks"
+    "test:hooks": "npx jest --verbose packages/hooks",
+    "release": "npx lerna version",
+    "publish": "npm publish --workspaces"
   },
   "devDependencies": {
     "@swc/cli": "^0.1.62",
