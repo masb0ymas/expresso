@@ -8,7 +8,8 @@
     "build:core": "yarn workspace @expresso/core build",
     "build:hooks": "yarn workspace @expresso/hooks build",
     "test:core": "npx jest --verbose packages/core",
-    "test:hooks": "npx jest --verbose packages/hooks"
+    "test:hooks": "npx jest --verbose packages/hooks",
+    "publish": "lerna publish --registry=https://npm.pkg.github.com/"
   },
   "devDependencies": {
     "@swc/cli": "^0.1.62",
