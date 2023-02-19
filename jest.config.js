@@ -10,7 +10,7 @@ module.exports = {
   moduleNameMapper: {
     '@expresso/(.*)': '<rootDir>/packages$1',
   },
-  modulePathIgnorePatterns: ['<rootDir>/dist/'],
+  modulePathIgnorePatterns: ['<rootDir>/lib/'],
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
   testTimeout: 30000,
 }
