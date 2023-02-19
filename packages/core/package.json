@@ -1,6 +1,6 @@
 {
   "name": "@expresso/core",
-  "version": "0.0.14-0.0.14-alpha.1.0",
+  "version": "0.0.0",
   "description": "core library expresso",
   "keywords": [
     "expresso"
@@ -33,5 +33,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "7ccda42bc438925766118e2220333fcdbb5e71a6"
+  "gitHead": "cd3933d873c42a1249acd3f62d0724a87a1eeba3"
 }
