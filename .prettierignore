@@ -7,3 +7,6 @@
 
 /packages/hooks/dist
 /packages/hooks/lib
+
+/packages/query/dist
+/packages/query/lib
