@@ -1,0 +1,49 @@
+{
+  "name": "expresso-query",
+  "version": "0.0.1-alpha.1",
+  "description": "query library expresso",
+  "keywords": [
+    "expresso",
+    "query",
+    "typeorm"
+  ],
+  "author": "masb0ymas <n.fajri@outlook.com>",
+  "homepage": "https://github.com/masb0ymas/expresso#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "sideEffects": false,
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masb0ymas/expresso.git"
+  },
+  "scripts": {
+    "clean": "npx rimraf lib tsconfig.tsbuildinfo",
+    "build": "npm run clean && npx tsc --build",
+    "test": "jest"
+  },
+  "bugs": {
+    "url": "https://github.com/masb0ymas/expresso/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "typeorm": "^0.3.12",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.191",
+    "@types/sinon": "^10.0.13",
+    "@types/uuid": "^9.0.1",
+    "sinon": "^15.0.1"
+  }
+}
