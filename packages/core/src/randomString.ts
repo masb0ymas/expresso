@@ -5,7 +5,7 @@ interface GetRandomEntity {
   length?: number
 }
 
-export function getRandom(params?: GetRandomEntity): string {
+export function generate(params?: GetRandomEntity): string {
   let result = ''
 
   const alphabetLower = 'abcdefghijklmnopqrstuvwxyz'
