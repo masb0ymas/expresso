@@ -23,8 +23,6 @@ describe('query package test', () => {
       { type: 'postgres' }
     )
 
-    console.log({ anyQuery })
-
     expect(() => anyQuery).not.toBeUndefined()
   })
 })
