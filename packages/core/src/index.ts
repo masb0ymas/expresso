@@ -1,3 +1,4 @@
 export * as currency from './currency'
-export * as randomString from './randomString'
 export * from './file'
+export { MailProvider } from './mail'
+export * as randomString from './randomString'
