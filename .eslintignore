@@ -2,11 +2,15 @@
 /node_modules
 /coverage
 /logs
+
+/packages/core/node_modules
 /packages/core/dist
 /packages/core/lib
 
+/packages/hooks/node_modules
 /packages/hooks/dist
 /packages/hooks/lib
 
+/packages/query/node_modules
 /packages/query/dist
 /packages/query/lib
