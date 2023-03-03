@@ -12,7 +12,7 @@
     "test:core": "npx jest --verbose packages/core",
     "test:hooks": "npx jest --verbose packages/hooks",
     "test:query": "npx jest --verbose packages/query",
-    "prerelease": "npm-run-all test:core test:hooks build:all",
+    "prerelease": "npm-run-all test:core test:hooks test:query build:all",
     "release": "npx lerna version",
     "publish": "npm publish --workspaces"
   },
