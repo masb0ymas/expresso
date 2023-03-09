@@ -37,14 +37,9 @@
   },
   "gitHead": "cd3933d873c42a1249acd3f62d0724a87a1eeba3",
   "dependencies": {
-    "dotenv": "^16.0.3",
-    "googleapis": "^111.0.0",
-    "handlebars": "^4.7.7",
-    "nodemailer": "^6.9.1",
-    "nodemailer-mailgun-transport": "^2.1.5"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@types/nodemailer": "^6.4.7",
-    "@types/nodemailer-mailgun-transport": "^1.4.3"
+    "@types/lodash": "^4.14.191"
   }
 }
