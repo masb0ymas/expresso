@@ -12,8 +12,8 @@
     "composite": true,
     "paths": {
       "expresso-core": ["../core/src"],
-      "expresso-hooks": ["../hooks/src"],
-      "expresso-query": ["../query/src"]
+      "expresso-hooks": ["../hooks/src"]
     }
-  }
+  },
+  "references": [{ "path": "../../packages/core/tsconfig.json" }]
 }

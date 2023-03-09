@@ -1,0 +1,60 @@
+{
+  "name": "expresso-provider",
+  "version": "0.0.2-alpha.0",
+  "description": "provider library expresso",
+  "keywords": [
+    "expresso",
+    "provider",
+    "nodemailer",
+    "mailgun",
+    "gcp",
+    "minio",
+    "s3"
+  ],
+  "author": "masb0ymas <n.fajri@outlook.com>",
+  "homepage": "https://github.com/masb0ymas/expresso#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "sideEffects": false,
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masb0ymas/expresso.git"
+  },
+  "scripts": {
+    "clean": "npx rimraf lib tsconfig.tsbuildinfo",
+    "build": "npm run clean && npx tsc --build",
+    "test": "jest"
+  },
+  "bugs": {
+    "url": "https://github.com/masb0ymas/expresso/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.287.0",
+    "@aws-sdk/s3-request-presigner": "^3.287.0",
+    "@google-cloud/storage": "^6.9.4",
+    "chalk": "~4.1.2",
+    "date-fns": "^2.29.3",
+    "dotenv": "^16.0.3",
+    "googleapis": "^111.0.0",
+    "handlebars": "^4.7.7",
+    "minio": "^7.0.32",
+    "nodemailer": "^6.9.1",
+    "nodemailer-mailgun-transport": "^2.1.5"
+  },
+  "devDependencies": {
+    "@types/minio": "^7.0.17",
+    "@types/nodemailer": "^6.4.7",
+    "@types/nodemailer-mailgun-transport": "^1.4.3"
+  }
+}
