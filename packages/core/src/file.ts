@@ -18,7 +18,9 @@ export function createDirNotExist(_path: string): void {
  * @param _path
  * @returns
  */
-export async function readHTMLFile(_path: string): Promise<string> {
+export async function readHTMLFile(
+  _path: fs.PathLike | fs.promises.FileHandle
+): Promise<string> {
   try {
     const result = await fsAsync.readFile(_path, { encoding: 'utf-8' })
     return result
