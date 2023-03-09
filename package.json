@@ -16,7 +16,7 @@
     "test:provider": "npx jest --verbose packages/provider",
     "test:all": "npm-run-all test:core test:hooks test:query test:provider",
     "prerelease": "npm-run-all test:all build:all",
-    "release": "npx lerna version",
+    "release": "npx lerna version --conventional-commits",
     "publish": "npm publish --workspaces"
   },
   "devDependencies": {
