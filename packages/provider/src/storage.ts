@@ -28,26 +28,32 @@ interface DtoExpiresObject {
 type StorageType = 's3' | 'gcp' | 'minio'
 type StorageExpires = '1d' | '2d' | '3d' | '4d' | '5d' | '6d' | '7d'
 
+interface StorageOptions {
+  useSSL?: boolean
+  filePath?: fs.PathLike | string
+}
 interface StorageProviderEntity {
   provider: StorageType
   accessKey: string
-  secretKey: string
+  secretKey?: string
   region: string
   bucket: string
   expires: StorageExpires | string
   host?: string | null
   port?: number | null
+  options?: StorageOptions
 }
 
 export class StorageProvider {
   private readonly _provider: StorageType | string
   private readonly _accessKey: string
-  private readonly _secretKey: string
+  private readonly _secretKey?: string
   private readonly _region: string
   private readonly _bucket: string
   private readonly _expires: StorageExpires | string
   private readonly _host?: string | null
   private readonly _port?: number | null
+  private readonly _options?: StorageOptions
 
   private readonly _clientS3: S3 | undefined
   private readonly _clientMinio: Minio.Client | undefined
@@ -57,19 +63,20 @@ export class StorageProvider {
     // check storage type
     this._provider = params.provider
     this._accessKey = params.accessKey
-    this._secretKey = params.secretKey
+    this._secretKey = params?.secretKey
     this._region = params.region
     this._bucket = params.bucket
     this._expires = params.expires
     this._host = params.host
     this._port = params.port
+    this._options = params.options
 
     // config client Aws S3
     if (this._provider === 's3') {
       this._clientS3 = new S3({
         credentials: {
           accessKeyId: this._accessKey,
-          secretAccessKey: this._secretKey,
+          secretAccessKey: String(this._secretKey),
         },
         region: this._region,
       })
@@ -81,9 +88,9 @@ export class StorageProvider {
         endPoint: this._host ?? '127.0.0.1',
         port: this._port ?? 9000,
         accessKey: this._accessKey,
-        secretKey: this._secretKey,
+        secretKey: String(this._secretKey),
         region: this._region,
-        useSSL: false,
+        useSSL: this._options?.useSSL ?? false,
       })
     }
 
@@ -92,9 +99,12 @@ export class StorageProvider {
       const msgType = 'Google Cloud Storage'
       const projectId = this._accessKey
 
-      const serviceAccountKey = path.resolve('./gcp-serviceAccount.json')
+      // ./your_path/serviceAccount.json
+      const serviceAccountPath = path.resolve(
+        `${process.cwd()}/${this._options?.filePath}`
+      )
 
-      if (!projectId && !fs.existsSync(serviceAccountKey)) {
+      if (!projectId && !fs.existsSync(serviceAccountPath)) {
         console.log(msgType, 'is missing on root directory')
 
         throw new Error(
@@ -103,12 +113,12 @@ export class StorageProvider {
       }
 
       if (projectId) {
-        console.log(msgType, serviceAccountKey)
+        console.log(msgType, serviceAccountPath)
       }
 
       this._clientGCS = new GoogleCloudStorage({
         projectId,
-        keyFilename: serviceAccountKey,
+        keyFilename: serviceAccountPath,
       })
     }
   }
