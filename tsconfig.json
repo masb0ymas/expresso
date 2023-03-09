@@ -4,7 +4,7 @@
   "exclude": ["node_modules", "jest.config.js", "lib", "lib/**/*"],
   "compilerOptions": {
     "paths": {
-      "@expresso/*": ["packages/*/src"]
+      "expresso-*": ["packages/*/src"]
     }
   }
 }

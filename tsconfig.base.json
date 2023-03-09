@@ -9,7 +9,7 @@
     "baseUrl": ".",
     "allowJs": true,
     "paths": {
-      "@expresso/*": ["packages/*"]
+      "expresso-*": ["packages/*"]
     },
     "declaration": true,
     "outDir": "./lib",
