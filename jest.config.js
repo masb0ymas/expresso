@@ -8,7 +8,7 @@ module.exports = {
   modulePaths: ['packages'],
   moduleDirectories: ['node_modules'],
   moduleNameMapper: {
-    '@expresso/(.*)': '<rootDir>/packages$1',
+    '@expresso-(.*)': '<rootDir>/packages$1',
   },
   modulePathIgnorePatterns: ['<rootDir>/lib/'],
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
