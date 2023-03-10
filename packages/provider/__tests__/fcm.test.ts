@@ -12,6 +12,6 @@ describe('fcm provider test', () => {
       options: { credential: admin.credential.cert(serviceAccountPath) },
     })
 
-    expect(() => fcmService.initial()).not.toBe(null)
+    expect(() => fcmService.initialize()).not.toBe(null)
   })
 })
