@@ -154,34 +154,65 @@ export class MailProvider {
   }
 
   /**
+   * Client
+   * @returns
+   */
+  private _client(): SentMessageInfo {
+    // mail config
+    this._mailConfig = this._isMailgunAPI
+      ? mg(this._setMailConfig())
+      : this._setMailConfig()
+
+    // Nodemailer Transport
+    const transporter = nodemailer.createTransport(this._mailConfig)
+
+    return transporter
+  }
+
+  /**
+   * Initialize Mail Service
+   */
+  public initialize(): void {
+    // Nodemailer Transport
+    const transporter = this._client()
+
+    transporter.verify(function (error: any, success: any) {
+      if (error) {
+        console.log(error)
+        throw new Error(error)
+      } else {
+        console.log('Mail Service is ready to take our messages')
+      }
+    })
+  }
+
+  /**
    * Send Mail Config Transporter
    * @param params
    */
   private _sendMail(params: SendMailOptionsEntity): void {
     const { dest, subject, text } = params
 
-    // mail config
-    this._mailConfig = this._isMailgunAPI
-      ? mg(this._setMailConfig())
-      : this._setMailConfig()
+    // client
+    const transporter = this._client()
 
     // mail options
     this._mailOptions = this._setMailOptions({ dest, subject, text })
 
-    // Nodemailer Transport
-    const transporter = nodemailer.createTransport(this._mailConfig)
+    transporter.sendMail(
+      this._mailOptions,
+      (err: { message: any }, info: any) => {
+        if (err) {
+          const errMessage = `Something went wrong!, ${err.message}`
+          console.log(`Nodemailer Error: `, errMessage)
 
-    transporter.sendMail(this._mailOptions, (err, info) => {
-      if (err) {
-        const errMessage = `Something went wrong!, ${err.message}`
-        console.log(`Nodemailer Error: `, errMessage)
+          throw new Error(errMessage)
+        }
 
-        throw new Error(errMessage)
+        const message = 'email has been sent'
+        console.log('Nodemailer: ', `Success, ${message}`, info)
       }
-
-      const message = 'email has been sent'
-      console.log('Nodemailer: ', `Success, ${message}`, info)
-    })
+    )
   }
 
   /**
