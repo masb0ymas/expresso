@@ -1,5 +1,8 @@
 import _ from 'lodash'
 
+const emptyValues = [null, undefined, '', 'null', 'undefined']
+const invalidValues = [...emptyValues, false, 0, 'false', '0']
+
 /**
  *
  * @param value
@@ -50,4 +53,56 @@ export function validateNumber(value: any): number {
   }
 
   return 0
+}
+
+/**
+ *
+ * @param value
+ * @returns
+ */
+export function validateEmpty(value: any): any {
+  if (emptyValues.includes(value)) {
+    return null
+  }
+
+  return value
+}
+
+/**
+ *
+ * @param value
+ * @returns
+ */
+export function validateBoolean(value: any): boolean {
+  if (invalidValues.includes(value)) {
+    return false
+  }
+
+  return true
+}
+
+/**
+ *
+ * @param value
+ * @returns
+ */
+export function arrayFormatter(value: string | any[]): any[] {
+  // check value not empty
+  if (!_.isEmpty(value)) {
+    // check array value
+    if (Array.isArray(value)) {
+      return value
+    }
+
+    // parse string json to array
+    const parseJson = JSON.parse(JSON.stringify(value))
+
+    if (Array.isArray(parseJson)) {
+      return parseJson
+    }
+
+    return []
+  }
+
+  return []
 }
