@@ -10,3 +10,6 @@
 
 /packages/query/dist
 /packages/query/lib
+
+/packages/provider/dist
+/packages/provider/lib

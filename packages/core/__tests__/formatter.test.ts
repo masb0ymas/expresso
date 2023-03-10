@@ -1,4 +1,11 @@
-import { isNumeric, ms, validateNumber } from '../src'
+import {
+  arrayFormatter,
+  isNumeric,
+  ms,
+  validateBoolean,
+  validateEmpty,
+  validateNumber,
+} from '../src'
 
 describe('formatter test', () => {
   test('should convert ms', () => {
@@ -23,5 +30,33 @@ describe('formatter test', () => {
     const data = validateNumber(anyValue)
 
     expect(data).toBe(10)
+  })
+
+  test('should array formatter', () => {
+    const anyArray = [
+      { id: 1, name: 'anyName' },
+      { id: 2, name: 'anyName' },
+    ]
+
+    const jsonArray = JSON.parse(JSON.stringify(anyArray))
+    const data = arrayFormatter(jsonArray)
+
+    expect(data).toBe(jsonArray)
+  })
+
+  test('should validate empty', () => {
+    const anyValue = 'null'
+
+    const data = validateEmpty(anyValue)
+
+    expect(data).toBe(null)
+  })
+
+  test('should validate boolean', () => {
+    const anyValue = 'true'
+
+    const data = validateBoolean(anyValue)
+
+    expect(data).toBe(true)
   })
 })

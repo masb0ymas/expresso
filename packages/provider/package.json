@@ -1,6 +1,6 @@
 {
   "name": "expresso-provider",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "provider library expresso",
   "keywords": [
     "expresso",
@@ -46,8 +46,10 @@
     "chalk": "~4.1.2",
     "date-fns": "^2.29.3",
     "dotenv": "^16.0.3",
+    "firebase-admin": "^11.5.0",
     "googleapis": "^111.0.0",
     "handlebars": "^4.7.7",
+    "ioredis": "^5.3.1",
     "minio": "^7.0.32",
     "nodemailer": "^6.9.1",
     "nodemailer-mailgun-transport": "^2.1.5"

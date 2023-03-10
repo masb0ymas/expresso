@@ -14,3 +14,7 @@
 /packages/query/node_modules
 /packages/query/dist
 /packages/query/lib
+
+/packages/provider/node_modules
+/packages/provider/dist
+/packages/provider/lib
