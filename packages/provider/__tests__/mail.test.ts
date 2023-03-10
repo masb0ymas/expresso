@@ -5,6 +5,21 @@ import { readHTMLFile } from 'expresso-core'
 import 'dotenv/config'
 
 describe('mail testing', () => {
+  test('should initial mail service', () => {
+    const mailService = new Mail({
+      driver: 'smtp',
+      host: 'smtp.mailtrap.io',
+      port: 2525,
+      username: String(process.env.MAIL_USERNAME),
+      password: String(process.env.MAIL_PASSWORD),
+      appName: 'expresso Monorepo',
+    })
+
+    expect(() => {
+      mailService.initialize()
+    }).not.toBe(null)
+  })
+
   test('should send mail', async () => {
     const mailService = new Mail({
       driver: 'smtp',

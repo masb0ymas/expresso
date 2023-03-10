@@ -13,7 +13,7 @@ describe('storage provider', () => {
     })
 
     expect(async () => {
-      await storageProvider.initial()
+      await storageProvider.initialize()
     }).not.toBeNull()
   })
 })

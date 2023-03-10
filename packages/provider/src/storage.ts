@@ -300,7 +300,7 @@ export class StorageProvider {
     }
   }
 
-  public async initial(): Promise<void> {
+  public async initialize(): Promise<void> {
     if (this._provider === 's3') {
       await this._initialS3()
     }

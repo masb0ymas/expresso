@@ -32,7 +32,7 @@ export class FCMProvider {
    * Initial FCM Provider
    * @returns
    */
-  public initial(): admin.app.App {
+  public initialize(): admin.app.App {
     return admin.initializeApp(this._options, this._name)
   }
 
