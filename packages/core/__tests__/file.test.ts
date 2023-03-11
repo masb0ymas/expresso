@@ -1,6 +1,11 @@
 import fs from 'fs'
 import path from 'path'
-import { createDirNotExist } from '../src'
+import {
+  createDirNotExist,
+  deleteFile,
+  readHTMLFile,
+  writeFileStream,
+} from '../src'
 
 describe('core file test', () => {
   beforeEach(() => {
@@ -19,5 +24,26 @@ describe('core file test', () => {
     const exists = fs.existsSync(dir)
 
     expect(exists).toBe(true)
+  })
+
+  test('should write file stream', async () => {
+    const outputPath = path.resolve(`${process.cwd()}/public/output`)
+    const anyContent = 'Any Content For Testing'
+
+    createDirNotExist(outputPath)
+    await writeFileStream(`${outputPath}/test.txt`, Buffer.from(anyContent))
+
+    // Result Value from Write file
+    const content = await readHTMLFile(`${outputPath}/test.txt`)
+    expect(content).toMatch(/Content/)
+  })
+
+  test('should delete file', () => {
+    const outputPath = path.resolve(`${process.cwd()}/public/output/test.txt`)
+
+    deleteFile(outputPath)
+    const exists = fs.existsSync(outputPath)
+
+    expect(exists).toBe(false)
   })
 })
