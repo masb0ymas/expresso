@@ -38,7 +38,7 @@ interface StorageProviderEntity {
   secretKey?: string
   region: string
   bucket: string
-  expires: StorageExpires | string
+  expires: StorageExpires
   host?: string | null
   port?: number | null
   options?: StorageOptions
@@ -117,7 +117,6 @@ export class StorageProvider {
 
       if (projectId) {
         const logMessage = printLog(msgType, serviceAccountPath)
-
         console.log(logMessage)
       }
 
@@ -205,7 +204,10 @@ export class StorageProvider {
 
       console.log(logMessage, data)
     } catch (err: any) {
-      const logMessage = printLog(`${msgType} - Error :`, err?.message ?? err)
+      const message = err?.message ?? err
+      const logMessage = printLog(`${msgType} - Error :`, message, {
+        label: 'error',
+      })
       console.log(logMessage)
 
       process.exit()
@@ -229,7 +231,10 @@ export class StorageProvider {
 
       console.log(logMessage, data?.Grants)
     } catch (err: any) {
-      const logMessage = printLog(`${msgType} - Error :`, err?.message ?? err)
+      const message = err?.message ?? err
+      const logMessage = printLog(`${msgType} - Error :`, message, {
+        label: 'error',
+      })
       console.log(logMessage)
 
       await this._createS3Bucket()
@@ -251,7 +256,10 @@ export class StorageProvider {
 
       console.log(logMessage)
     } catch (err: any) {
-      const logMessage = printLog(`${msgType} - Error :`, err?.message ?? err)
+      const message = err?.message ?? err
+      const logMessage = printLog(`${msgType} - Error :`, message, {
+        label: 'error',
+      })
       console.log(logMessage)
 
       process.exit()
@@ -292,7 +300,10 @@ export class StorageProvider {
 
       console.log(logMessage, data)
     } catch (err: any) {
-      const logMessage = printLog(`${msgType} - Error :`, err?.message ?? err)
+      const message = err?.message ?? err
+      const logMessage = printLog(`${msgType} - Error :`, message, {
+        label: 'error',
+      })
       console.log(logMessage)
 
       process.exit()
@@ -318,7 +329,10 @@ export class StorageProvider {
         console.log(logMessage, getMetadata?.[0])
       }
     } catch (err: any) {
-      const logMessage = printLog(`${msgType} - Error :`, err?.message ?? err)
+      const message = err?.message ?? err
+      const logMessage = printLog(`${msgType} - Error :`, message, {
+        label: 'error',
+      })
       console.log(logMessage)
 
       await this._createGCSBucket()

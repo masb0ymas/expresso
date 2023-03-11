@@ -178,14 +178,20 @@ export class MailProvider {
     const transporter = this._client()
 
     transporter.verify(function (error: any, success: any) {
+      const msgType = 'Nodemailer'
+
       if (error) {
-        console.log(error)
+        const message = error?.message ?? error
+        const logMessage = printLog(`${msgType} - Error`, message, {
+          label: 'error',
+        })
+
+        console.log(logMessage)
+
         throw new Error(error)
       } else {
-        const logMessage = printLog(
-          'Nodemailer :',
-          'Mail Service is ready to take our messages'
-        )
+        const message = 'Mail Service is ready to take our messages'
+        const logMessage = printLog(msgType, message)
 
         console.log(logMessage)
       }
@@ -210,7 +216,9 @@ export class MailProvider {
       (err: { message: any }, info: any) => {
         if (err) {
           const errMessage = `Something went wrong!, ${err.message}`
-          const logMessage = printLog('Nodemailer Error :', errMessage)
+          const logMessage = printLog('Nodemailer Error :', errMessage, {
+            label: 'error',
+          })
 
           console.log(logMessage)
 
