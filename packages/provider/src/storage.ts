@@ -32,7 +32,7 @@ interface StorageOptions {
   useSSL?: boolean
   filePath?: fs.PathLike | string
 }
-interface StorageProviderEntity {
+export interface StorageProviderEntity {
   provider: StorageType
   accessKey: string
   secretKey?: string
