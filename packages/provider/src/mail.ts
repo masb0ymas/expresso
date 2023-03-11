@@ -6,6 +6,7 @@ import nodemailer, {
   type SentMessageInfo,
 } from 'nodemailer'
 import mg from 'nodemailer-mailgun-transport'
+import { printLog } from 'expresso-core'
 
 type DriverType = 'smtp' | 'gmail'
 
@@ -181,7 +182,12 @@ export class MailProvider {
         console.log(error)
         throw new Error(error)
       } else {
-        console.log('Mail Service is ready to take our messages')
+        const logMessage = printLog(
+          'Nodemailer :',
+          'Mail Service is ready to take our messages'
+        )
+
+        console.log(logMessage)
       }
     })
   }
@@ -204,13 +210,17 @@ export class MailProvider {
       (err: { message: any }, info: any) => {
         if (err) {
           const errMessage = `Something went wrong!, ${err.message}`
-          console.log(`Nodemailer Error: `, errMessage)
+          const logMessage = printLog('Nodemailer Error :', errMessage)
+
+          console.log(logMessage)
 
           throw new Error(errMessage)
         }
 
-        const message = 'email has been sent'
-        console.log('Nodemailer: ', `Success, ${message}`, info)
+        const message = 'Success, Email has been sent'
+        const logMessage = printLog('Nodemailer :', message)
+
+        console.log(logMessage, info)
       }
     )
   }

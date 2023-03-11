@@ -14,7 +14,7 @@ import {
 } from '@google-cloud/storage'
 import chalk from 'chalk'
 import { addDays } from 'date-fns'
-import { ms } from 'expresso-core'
+import { ms, printLog } from 'expresso-core'
 import fs from 'fs'
 import * as Minio from 'minio'
 import path from 'path'
@@ -105,7 +105,10 @@ export class StorageProvider {
       )
 
       if (!projectId && !fs.existsSync(serviceAccountPath)) {
-        console.log(msgType, 'is missing on root directory')
+        const message = 'serviceAccount is missing on root directory'
+        const logMessage = printLog(msgType, message, { label: 'error' })
+
+        console.log(logMessage)
 
         throw new Error(
           'Missing GCP Service Account!!!\nCopy gcp-serviceAccount from your console google to root directory "gcp-serviceAccount.json"'
@@ -113,7 +116,9 @@ export class StorageProvider {
       }
 
       if (projectId) {
-        console.log(msgType, serviceAccountPath)
+        const logMessage = printLog(msgType, serviceAccountPath)
+
+        console.log(logMessage)
       }
 
       this._clientGCS = new GoogleCloudStorage({
@@ -196,9 +201,13 @@ export class StorageProvider {
       })
 
       const message = `Success Create Bucket: ${chalk.cyan(bucketName)}`
-      console.log(msgType, message, data)
+      const logMessage = printLog(msgType, message)
+
+      console.log(logMessage, data)
     } catch (err: any) {
-      console.log(`${msgType} - Error :`, err?.message ?? err)
+      const logMessage = printLog(`${msgType} - Error :`, err?.message ?? err)
+      console.log(logMessage)
+
       process.exit()
     }
   }
@@ -216,9 +225,12 @@ export class StorageProvider {
       )
 
       const message = `Success Get Bucket: ${chalk.cyan(bucketName)}`
-      console.log(msgType, message, data?.Grants)
+      const logMessage = printLog(msgType, message)
+
+      console.log(logMessage, data?.Grants)
     } catch (err: any) {
-      console.log(`${msgType} Error :`, err?.message ?? err)
+      const logMessage = printLog(`${msgType} - Error :`, err?.message ?? err)
+      console.log(logMessage)
 
       await this._createS3Bucket()
     }
@@ -235,9 +247,13 @@ export class StorageProvider {
       await this._clientMinio?.makeBucket(bucketName, this._region)
 
       const message = `Success Create Bucket: ${chalk.cyan(bucketName)}`
-      console.log(msgType, message)
+      const logMessage = printLog(msgType, message)
+
+      console.log(logMessage)
     } catch (err: any) {
-      console.log(`${msgType} Error:`, err?.message ?? err)
+      const logMessage = printLog(`${msgType} - Error :`, err?.message ?? err)
+      console.log(logMessage)
+
       process.exit()
     }
   }
@@ -255,7 +271,9 @@ export class StorageProvider {
       await this._createMinioBucket()
     } else {
       const message = `Success Get Bucket: ${chalk.cyan(bucketName)}`
-      console.log(msgType, message)
+      const logMessage = printLog(msgType, message)
+
+      console.log(logMessage)
     }
   }
 
@@ -268,11 +286,15 @@ export class StorageProvider {
 
     try {
       const data = await this._clientGCS?.createBucket(bucketName)
-      const message = `Success Create Bucket: ${chalk.cyan(bucketName)}`
 
-      console.log(msgType, message, data)
+      const message = `Success Create Bucket: ${chalk.cyan(bucketName)}`
+      const logMessage = printLog(msgType, message)
+
+      console.log(logMessage, data)
     } catch (err: any) {
-      console.log(`${msgType} Error :`, err?.message ?? err)
+      const logMessage = printLog(`${msgType} - Error :`, err?.message ?? err)
+      console.log(logMessage)
+
       process.exit()
     }
   }
@@ -291,10 +313,13 @@ export class StorageProvider {
 
       if (getBucket?.[0]) {
         const message = `Success Get Bucket: ${chalk.cyan(bucketName)}`
-        console.log(msgType, message, getMetadata?.[0])
+        const logMessage = printLog(msgType, message)
+
+        console.log(logMessage, getMetadata?.[0])
       }
     } catch (err: any) {
-      console.log(`${msgType} Error :`, err?.message ?? err)
+      const logMessage = printLog(`${msgType} - Error :`, err?.message ?? err)
+      console.log(logMessage)
 
       await this._createGCSBucket()
     }
