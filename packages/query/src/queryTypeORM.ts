@@ -1,19 +1,16 @@
+import { isNumeric } from 'expresso-core'
+import _ from 'lodash'
 import {
   type DataSourceOptions,
   type ObjectLiteral,
   type SelectQueryBuilder,
 } from 'typeorm'
-import _ from 'lodash'
 import { validate as uuidValidate } from 'uuid'
 import {
   type FilteredQueryEntity,
   type SortedQueryEntity,
   type UseQueryEntity,
 } from './interface'
-
-function isNumeric(value: any): boolean {
-  return !_.isNaN(parseFloat(value)) && _.isFinite(value)
-}
 
 export function useQueryTypeORM<T extends ObjectLiteral>(
   values: UseQueryEntity<T>,
