@@ -18,7 +18,7 @@ const numeric = '0123456789'
  * @param length
  * @returns
  */
-function _randomString(charString: string, length: number): string {
+function _randomCharString(charString: string, length: number): string {
   let result = ''
 
   const defaultLength = length ?? 32
@@ -62,7 +62,7 @@ export function generate(params?: number | GetRandomEntity): string {
     const defaultLength = 32
     const charString = `${alphabetLower}${alphabetUpper}${numeric}`
 
-    result = _randomString(charString, defaultLength)
+    result = _randomCharString(charString, defaultLength)
   }
 
   // if params typeof Number
@@ -70,7 +70,7 @@ export function generate(params?: number | GetRandomEntity): string {
     const defaultLength = Number(params) ?? 32
     const charString = `${alphabetLower}${alphabetUpper}${numeric}`
 
-    result = _randomString(charString, defaultLength)
+    result = _randomCharString(charString, defaultLength)
   }
 
   // if params typeof Object
@@ -83,7 +83,7 @@ export function generate(params?: number | GetRandomEntity): string {
 
       const charString = `${alphabetLower}${alphabetUpper}${numeric}`
 
-      result = _randomString(charString, defaultLength)
+      result = _randomCharString(charString, defaultLength)
     }
 
     // String Random
@@ -91,7 +91,7 @@ export function generate(params?: number | GetRandomEntity): string {
       const defaultLength = params?.length ?? 32
       const charString = `${alphabetLower}${alphabetUpper}`
 
-      result = _randomString(charString, defaultLength)
+      result = _randomCharString(charString, defaultLength)
     }
 
     // Number Random
