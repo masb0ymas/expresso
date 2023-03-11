@@ -37,6 +37,7 @@
   },
   "gitHead": "cd3933d873c42a1249acd3f62d0724a87a1eeba3",
   "dependencies": {
+    "chalk": "~4.1.2",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
