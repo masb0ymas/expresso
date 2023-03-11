@@ -1,7 +1,14 @@
+import chalk from 'chalk'
 import _ from 'lodash'
 
 const emptyValues = [null, undefined, '', 'null', 'undefined']
 const invalidValues = [...emptyValues, false, 0, 'false', '0']
+
+type LabelType = 'success' | 'warning' | 'error'
+
+interface OptionsPrintLog {
+  label: LabelType
+}
 
 /**
  *
@@ -105,4 +112,36 @@ export function arrayFormatter(value: string | any[]): any[] {
   }
 
   return []
+}
+
+/**
+ *
+ * @param title
+ * @param message
+ * @param options
+ * @returns
+ */
+export function printLog(
+  title: string,
+  message: string,
+  options?: OptionsPrintLog
+): string {
+  let newType = ''
+
+  const logName = chalk.green('[server]:')
+  const defaultLabel = options?.label ?? 'success'
+
+  if (defaultLabel === 'success') {
+    newType = chalk.blue(title)
+  } else if (defaultLabel === 'warning') {
+    newType = chalk.yellow(title)
+  } else if (defaultLabel === 'error') {
+    newType = chalk.red(title)
+  }
+
+  const newMessage = chalk.green(message)
+
+  const result = `${logName} ${newType} ${newMessage}`
+
+  return result
 }
