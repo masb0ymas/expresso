@@ -25,8 +25,8 @@ interface DtoExpiresObject {
   expiryDate: Date
 }
 
-type StorageType = 's3' | 'gcp' | 'minio'
-type StorageExpires = '1d' | '2d' | '3d' | '4d' | '5d' | '6d' | '7d'
+export type StorageType = 's3' | 'gcp' | 'minio'
+export type StorageExpires = '1d' | '2d' | '3d' | '4d' | '5d' | '6d' | '7d'
 
 interface StorageOptions {
   useSSL?: boolean
