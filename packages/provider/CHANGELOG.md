@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/masb0ymas/expresso/compare/v0.3.0...v0.3.1) (2023-03-11)
+
+### Bug Fixes
+
+- add interface storage ([3244b27](https://github.com/masb0ymas/expresso/commit/3244b279bd44af044febe4e6ed1c6cd4be3051b7))
+- export storage provider ([f903ba0](https://github.com/masb0ymas/expresso/commit/f903ba0bbb5be3092ec4f9dad1104052e0ac3a38))
+- printLog error ([4f89514](https://github.com/masb0ymas/expresso/commit/4f895140230796a0125a4b3cdc8fe009bd6d2ec8))
+- storage test region ([379ee7f](https://github.com/masb0ymas/expresso/commit/379ee7f6ef11e407b741b50cfc23a130361e103f))
+
 # [0.3.0](https://github.com/masb0ymas/expresso/compare/v0.2.1...v0.3.0) (2023-03-11)
 
 ### Bug Fixes
