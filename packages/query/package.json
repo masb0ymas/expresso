@@ -27,7 +27,7 @@
   "scripts": {
     "clean": "npx rimraf lib tsconfig.tsbuildinfo",
     "build": "npm run clean && npx tsc --build",
-    "test": "jest"
+    "test": "npx jest"
   },
   "bugs": {
     "url": "https://github.com/masb0ymas/expresso/issues"
@@ -41,9 +41,9 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.191",
+    "@types/lodash": "^4.14.192",
     "@types/sinon": "^10.0.13",
     "@types/uuid": "^9.0.1",
-    "sinon": "^15.0.1"
+    "sinon": "^15.0.3"
   }
 }
