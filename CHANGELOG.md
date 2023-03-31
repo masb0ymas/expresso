@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/masb0ymas/expresso/compare/v0.3.1...v0.3.2) (2023-03-31)
+
+### Bug Fixes
+
+- export type ([e2051e1](https://github.com/masb0ymas/expresso/commit/e2051e143d6de21eb60b7fcd496d76375334837c))
+- script test:all ([42042ce](https://github.com/masb0ymas/expresso/commit/42042cea2d9915200ac9be6128802f22e0222d7e))
+- typing package storage ([de22bf2](https://github.com/masb0ymas/expresso/commit/de22bf2965b8c1b4cd7c2ae31c19611c24c63b0b))
+- typo storage type ([f8cdf08](https://github.com/masb0ymas/expresso/commit/f8cdf085b57e06c94bd9f950733425be3f30bc98))
+- update package core ([b055b30](https://github.com/masb0ymas/expresso/commit/b055b3088f4f4a4932c939a6c78a7769cbb77a35))
+- update package hooks ([521d21d](https://github.com/masb0ymas/expresso/commit/521d21d32f17d23286b1dffca6a255898d777971))
+- update package provider ([755eab7](https://github.com/masb0ymas/expresso/commit/755eab7892af3a792cdddf968e31dfb75f2da24b))
+- update package query ([9717310](https://github.com/masb0ymas/expresso/commit/97173106966541a9d52603da95d5f040b2618f7e))
+
+### Features
+
+- add integration nx ([8842f5a](https://github.com/masb0ymas/expresso/commit/8842f5a1a355d1d6722a066a3ccbd9c11f788161))
+
 ## [0.3.1](https://github.com/masb0ymas/expresso/compare/v0.3.0...v0.3.1) (2023-03-11)
 
 ### Bug Fixes

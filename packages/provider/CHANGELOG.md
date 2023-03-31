@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/masb0ymas/expresso/compare/v0.3.1...v0.3.2) (2023-03-31)
+
+### Bug Fixes
+
+- export type ([e2051e1](https://github.com/masb0ymas/expresso/commit/e2051e143d6de21eb60b7fcd496d76375334837c))
+- typing package storage ([de22bf2](https://github.com/masb0ymas/expresso/commit/de22bf2965b8c1b4cd7c2ae31c19611c24c63b0b))
+- typo storage type ([f8cdf08](https://github.com/masb0ymas/expresso/commit/f8cdf085b57e06c94bd9f950733425be3f30bc98))
+- update package provider ([755eab7](https://github.com/masb0ymas/expresso/commit/755eab7892af3a792cdddf968e31dfb75f2da24b))
+
 ## [0.3.1](https://github.com/masb0ymas/expresso/compare/v0.3.0...v0.3.1) (2023-03-11)
 
 ### Bug Fixes
