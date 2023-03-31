@@ -3,5 +3,6 @@
   "useWorkspaces": true,
   "version": "0.3.1",
   "npmClient": "yarn",
-  "npmClientArgs": ["--production", "--no-optional"]
+  "npmClientArgs": ["--production", "--no-optional"],
+  "useNx": true
 }
