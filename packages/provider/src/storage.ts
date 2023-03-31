@@ -25,7 +25,7 @@ interface DtoExpiresObject {
   expiryDate: Date
 }
 
-export type StorageType = 's3' | 'gcp' | 'minio'
+export type StorageType = 's3' | 'gcs' | 'minio'
 export type StorageExpires = '1d' | '2d' | '3d' | '4d' | '5d' | '6d' | '7d'
 
 interface StorageOptions {
@@ -205,7 +205,7 @@ export class StorageProvider {
       console.log(logMessage, data)
     } catch (err: any) {
       const message = err?.message ?? err
-      const logMessage = printLog(`${msgType} - Error :`, message, {
+      const logMessage = printLog(`${msgType} - Error`, message, {
         label: 'error',
       })
       console.log(logMessage)
@@ -232,7 +232,7 @@ export class StorageProvider {
       console.log(logMessage, data?.Grants)
     } catch (err: any) {
       const message = err?.message ?? err
-      const logMessage = printLog(`${msgType} - Error :`, message, {
+      const logMessage = printLog(`${msgType} - Error`, message, {
         label: 'error',
       })
       console.log(logMessage)
@@ -257,7 +257,7 @@ export class StorageProvider {
       console.log(logMessage)
     } catch (err: any) {
       const message = err?.message ?? err
-      const logMessage = printLog(`${msgType} - Error :`, message, {
+      const logMessage = printLog(`${msgType} - Error`, message, {
         label: 'error',
       })
       console.log(logMessage)
@@ -301,7 +301,7 @@ export class StorageProvider {
       console.log(logMessage, data)
     } catch (err: any) {
       const message = err?.message ?? err
-      const logMessage = printLog(`${msgType} - Error :`, message, {
+      const logMessage = printLog(`${msgType} - Error`, message, {
         label: 'error',
       })
       console.log(logMessage)
@@ -330,7 +330,7 @@ export class StorageProvider {
       }
     } catch (err: any) {
       const message = err?.message ?? err
-      const logMessage = printLog(`${msgType} - Error :`, message, {
+      const logMessage = printLog(`${msgType} - Error`, message, {
         label: 'error',
       })
       console.log(logMessage)

@@ -5,13 +5,13 @@ interface FCMProviderEntity {
   options?: admin.AppOptions
 }
 
-type SendingType = 'all' | 'by-user'
+export type FCMSendType = 'all' | 'by-user'
 
 interface sendToMessageAttributes {
   appName: string
   title: string
   message: string
-  type: SendingType | string
+  type: FCMSendType
   data: string
 }
 

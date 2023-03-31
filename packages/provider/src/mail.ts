@@ -1,3 +1,4 @@
+import { printLog } from 'expresso-core'
 import { type Headers } from 'gaxios'
 import { google } from 'googleapis'
 import _ from 'lodash'
@@ -6,14 +7,13 @@ import nodemailer, {
   type SentMessageInfo,
 } from 'nodemailer'
 import mg from 'nodemailer-mailgun-transport'
-import { printLog } from 'expresso-core'
 
-type DriverType = 'smtp' | 'gmail'
+export type MailDriverType = 'smtp' | 'gmail'
 
-type MailAuthType = 'OAuth2'
+export type MailAuthType = 'OAuth2'
 
 interface MailProviderEntity {
-  driver: DriverType
+  driver: MailDriverType
   username: string
   password?: string
   host?: string
@@ -44,7 +44,7 @@ export class MailProvider {
   private _mailConfig: SentMessageInfo
   private _mailOptions: SendMailOptions
 
-  private readonly _driver: DriverType
+  private readonly _driver: MailDriverType
   private readonly _username: string
   private readonly _password?: string
   private readonly _host?: string
@@ -216,7 +216,7 @@ export class MailProvider {
       (err: { message: any }, info: any) => {
         if (err) {
           const errMessage = `Something went wrong!, ${err.message}`
-          const logMessage = printLog('Nodemailer Error :', errMessage, {
+          const logMessage = printLog('Nodemailer - Error', errMessage, {
             label: 'error',
           })
 
@@ -226,7 +226,7 @@ export class MailProvider {
         }
 
         const message = 'Success, Email has been sent'
-        const logMessage = printLog('Nodemailer :', message)
+        const logMessage = printLog('Nodemailer', message)
 
         console.log(logMessage, info)
       }
