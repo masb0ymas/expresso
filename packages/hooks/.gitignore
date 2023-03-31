@@ -2,3 +2,5 @@
 /dist
 /lib
 tsconfig.tsbuildinfo
+
+pnpm-lock.yaml
