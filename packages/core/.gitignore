@@ -4,3 +4,5 @@
 tsconfig.tsbuildinfo
 .env
 /assets
+
+pnpm-lock.yaml
