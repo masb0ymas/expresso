@@ -9,11 +9,11 @@ import { validate as uuidValidate } from 'uuid'
 import {
   type FilteredQueryEntity,
   type SortedQueryEntity,
-  type UseQueryEntity,
-} from './interface'
+  type UseTypeOrmQuery,
+} from '../interface'
 
-export function useQueryTypeORM<T extends ObjectLiteral>(
-  values: UseQueryEntity<T>,
+export function queryBuilder<T extends ObjectLiteral>(
+  values: UseTypeOrmQuery<T>,
   options?: DataSourceOptions
 ): SelectQueryBuilder<T> {
   const { entity, query, reqQuery } = values
@@ -26,10 +26,10 @@ export function useQueryTypeORM<T extends ObjectLiteral>(
   query.take(pageSize)
 
   // query
-  const filtered = _.get(reqQuery, 'filtered', '[]')
+  const filtered: any = _.get(reqQuery, 'filtered', '[]')
   const parseFiltered = JSON.parse(filtered) as FilteredQueryEntity[]
 
-  const sorted = _.get(reqQuery, 'sorted', '[]')
+  const sorted: any = _.get(reqQuery, 'sorted', '[]')
   const parseSorted = JSON.parse(sorted) as SortedQueryEntity[]
 
   // check parser filtered

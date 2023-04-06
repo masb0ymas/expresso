@@ -1,4 +1,6 @@
+import { type Includeable, type ModelStatic } from 'sequelize'
 import { type ObjectLiteral, type SelectQueryBuilder } from 'typeorm'
+import { type SequelizeQueryOptions } from './Sequelize/interface'
 
 type SortedType = 'ASC' | 'DESC'
 
@@ -12,8 +14,23 @@ export interface SortedQueryEntity {
   order: SortedType
 }
 
-export interface UseQueryEntity<T extends ObjectLiteral> {
+export interface ReqQuery {
+  filtered?: FilteredQueryEntity[]
+  sorted?: SortedQueryEntity[]
+  page?: number
+  pageSize?: number
+  [key: string]: any
+}
+
+export interface UseTypeOrmQuery<T extends ObjectLiteral> {
   entity: string
   query: SelectQueryBuilder<T>
-  reqQuery: Record<any, FilteredQueryEntity | SortedQueryEntity | any>
+  reqQuery: ReqQuery
+}
+
+export interface UseSequelizeQuery {
+  entity: ModelStatic<any>
+  reqQuery: ReqQuery
+  includeRule?: Includeable | Includeable[]
+  options?: SequelizeQueryOptions
 }

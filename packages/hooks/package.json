@@ -27,6 +27,7 @@
   },
   "scripts": {
     "clean": "npx rimraf lib tsconfig.tsbuildinfo",
+    "typecheck": "npx tsc --noEmit",
     "build": "npm run clean && npx tsc --build",
     "test": "npx jest"
   },
