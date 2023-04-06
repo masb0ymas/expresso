@@ -17,7 +17,7 @@
     "test:query": "npx jest --verbose packages/query",
     "test:provider": "npx jest --verbose packages/provider",
     "test:all": "npm-run-all test:core test:hooks test:query test:provider",
-    "prerelease": "npm-run-all test:all build:all",
+    "prerelease": "npm-run-all test:all build:all typecheck:all",
     "release": "npx lerna version --conventional-commits",
     "publish": "npm publish --workspaces"
   },
