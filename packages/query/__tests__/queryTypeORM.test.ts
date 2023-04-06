@@ -1,6 +1,6 @@
-import { SelectQueryBuilder } from 'typeorm'
 import sandbox from 'sinon'
-import { useQueryTypeORM } from '../src'
+import { SelectQueryBuilder } from 'typeorm'
+import { useTypeOrm } from '../src/index'
 
 describe('query package test', () => {
   test('should query typeorm', () => {
@@ -14,7 +14,7 @@ describe('query package test', () => {
       pageSize: 10,
     }
 
-    const anyQuery = useQueryTypeORM(
+    const anyQuery = useTypeOrm.queryBuilder(
       {
         entity: anyEntity,
         query: fakeSelectQueryBuilder,
