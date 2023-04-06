@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/masb0ymas/expresso/compare/v0.3.2...v0.4.0) (2023-04-06)
+
+### Bug Fixes
+
+- export package query ([fc2e13b](https://github.com/masb0ymas/expresso/commit/fc2e13b5b1f7876375a6846da76f8f938641952a))
+- move to dir typeorm ([e44b891](https://github.com/masb0ymas/expresso/commit/e44b891f978ebe1fb285da616739024ed1b1c5a7))
+- naming import query typeorm ([0e60dd2](https://github.com/masb0ymas/expresso/commit/0e60dd22a594fd709a4e377576ec7d0c820b474a))
+- script prerelease ([381abd0](https://github.com/masb0ymas/expresso/commit/381abd099e3ebe38e183c2f768825788ae908091))
+
+### Features
+
+- add script typecheck ([e833ce6](https://github.com/masb0ymas/expresso/commit/e833ce65a12016ae1d1e05ca8b6a0d26ac1e061f))
+- add use sequelize query builder ([619c66d](https://github.com/masb0ymas/expresso/commit/619c66d70eb944e6cff3ba83f0c3ba3ee11f2700))
+
 ## [0.3.2](https://github.com/masb0ymas/expresso/compare/v0.3.1...v0.3.2) (2023-03-31)
 
 ### Bug Fixes
