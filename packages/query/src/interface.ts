@@ -1,4 +1,9 @@
-import { type Includeable, type ModelStatic } from 'sequelize'
+import {
+  type Includeable,
+  type ModelStatic,
+  type Order,
+  type WhereOptions,
+} from 'sequelize'
 import { type ObjectLiteral, type SelectQueryBuilder } from 'typeorm'
 import { type SequelizeQueryOptions } from './Sequelize/interface'
 
@@ -33,4 +38,13 @@ export interface UseSequelizeQuery {
   reqQuery: ReqQuery
   includeRule?: Includeable | Includeable[]
   options?: SequelizeQueryOptions
+}
+
+export interface DtoSequelizeQuery {
+  include: Includeable | Includeable[]
+  includeCount: Includeable | Includeable[]
+  where: WhereOptions
+  order: Order
+  offset: number
+  limit: number
 }

@@ -1,14 +1,8 @@
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 import _ from 'lodash'
-import {
-  Op,
-  type IncludeOptions,
-  type Includeable,
-  type Order,
-  type WhereOptions,
-} from 'sequelize'
+import { Op, type IncludeOptions, type Includeable } from 'sequelize'
 import { validate as uuidValidate } from 'uuid'
-import { type UseSequelizeQuery } from '../interface'
+import { type DtoSequelizeQuery, type UseSequelizeQuery } from '../interface'
 import SqlizeQuery, {
   getPrimitiveDataType,
   transfromIncludeToQueryable,
@@ -19,15 +13,6 @@ import {
   type SequelizeGetFilteredQuery,
   type SequelizeIncludeFilteredQuery,
 } from './interface'
-
-interface DtoQueryEntity {
-  include: Includeable | Includeable[]
-  includeCount: Includeable | Includeable[]
-  where: WhereOptions
-  order: Order
-  offset: number
-  limit: number
-}
 
 /**
  * Parser String
@@ -309,7 +294,7 @@ export function makeIncludeQueryable(
 export function queryBulider(
   params: UseSequelizeQuery,
   options?: SequelizeConnectionOptions
-): DtoQueryEntity {
+): DtoSequelizeQuery {
   const { entity, reqQuery, includeRule } = params
 
   const { onBeforeBuild } = params.options ?? {}
