@@ -6,6 +6,7 @@
   ],
   "scripts": {
     "clean:all": "yarn nx run-many --target=clean",
+    "typecheck:all": "yarn nx run-many --target=typecheck",
     "build:all": "yarn nx run-many --target=build",
     "build:core": "npm run build --workspace expresso-core",
     "build:hooks": "npm run build --workspace expresso-hooks",
