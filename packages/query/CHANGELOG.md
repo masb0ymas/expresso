@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/masb0ymas/expresso/compare/v0.4.0...v0.4.1) (2023-04-12)
+
+### Bug Fixes
+
+- export dto sequelize query ([300e17d](https://github.com/masb0ymas/expresso/commit/300e17d0a70585e1be9effa3657affa38bfc59b9))
+- update package ([c40d983](https://github.com/masb0ymas/expresso/commit/c40d983fe233383fb94df73036d270a427eb2f79))
+
 # [0.4.0](https://github.com/masb0ymas/expresso/compare/v0.3.2...v0.4.0) (2023-04-06)
 
 ### Bug Fixes
