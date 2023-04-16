@@ -18,9 +18,20 @@ export function queryBuilder<T extends ObjectLiteral>(
 ): SelectQueryBuilder<T> {
   const { entity, query, reqQuery } = values
 
+  const minLimit = 10
+  const maxLimit = 1000
+
+  let pageSize = minLimit
+
+  // add security limit get data from Database
+  if (Number(reqQuery.pageSize) > 0) {
+    pageSize = Number(reqQuery.pageSize)
+  } else if (Number(reqQuery.pageSize) > maxLimit) {
+    pageSize = maxLimit
+  }
+
   // pagination
   const page = Number(reqQuery.page) || 1
-  const pageSize = Number(reqQuery.pageSize) || 10
 
   query.skip((page - 1) * pageSize)
   query.take(pageSize)

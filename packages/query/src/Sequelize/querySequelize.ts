@@ -150,9 +150,19 @@ function getPaginationQuery(): SqlizeQuery {
   const offsetId = 'page'
   const limitId = 'pageSize'
   const defaultOffset = 0
-  const defaultLimit = 10
+  const minLimit = 10
+  const maxLimit = 1000
 
   sequelizeQuery.addValueParser((value) => {
+    let pageSize = minLimit
+
+    // add security limit get data from Database
+    if (Number(value.pageSize) > 0) {
+      pageSize = Number(value.pageSize)
+    } else if (Number(value.pageSize) > maxLimit) {
+      pageSize = maxLimit
+    }
+
     return [
       {
         id: offsetId,
@@ -160,7 +170,7 @@ function getPaginationQuery(): SqlizeQuery {
       },
       {
         id: limitId,
-        value: Number(value.pageSize),
+        value: pageSize,
       },
     ]
   })
@@ -174,7 +184,7 @@ function getPaginationQuery(): SqlizeQuery {
       )
     }
     if (id === limitId) {
-      queryHelper.setQuery('limit', value || defaultLimit)
+      queryHelper.setQuery('limit', value || minLimit)
     }
   })
 
