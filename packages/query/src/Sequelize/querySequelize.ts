@@ -156,10 +156,13 @@ function getPaginationQuery(): SqlizeQuery {
   sequelizeQuery.addValueParser((value) => {
     let pageSize = minLimit
 
-    // add security limit get data from Database
+    // query pageSize < maxLimit
     if (Number(value.pageSize) > 0) {
       pageSize = Number(value.pageSize)
-    } else if (Number(value.pageSize) > maxLimit) {
+    }
+
+    // query pageSize > maxLimit
+    if (Number(value.pageSize) > maxLimit) {
       pageSize = maxLimit
     }
 
