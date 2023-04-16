@@ -23,10 +23,13 @@ export function queryBuilder<T extends ObjectLiteral>(
 
   let pageSize = minLimit
 
-  // add security limit get data from Database
+  // query pageSize < maxLimit
   if (Number(reqQuery.pageSize) > 0) {
     pageSize = Number(reqQuery.pageSize)
-  } else if (Number(reqQuery.pageSize) > maxLimit) {
+  }
+
+  // query pageSize > maxLimit
+  if (Number(reqQuery.pageSize) > maxLimit) {
     pageSize = maxLimit
   }
 
