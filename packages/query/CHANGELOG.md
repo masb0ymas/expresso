@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3](https://github.com/masb0ymas/expresso/compare/v0.4.2...v0.4.3) (2023-04-16)
+
+### Bug Fixes
+
+- bug query pageSize ([34a51a2](https://github.com/masb0ymas/expresso/commit/34a51a2eff83ea78632911d0326cfffd28eb8582))
+
 ## [0.4.2](https://github.com/masb0ymas/expresso/compare/v0.4.1...v0.4.2) (2023-04-16)
 
 ### Bug Fixes
