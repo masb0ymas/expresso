@@ -31,12 +31,14 @@ export interface UseTypeOrmQuery<T extends ObjectLiteral> {
   entity: string
   query: SelectQueryBuilder<T>
   reqQuery: ReqQuery
+  limit?: number
 }
 
 export interface UseSequelizeQuery {
   entity: ModelStatic<any>
   reqQuery: ReqQuery
   includeRule?: Includeable | Includeable[]
+  limit?: number
   options?: SequelizeQueryOptions
 }
 

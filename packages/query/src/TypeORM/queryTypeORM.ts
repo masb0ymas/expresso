@@ -16,10 +16,10 @@ export function queryBuilder<T extends ObjectLiteral>(
   values: UseTypeOrmQuery<T>,
   options?: DataSourceOptions
 ): SelectQueryBuilder<T> {
-  const { entity, query, reqQuery } = values
+  const { entity, query, reqQuery, limit } = values
 
   const minLimit = 10
-  const maxLimit = 1000
+  const maxLimit = limit ?? 1000
 
   let pageSize = minLimit
 

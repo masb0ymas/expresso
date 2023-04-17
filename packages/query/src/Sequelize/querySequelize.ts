@@ -145,13 +145,13 @@ function getSortedQuery(): SqlizeQuery {
  * Get Pagination Query
  * @returns
  */
-function getPaginationQuery(): SqlizeQuery {
+function getPaginationQuery(limit?: number): SqlizeQuery {
   const sequelizeQuery = new SqlizeQuery()
   const offsetId = 'page'
   const limitId = 'pageSize'
   const defaultOffset = 0
   const minLimit = 10
-  const maxLimit = 1000
+  const maxLimit = limit ?? 1000
 
   sequelizeQuery.addValueParser((value) => {
     let pageSize = minLimit
@@ -308,11 +308,11 @@ export function queryBulider(
   params: UseSequelizeQuery,
   options?: SequelizeConnectionOptions
 ): DtoSequelizeQuery {
-  const { entity, reqQuery, includeRule } = params
+  const { entity, reqQuery, includeRule, limit } = params
 
   const { onBeforeBuild } = params.options ?? {}
 
-  const paginationQuery = getPaginationQuery()
+  const paginationQuery = getPaginationQuery(limit)
   const filteredQuery = getFilteredQuery({ model: entity, options })
   const sortedQuery = getSortedQuery()
 
