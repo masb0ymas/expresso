@@ -2,21 +2,22 @@ import { type Request } from 'express'
 import multer from 'multer'
 import slugify from 'slugify'
 import { defaultAllowedExt } from './allowedExtension'
-import { defaultAllowedMimetype } from './allowedMimetype'
+import { Mimetype } from './allowedMimetype'
+import { type MulterConfigEntity } from './interface'
 
-export interface MulterConfigEntity {
-  dest?: string
-  allowedExt?: string[]
-  allowedMimetype?: string[]
-  limit?: {
-    fieldSize?: number
-    fileSize?: number
-  }
-}
+const allowedMimetype = new Mimetype()
 
 const defaultFieldSize = 10 * 1024 * 1024 // 10mb
 const defaultFileSize = 1 * 1024 * 1024 // 1mb
 const defaultDestination = `${process.cwd()}/public/uploads/`
+
+const defaultAllowedMimetype = [
+  ...allowedMimetype.zip,
+  ...allowedMimetype.pdf,
+  ...allowedMimetype.image,
+  ...allowedMimetype.spreadsheet,
+  ...allowedMimetype.docs,
+]
 
 /**
  * useMulter
