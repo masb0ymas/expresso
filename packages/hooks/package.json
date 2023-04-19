@@ -40,6 +40,7 @@
   "gitHead": "cd3933d873c42a1249acd3f62d0724a87a1eeba3",
   "dependencies": {
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "multer": "1.4.5-lts.1"
   },
   "devDependencies": {
