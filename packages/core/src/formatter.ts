@@ -90,6 +90,29 @@ export function validateBoolean(value: any): boolean {
 
 /**
  *
+ * @param data
+ * @returns
+ */
+export function mappingToArray(data: any[]): any[][] {
+  const keys = Object.keys(data[0])
+  const result = [keys]
+
+  data.forEach((x) => {
+    const value = []
+
+    for (let index = 0; index < keys.length; index += 1) {
+      const key = keys[index]
+      value.push(x[key])
+    }
+
+    result.push(value)
+  })
+
+  return result
+}
+
+/**
+ *
  * @param value
  * @returns
  */
