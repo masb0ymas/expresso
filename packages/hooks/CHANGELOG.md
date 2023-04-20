@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/masb0ymas/expresso/compare/v0.4.3...v0.5.0) (2023-04-20)
+
+### Bug Fixes
+
+- use token test ([df477ee](https://github.com/masb0ymas/expresso/commit/df477eeb86bfadfa5b3964d578e158b10a3c90e1))
+
+### Features
+
+- add hooks use OTP ([3f2020b](https://github.com/masb0ymas/expresso/commit/3f2020b764b41e210bfc32e15eef5717022cf44f))
+- add hooks use Token ([59b78c2](https://github.com/masb0ymas/expresso/commit/59b78c25c557e534e44b374180449ba3e6b48781))
+
+### Performance Improvements
+
+- improve hooks use multer ([e800791](https://github.com/masb0ymas/expresso/commit/e800791af7f4bd66a2aa236437322a5cb6da6dec))
+
 # [0.4.0](https://github.com/masb0ymas/expresso/compare/v0.3.2...v0.4.0) (2023-04-06)
 
 ### Features

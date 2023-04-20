@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/masb0ymas/expresso/compare/v0.4.3...v0.5.0) (2023-04-20)
+
+### Bug Fixes
+
+- add optional increase limit query ([811c2ba](https://github.com/masb0ymas/expresso/commit/811c2bacc2bd59384f4f4050e02423fc6af585f1))
+
 ## [0.4.3](https://github.com/masb0ymas/expresso/compare/v0.4.2...v0.4.3) (2023-04-16)
 
 ### Bug Fixes

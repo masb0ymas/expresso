@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/masb0ymas/expresso/compare/v0.4.3...v0.5.0) (2023-04-20)
+
+### Features
+
+- add function mapping to array ([a2c074d](https://github.com/masb0ymas/expresso/commit/a2c074dc619cfbbfd6843651dfd8f57f3e6a7160))
+
 ## [0.4.2](https://github.com/masb0ymas/expresso/compare/v0.4.1...v0.4.2) (2023-04-16)
 
 ### Bug Fixes

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/masb0ymas/expresso/compare/v0.4.3...v0.5.0) (2023-04-20)
+
+### Bug Fixes
+
+- add optional increase limit query ([811c2ba](https://github.com/masb0ymas/expresso/commit/811c2bacc2bd59384f4f4050e02423fc6af585f1))
+- use token test ([df477ee](https://github.com/masb0ymas/expresso/commit/df477eeb86bfadfa5b3964d578e158b10a3c90e1))
+
+### Features
+
+- add excel provider ([1a74c39](https://github.com/masb0ymas/expresso/commit/1a74c3940795a914f695c3537669e0ff83553e71))
+- add function mapping to array ([a2c074d](https://github.com/masb0ymas/expresso/commit/a2c074dc619cfbbfd6843651dfd8f57f3e6a7160))
+- add hooks use OTP ([3f2020b](https://github.com/masb0ymas/expresso/commit/3f2020b764b41e210bfc32e15eef5717022cf44f))
+- add hooks use Token ([59b78c2](https://github.com/masb0ymas/expresso/commit/59b78c25c557e534e44b374180449ba3e6b48781))
+
+### Performance Improvements
+
+- improve hooks use multer ([e800791](https://github.com/masb0ymas/expresso/commit/e800791af7f4bd66a2aa236437322a5cb6da6dec))
+
 ## [0.4.3](https://github.com/masb0ymas/expresso/compare/v0.4.2...v0.4.3) (2023-04-16)
 
 ### Bug Fixes
