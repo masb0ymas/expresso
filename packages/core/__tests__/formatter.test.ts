@@ -1,6 +1,7 @@
 import {
   arrayFormatter,
   isNumeric,
+  mappingToArray,
   ms,
   printLog,
   validateBoolean,
@@ -59,6 +60,25 @@ describe('formatter test', () => {
     const data = validateBoolean(anyValue)
 
     expect(data).toBe(true)
+  })
+
+  test('should mapping to array', () => {
+    const anyData = [
+      {
+        id: 1,
+        name: 'any name 1',
+      },
+      {
+        id: 2,
+        name: 'any name 2',
+      },
+    ]
+
+    const data = mappingToArray(anyData)
+
+    console.log(data)
+
+    expect(data).not.toBeNull()
   })
 
   test('should log server', () => {

@@ -41,21 +41,25 @@
     "access": "public"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.312.0",
-    "@aws-sdk/s3-request-presigner": "^3.312.0",
+    "@aws-sdk/client-s3": "^3.316.0",
+    "@aws-sdk/s3-request-presigner": "^3.316.0",
     "@google-cloud/storage": "^6.9.5",
     "chalk": "~4.1.2",
     "date-fns": "^2.29.3",
     "dotenv": "^16.0.3",
-    "firebase-admin": "^11.6.0",
+    "exceljs": "^4.3.0",
+    "firebase-admin": "^11.7.0",
     "googleapis": "^111.0.0",
     "handlebars": "^4.7.7",
     "ioredis": "^5.3.2",
+    "lodash": "^4.17.21",
     "minio": "^7.0.33",
     "nodemailer": "^6.9.1",
-    "nodemailer-mailgun-transport": "^2.1.5"
+    "nodemailer-mailgun-transport": "^2.1.5",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.194",
     "@types/minio": "^7.0.18",
     "@types/nodemailer": "^6.4.7",
     "@types/nodemailer-mailgun-transport": "^1.4.3"
