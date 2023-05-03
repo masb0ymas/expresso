@@ -41,11 +41,11 @@
     "access": "public"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.316.0",
-    "@aws-sdk/s3-request-presigner": "^3.316.0",
-    "@google-cloud/storage": "^6.9.5",
+    "@aws-sdk/client-s3": "^3.325.0",
+    "@aws-sdk/s3-request-presigner": "^3.325.0",
+    "@google-cloud/storage": "^6.10.0",
     "chalk": "~4.1.2",
-    "date-fns": "^2.29.3",
+    "date-fns": "^2.30.0",
     "dotenv": "^16.0.3",
     "exceljs": "^4.3.0",
     "firebase-admin": "^11.7.0",
@@ -53,7 +53,7 @@
     "handlebars": "^4.7.7",
     "ioredis": "^5.3.2",
     "lodash": "^4.17.21",
-    "minio": "^7.0.33",
+    "minio": "^7.1.0",
     "nodemailer": "^6.9.1",
     "nodemailer-mailgun-transport": "^2.1.5",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"
