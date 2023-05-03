@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/masb0ymas/expresso/compare/v0.5.0...v0.5.1) (2023-05-03)
+
+**Note:** Version bump only for package expresso-query
+
 # [0.5.0](https://github.com/masb0ymas/expresso/compare/v0.4.3...v0.5.0) (2023-04-20)
 
 ### Bug Fixes
