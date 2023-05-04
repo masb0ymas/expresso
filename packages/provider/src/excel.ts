@@ -46,11 +46,15 @@ export class ExcelProvider {
    * @returns
    */
   public convertToJson<T>(filePath: string | Buffer): T[] {
-    const dummyExcel = fs.readFileSync(filePath)
+    const excelPath = fs.readFileSync(filePath)
 
-    const result = new Uint8Array(dummyExcel)
+    const result = new Uint8Array(excelPath)
     const XLSXRead = XLSX.read(result, { type: 'array' })
-    const XLSXJson: T[] = XLSX.utils.sheet_to_json(XLSXRead.Sheets.Sheet1)
+
+    const getSheetname: any = XLSXRead.SheetNames[0]
+    const getWorksheet = XLSXRead.Sheets[getSheetname]
+
+    const XLSXJson: T[] = XLSX.utils.sheet_to_json(getWorksheet)
 
     return XLSXJson
   }
