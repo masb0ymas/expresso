@@ -41,14 +41,14 @@
     "access": "public"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.325.0",
-    "@aws-sdk/s3-request-presigner": "^3.325.0",
+    "@aws-sdk/client-s3": "^3.328.0",
+    "@aws-sdk/s3-request-presigner": "^3.328.0",
     "@google-cloud/storage": "^6.10.0",
     "chalk": "~4.1.2",
     "date-fns": "^2.30.0",
     "dotenv": "^16.0.3",
     "exceljs": "^4.3.0",
-    "firebase-admin": "^11.7.0",
+    "firebase-admin": "^11.8.0",
     "googleapis": "^111.0.0",
     "handlebars": "^4.7.7",
     "ioredis": "^5.3.2",
