@@ -27,11 +27,16 @@ export interface ReqQuery {
   [key: string]: any
 }
 
+export interface OptionsTypeOrmQuery {
+  limit?: number
+  orderKey: string
+}
+
 export interface UseTypeOrmQuery<T extends ObjectLiteral> {
   entity: string
   query: SelectQueryBuilder<T>
   reqQuery: ReqQuery
-  limit?: number
+  options?: OptionsTypeOrmQuery
 }
 
 export interface UseSequelizeQuery {

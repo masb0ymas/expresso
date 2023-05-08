@@ -16,10 +16,10 @@ export function queryBuilder<T extends ObjectLiteral>(
   values: UseTypeOrmQuery<T>,
   options?: DataSourceOptions
 ): SelectQueryBuilder<T> {
-  const { entity, query, reqQuery, limit } = values
+  const { entity, query, reqQuery, options: opt } = values
 
   const minLimit = 10
-  const maxLimit = limit ?? 1000
+  const maxLimit = opt?.limit ?? 1000
 
   let pageSize = minLimit
 
@@ -98,6 +98,8 @@ export function queryBuilder<T extends ObjectLiteral>(
     }
   }
 
+  const orderKey = opt?.orderKey ?? 'createdAt'
+
   // check parser sorted
   if (!_.isEmpty(parseSorted)) {
     for (let i = 0; i < parseSorted.length; i += 1) {
@@ -107,7 +109,7 @@ export function queryBuilder<T extends ObjectLiteral>(
       query.addOrderBy(`${entity}.${item.sort}`, item.order)
     }
   } else {
-    query.orderBy(`${entity}.createdAt`, 'DESC')
+    query.orderBy(`${entity}.${orderKey}`, 'DESC')
   }
 
   return query
