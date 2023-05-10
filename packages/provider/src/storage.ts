@@ -40,7 +40,7 @@ export interface StorageProviderEntity {
   bucket: string
   expires: StorageExpires
   host?: string | null
-  port?: number | null
+  port?: number
   options?: StorageOptions
 }
 
@@ -52,7 +52,7 @@ export class StorageProvider {
   private readonly _bucket: string
   private readonly _expires: StorageExpires | string
   private readonly _host?: string | null
-  private readonly _port?: number | null
+  private readonly _port?: number
   private readonly _options?: StorageOptions
 
   private readonly _clientS3: S3 | undefined
@@ -86,7 +86,7 @@ export class StorageProvider {
     if (this._provider === 'minio') {
       this._clientMinio = new Minio.Client({
         endPoint: this._host ?? '127.0.0.1',
-        port: this._port ?? 9000,
+        port: this._port,
         accessKey: this._accessKey,
         secretKey: String(this._secretKey),
         region: this._region,
