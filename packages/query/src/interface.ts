@@ -29,7 +29,7 @@ export interface ReqQuery {
 
 export interface OptionsTypeOrmQuery {
   limit?: number
-  orderKey: string
+  orderKey?: string
 }
 
 export interface UseTypeOrmQuery<T extends ObjectLiteral> {
