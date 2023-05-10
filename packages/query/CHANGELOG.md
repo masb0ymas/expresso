@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.4](https://github.com/masb0ymas/expresso/compare/v0.5.3...v0.5.4) (2023-05-10)
+
+### Bug Fixes
+
+- query integer typeorm ([ff7af65](https://github.com/masb0ymas/expresso/commit/ff7af65d7775aec5054c5d2b79e520ffcee70252))
+
 ## [0.5.3](https://github.com/masb0ymas/expresso/compare/v0.5.2...v0.5.3) (2023-05-08)
 
 ### Bug Fixes

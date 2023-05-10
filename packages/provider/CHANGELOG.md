@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.4](https://github.com/masb0ymas/expresso/compare/v0.5.3...v0.5.4) (2023-05-10)
+
+### Bug Fixes
+
+- storage provider minio ([124983b](https://github.com/masb0ymas/expresso/commit/124983b91d95b80cf72939478b3dba8c0fbed23e))
+
 ## [0.5.3](https://github.com/masb0ymas/expresso/compare/v0.5.2...v0.5.3) (2023-05-08)
 
 **Note:** Version bump only for package expresso-provider
