@@ -1,4 +1,4 @@
-import { isNumeric } from 'expresso-core'
+import { validateNumber } from 'expresso-core'
 import _ from 'lodash'
 import {
   type DataSourceOptions,
@@ -52,7 +52,7 @@ export function queryBuilder<T extends ObjectLiteral>(
       const item = parseFiltered[i]
 
       const check_uuid = uuidValidate(item.value)
-      const check_numeric = isNumeric(item.value)
+      const check_numeric = validateNumber(item.value)
       const expect_numberic_or_uuid = !check_numeric && !check_uuid
 
       // query connection postgres
@@ -65,16 +65,8 @@ export function queryBuilder<T extends ObjectLiteral>(
         expect_numberic_or_uuid
 
       // case UUID
-      if (check_uuid) {
+      if (check_uuid || check_numeric) {
         // example : query.andWhere('User.RoleId' = :RoleId, { RoleId: 'anyValue' })
-        query.andWhere(`${entity}.${item.id} = :${item.id}`, {
-          [`${item.id}`]: `${item.value}`,
-        })
-      }
-
-      // case Numberic
-      if (check_numeric) {
-        // example : query.andWhere('User.Age' = :Age, { Age: 'anyValue' })
         query.andWhere(`${entity}.${item.id} = :${item.id}`, {
           [`${item.id}`]: `${item.value}`,
         })
