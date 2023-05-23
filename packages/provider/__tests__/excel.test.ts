@@ -5,6 +5,15 @@ import { Excel } from '../src'
 const excel = new Excel()
 
 describe('excel provider', () => {
+  test('should sheet to json', () => {
+    const filePath = `${process.cwd()}/public/output/dummyExcel.xlsx`
+
+    const result = excel.sheetToJson(filePath)
+    console.log(result)
+
+    expect(result).not.toBe(null)
+  })
+
   test('should convert excel to json', () => {
     const filePath = `${process.cwd()}/public/output/dummyExcel.xlsx`
 
