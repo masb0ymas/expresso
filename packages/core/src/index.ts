@@ -1,4 +1,5 @@
 export * as currency from './currency'
 export * from './file'
 export * from './formatter'
+export * from './phone'
 export * as randomString from './randomString'
