@@ -44,8 +44,8 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.194",
-    "@types/sinon": "^10.0.14",
+    "@types/sinon": "^10.0.15",
     "@types/uuid": "^9.0.1",
-    "sinon": "^15.0.4"
+    "sinon": "^15.1.0"
   }
 }
