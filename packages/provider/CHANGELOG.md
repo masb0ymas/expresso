@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/masb0ymas/expresso/compare/v0.5.4...v0.6.0) (2023-05-23)
+
+### Bug Fixes
+
+- provider excel ([a482c48](https://github.com/masb0ymas/expresso/commit/a482c481be8c37ccfe06fa9f46ad885bbb6e3627))
+
 ## [0.5.4](https://github.com/masb0ymas/expresso/compare/v0.5.3...v0.5.4) (2023-05-10)
 
 ### Bug Fixes

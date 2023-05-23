@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/masb0ymas/expresso/compare/v0.5.4...v0.6.0) (2023-05-23)
+
+### Bug Fixes
+
+- file helper ([0b03bb4](https://github.com/masb0ymas/expresso/commit/0b03bb475a10bb69f46ef35eca6dded20f8d34b5))
+- provider excel ([a482c48](https://github.com/masb0ymas/expresso/commit/a482c481be8c37ccfe06fa9f46ad885bbb6e3627))
+- type options typeorm query ([8956e80](https://github.com/masb0ymas/expresso/commit/8956e80f59da65c247a34f8643a7973278075cc4))
+
+### Features
+
+- add phone helper ([17a1cd5](https://github.com/masb0ymas/expresso/commit/17a1cd5949122d853fc7c8fe11a476c244310a83))
+
 ## [0.5.4](https://github.com/masb0ymas/expresso/compare/v0.5.3...v0.5.4) (2023-05-10)
 
 ### Bug Fixes

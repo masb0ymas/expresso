@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/masb0ymas/expresso/compare/v0.5.4...v0.6.0) (2023-05-23)
+
+### Bug Fixes
+
+- type options typeorm query ([8956e80](https://github.com/masb0ymas/expresso/commit/8956e80f59da65c247a34f8643a7973278075cc4))
+
 ## [0.5.4](https://github.com/masb0ymas/expresso/compare/v0.5.3...v0.5.4) (2023-05-10)
 
 ### Bug Fixes
