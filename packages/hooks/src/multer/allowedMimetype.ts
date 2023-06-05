@@ -48,4 +48,19 @@ export class Mimetype {
       'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
     ]
   }
+
+  /**
+   * Default Return Mimetype
+   */
+  public get default(): string[] {
+    const result = [
+      ...this.docs,
+      ...this.image,
+      ...this.pdf,
+      ...this.spreadsheet,
+      ...this.zip,
+    ]
+
+    return result
+  }
 }
