@@ -7,39 +7,39 @@ import {
 import { type ObjectLiteral, type SelectQueryBuilder } from 'typeorm'
 import { type SequelizeQueryOptions } from './Sequelize/interface'
 
-type SortedType = 'ASC' | 'DESC'
+export type TSort = 'ASC' | 'DESC'
 
-export interface FilteredQueryEntity {
+export interface IFilterQuery {
   id: string
   value: string
 }
 
-export interface SortedQueryEntity {
+export interface ISortQuery {
   sort: string
-  order: SortedType
+  order: TSort
 }
 
 export interface ReqQuery {
-  filtered?: FilteredQueryEntity[]
-  sorted?: SortedQueryEntity[]
+  filtered?: IFilterQuery[]
+  sorted?: ISortQuery[]
   page?: number
   pageSize?: number
   [key: string]: any
 }
 
-export interface OptionsTypeOrmQuery {
+export interface IOptionsTypeOrmQuery {
   limit?: number
   orderKey?: string
 }
 
-export interface UseTypeOrmQuery<T extends ObjectLiteral> {
+export interface IUseTypeOrmQuery<T extends ObjectLiteral> {
   entity: string
   query: SelectQueryBuilder<T>
   reqQuery: ReqQuery
-  options?: OptionsTypeOrmQuery
+  options?: IOptionsTypeOrmQuery
 }
 
-export interface UseSequelizeQuery {
+export interface IUseSequelizeQuery {
   entity: ModelStatic<any>
   reqQuery: ReqQuery
   includeRule?: Includeable | Includeable[]

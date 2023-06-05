@@ -4,14 +4,14 @@ import {
   type E164Number,
 } from 'libphonenumber-js'
 
-interface IPhone {
+interface IPhonenumberOptions {
   country?: CountryCode
 }
 
-export class Phone {
+export class Phonenumber {
   private readonly _country?: CountryCode
 
-  constructor(options: IPhone) {
+  constructor(options: IPhonenumberOptions) {
     this._country = options?.country ?? 'ID'
   }
 
