@@ -1,6 +1,6 @@
-import { Phone } from '../src'
+import { Phonenumber } from '../src'
 
-const phone = new Phone({ country: 'ID' })
+const phone = new Phonenumber({ country: 'ID' })
 
 describe('test phone helper', () => {
   test('should format phone', () => {
