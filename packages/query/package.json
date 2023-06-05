@@ -38,12 +38,12 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
-    "sequelize": "^6.31.1",
-    "typeorm": "^0.3.15",
+    "sequelize": "^6.32.0",
+    "typeorm": "0.3.15",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.194",
+    "@types/lodash": "^4.14.195",
     "@types/sinon": "^10.0.15",
     "@types/uuid": "^9.0.1",
     "sinon": "^15.1.0"

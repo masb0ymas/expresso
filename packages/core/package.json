@@ -38,11 +38,12 @@
   },
   "gitHead": "cd3933d873c42a1249acd3f62d0724a87a1eeba3",
   "dependencies": {
-    "chalk": "~4.1.2",
-    "libphonenumber-js": "^1.10.30",
-    "lodash": "^4.17.21"
+    "chalk": "4.1.2",
+    "libphonenumber-js": "^1.10.33",
+    "lodash": "^4.17.21",
+    "winston": "^3.9.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.194"
+    "@types/lodash": "^4.14.195"
   }
 }
