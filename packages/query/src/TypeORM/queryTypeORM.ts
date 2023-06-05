@@ -7,13 +7,19 @@ import {
 } from 'typeorm'
 import { validate as uuidValidate } from 'uuid'
 import {
-  type FilteredQueryEntity,
-  type SortedQueryEntity,
-  type UseTypeOrmQuery,
+  type IFilterQuery,
+  type ISortQuery,
+  type IUseTypeOrmQuery,
 } from '../interface'
 
+/**
+ * Create Query Builder TypeORM
+ * @param values
+ * @param options
+ * @returns
+ */
 export function queryBuilder<T extends ObjectLiteral>(
-  values: UseTypeOrmQuery<T>,
+  values: IUseTypeOrmQuery<T>,
   options?: DataSourceOptions
 ): SelectQueryBuilder<T> {
   const { entity, query, reqQuery, options: opt } = values
@@ -41,10 +47,10 @@ export function queryBuilder<T extends ObjectLiteral>(
 
   // query
   const filtered: any = _.get(reqQuery, 'filtered', '[]')
-  const parseFiltered = JSON.parse(filtered) as FilteredQueryEntity[]
+  const parseFiltered = JSON.parse(filtered) as IFilterQuery[]
 
   const sorted: any = _.get(reqQuery, 'sorted', '[]')
-  const parseSorted = JSON.parse(sorted) as SortedQueryEntity[]
+  const parseSorted = JSON.parse(sorted) as ISortQuery[]
 
   // check parser filtered
   if (!_.isEmpty(parseFiltered)) {

@@ -7,12 +7,12 @@ import {
 import { QueryHelper } from './QueryHelper'
 import { TransformHelper } from './TransformHelper'
 
-type ValueParsers = (value: any) => any
-type TransformBuild = (value: any, transformHelper: TransformHelper) => any
-type QueryBuilders = (value: any, queryHelper: QueryHelper) => any
+type TValueParsers = (value: any) => any
+type TTransformBuild = (value: any, transformHelper: TransformHelper) => any
+type TQueryBuilders = (value: any, queryHelper: QueryHelper) => any
 
-type CustomIncludeOptions = IncludeOptions & { key?: string }
-type onBuildInclude = (value: CustomIncludeOptions) => CustomIncludeOptions
+type TCustomIncludeOptions = IncludeOptions & { key?: string }
+type TOnBuildInclude = (value: TCustomIncludeOptions) => TCustomIncludeOptions
 
 /**
  *
@@ -98,17 +98,17 @@ export function getPrimitiveDataType<T>(dataType: T): 'string' | 0 {
 /**
  *
  * @param includes
- * @param onBuildInclude
+ * @param TOnBuildInclude
  * @returns
  */
 export function transfromIncludeToQueryable(
   includes: Includeable[],
-  onBuildInclude?: onBuildInclude
-): CustomIncludeOptions[] {
-  const result = [] as CustomIncludeOptions[]
+  onBuildInclude?: TOnBuildInclude
+): TCustomIncludeOptions[] {
+  const result = [] as TCustomIncludeOptions[]
   const _onBuildInclude =
     onBuildInclude ??
-    function (value: CustomIncludeOptions) {
+    function (value: TCustomIncludeOptions) {
       return value
     }
 
@@ -122,7 +122,7 @@ export function transfromIncludeToQueryable(
     parent?: IncludeOptions
   ): void {
     for (let i = 0; i < includes.length; i += 1) {
-      const include = includes[i] as CustomIncludeOptions
+      const include = includes[i] as TCustomIncludeOptions
 
       // eslint-disable-next-line no-unused-vars
       const { model, key, include: oriInclude, ...restInclude } = include
@@ -159,21 +159,21 @@ export function transfromIncludeToQueryable(
  * Sqlize Query
  */
 export default class SqlizeQuery {
-  private readonly _valueParsers: ValueParsers[] = []
+  private readonly _valueParsers: TValueParsers[] = []
 
-  private readonly _transformBuilds: TransformBuild[] = []
+  private readonly _transformBuilds: TTransformBuild[] = []
 
-  private readonly _queryBuilders: QueryBuilders[] = []
+  private readonly _queryBuilders: TQueryBuilders[] = []
 
-  public addValueParser(fn: ValueParsers): void {
+  public addValueParser(fn: TValueParsers): void {
     this._valueParsers.push(fn)
   }
 
-  public addQueryBuilder(fn: QueryBuilders): void {
+  public addQueryBuilder(fn: TQueryBuilders): void {
     this._queryBuilders.push(fn)
   }
 
-  public addTransformBuild(fn: TransformBuild): void {
+  public addTransformBuild(fn: TTransformBuild): void {
     this._transformBuilds.push(fn)
   }
 

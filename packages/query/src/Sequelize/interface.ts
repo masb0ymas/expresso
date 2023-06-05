@@ -5,34 +5,34 @@ import {
 } from 'sequelize'
 import type SqlizeQuery from './SqlizeQuery'
 
-export interface SequelizeOnBeforeBuildQuery {
+export interface ISequelizeOnBeforeBuildQuery {
   paginationQuery: SqlizeQuery
   filteredQuery: SqlizeQuery
   sortedQuery: SqlizeQuery
 }
 
 export interface SequelizeQueryOptions {
-  onBeforeBuild: (query: SequelizeOnBeforeBuildQuery) => void
+  onBeforeBuild: (query: ISequelizeOnBeforeBuildQuery) => void
 }
 
-export type SequelizeConnectionOptions = ConnectionOptions & {
+export type TSequelizeConnectionOptions = ConnectionOptions & {
   dialect?: string
 }
 
-export interface SequelizeGetFilteredQuery {
+export interface ISequelizeGetFilteredQuery {
   model?: ModelStatic<any>
   prefixName?: string
-  options?: SequelizeConnectionOptions
+  options?: TSequelizeConnectionOptions
 }
 
-export interface SequelizeIncludeFilteredQuery {
+export interface ISequelizeIncludeFilteredQuery {
   filteredValue: any
   model: any
   prefixName: any
   options?: IncludeOptions
 }
 
-export interface SequelizeFilterIncludeHandledOnly {
+export interface ISequelizeFilterIncludeHandledOnly {
   include: any
   filteredInclude?: any
 }
