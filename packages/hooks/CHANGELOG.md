@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/masb0ymas/expresso/compare/v0.6.0...v0.7.0) (2023-06-05)
+
+### Bug Fixes
+
+- **hooks:** use multer ([4355908](https://github.com/masb0ymas/expresso/commit/43559081f1ebf374f33a64b2a3eefc72c8946f93))
+- **hooks:** use token ([9f1427a](https://github.com/masb0ymas/expresso/commit/9f1427a8c6fb517a7c7fb4afe3cdbfe8ed2b241d))
+
 # [0.6.0](https://github.com/masb0ymas/expresso/compare/v0.5.4...v0.6.0) (2023-05-23)
 
 **Note:** Version bump only for package expresso-hooks

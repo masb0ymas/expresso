@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/masb0ymas/expresso/compare/v0.6.0...v0.7.0) (2023-06-05)
+
+### Bug Fixes
+
+- **core:** phone helper ([774c884](https://github.com/masb0ymas/expresso/commit/774c8840546a9b18866fed8edf82c2f2abbc33e5))
+- **hooks:** use multer ([4355908](https://github.com/masb0ymas/expresso/commit/43559081f1ebf374f33a64b2a3eefc72c8946f93))
+- **hooks:** use token ([9f1427a](https://github.com/masb0ymas/expresso/commit/9f1427a8c6fb517a7c7fb4afe3cdbfe8ed2b241d))
+- **query:** improve typing ([fd84726](https://github.com/masb0ymas/expresso/commit/fd84726a6cbb71815a15ba957cbeca40502d4890))
+
+### Features
+
+- add logger config ([6eb7435](https://github.com/masb0ymas/expresso/commit/6eb74357b6aa8b4b4f752075ed4e2ac5eae50347))
+
 # [0.6.0](https://github.com/masb0ymas/expresso/compare/v0.5.4...v0.6.0) (2023-05-23)
 
 ### Bug Fixes
