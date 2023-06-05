@@ -54,7 +54,7 @@ export class useToken {
       const logMessage = printLog('Auth', 'Extract from Cookie')
       console.log(logMessage)
 
-      return cookie?.token
+      return String(cookie?.token)
     }
 
     // extract from header authorization
