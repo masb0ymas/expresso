@@ -1,17 +1,25 @@
+import { green } from 'colorette'
 import { type Request } from 'express'
-import { ms, printLog } from 'expresso-core'
+import { ms } from 'expresso-core'
 import { type IncomingHttpHeaders } from 'http'
 import jwt, {
   JsonWebTokenError,
   NotBeforeError,
   TokenExpiredError,
 } from 'jsonwebtoken'
+import pino from 'pino'
 import {
-  type DtoVerifyToken,
   type DtoGenerateToken,
+  type DtoVerifyToken,
   type GenerateTokenEntity,
   type VerifyTokenEntity,
 } from './interface'
+
+const logger = pino({
+  transport: { target: 'pino-pretty', options: { colorize: true } },
+})
+
+const msgType = `${green('token')}`
 
 export class useToken {
   /**
@@ -43,16 +51,16 @@ export class useToken {
 
     // extract from query
     if (query?.token) {
-      const logMessage = printLog('Auth', 'Extract from Query')
-      console.log(logMessage)
+      const message = `${msgType} - ${'extract auth from query'}`
+      logger.info(message)
 
       return String(query?.token)
     }
 
     // extract from cookie
     if (cookie?.token) {
-      const logMessage = printLog('Auth', 'Extract from Cookie')
-      console.log(logMessage)
+      const message = `${msgType} - ${'extract auth from cookie'}`
+      logger.info(message)
 
       return String(cookie?.token)
     }
@@ -64,11 +72,8 @@ export class useToken {
 
       if (splitAuthorize.length === 2) {
         if (allowedAuthorize.includes(splitAuthorize[0])) {
-          const logMessage = printLog(
-            'Auth',
-            'Extract from Header Authorization'
-          )
-          console.log(logMessage)
+          const message = `${msgType} - ${'extract auth from header auth'}`
+          logger.info(message)
 
           return splitAuthorize[1]
         }
@@ -97,10 +102,9 @@ export class useToken {
       // Error Token Expired
       if (err instanceof TokenExpiredError) {
         const errType = 'jwt expired error'
-        const message = err.message ?? err
 
-        const logMessage = printLog(errType, message, { label: 'error' })
-        console.log(logMessage)
+        const message = `${msgType} - ${errType}, ${err.message ?? err}`
+        logger.error(message)
 
         return { data: null, message: `${errType} : ${err.message}` }
       }
@@ -108,10 +112,9 @@ export class useToken {
       // Error JWT Web Token
       if (err instanceof JsonWebTokenError) {
         const errType = 'jwt token error'
-        const message = err.message ?? err
 
-        const logMessage = printLog(errType, message, { label: 'error' })
-        console.log(logMessage)
+        const message = `${msgType} - ${errType}, ${err.message ?? err}`
+        logger.error(message)
 
         return { data: null, message: `${errType} : ${err.message}` }
       }
@@ -119,10 +122,9 @@ export class useToken {
       // Error Not Before
       if (err instanceof NotBeforeError) {
         const errType = 'jwt not before error'
-        const message = err.message ?? err
 
-        const logMessage = printLog(errType, message, { label: 'error' })
-        console.log(logMessage)
+        const message = `${msgType} - ${errType}, ${err.message ?? err}`
+        logger.error(message)
 
         return { data: null, message: `${errType} : ${err.message}` }
       }

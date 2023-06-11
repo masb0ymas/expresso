@@ -1,4 +1,4 @@
-import { printLog } from 'expresso-core'
+import { green } from 'colorette'
 import { type Headers } from 'gaxios'
 import { google } from 'googleapis'
 import _ from 'lodash'
@@ -7,6 +7,13 @@ import nodemailer, {
   type SentMessageInfo,
 } from 'nodemailer'
 import mg from 'nodemailer-mailgun-transport'
+import pino from 'pino'
+
+const logger = pino({
+  transport: { target: 'pino-pretty', options: { colorize: true } },
+})
+
+const msgType = `${green('nodemailer')}`
 
 export type MailDriverType = 'smtp' | 'gmail'
 
@@ -177,23 +184,15 @@ export class MailProvider {
     // Nodemailer Transport
     const transporter = this._client()
 
-    transporter.verify(function (error: any, success: any) {
-      const msgType = 'Nodemailer'
+    transporter.verify(function (err: any, success: any) {
+      if (err) {
+        const message = `${msgType} - ${err.message ?? err}`
+        logger.error(message)
 
-      if (error) {
-        const message = error?.message ?? error
-        const logMessage = printLog(`${msgType} - Error`, message, {
-          label: 'error',
-        })
-
-        console.log(logMessage)
-
-        throw new Error(error)
+        throw new Error(err)
       } else {
-        const message = 'Mail Service is ready to take our messages'
-        const logMessage = printLog(msgType, message)
-
-        console.log(logMessage)
+        const message = `${msgType} - mail service is ready to take our messages`
+        logger.info(message)
       }
     })
   }
@@ -215,20 +214,17 @@ export class MailProvider {
       this._mailOptions,
       (err: { message: any }, info: any) => {
         if (err) {
-          const errMessage = `Something went wrong!, ${err.message}`
-          const logMessage = printLog('Nodemailer - Error', errMessage, {
-            label: 'error',
-          })
+          const errMessage = `something went wrong!, ${err.message ?? err}`
 
-          console.log(logMessage)
+          const message = `${msgType} - ${errMessage}`
+          logger.error(message)
 
           throw new Error(errMessage)
         }
 
-        const message = 'Success, Email has been sent'
-        const logMessage = printLog('Nodemailer', message)
-
-        console.log(logMessage, info)
+        const message = `${msgType} - success, email has been sent!`
+        logger.info(message)
+        console.log(message, info)
       }
     )
   }

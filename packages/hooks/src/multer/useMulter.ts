@@ -1,15 +1,23 @@
+import { green } from 'colorette'
 import { type Request } from 'express'
 import multer from 'multer'
+import pino from 'pino'
 import slugify from 'slugify'
 import { defaultAllowedExt } from './allowedExtension'
 import { Mimetype } from './allowedMimetype'
 import { type MulterConfigEntity } from './interface'
+
+const logger = pino({
+  transport: { target: 'pino-pretty', options: { colorize: true } },
+})
 
 const mimetype = new Mimetype()
 
 const defaultFieldSize = 10 * 1024 * 1024 // 10mb
 const defaultFileSize = 1 * 1024 * 1024 // 1mb
 const defaultDestination = `${process.cwd()}/public/uploads/`
+
+const msgType = `${green('multer')}`
 
 /**
  * useMulter
@@ -40,11 +48,12 @@ export function useMulter(values: MulterConfigEntity): multer.Multer {
       const allowedExt = values.allowedExt ?? defaultAllowedExt
       const newMimetype = file.mimetype.toLowerCase()
 
-      console.log({ mimetype: newMimetype })
-
       if (!allowedMimetype.includes(newMimetype)) {
         const getExtension = allowedExt.join(', ') // .png, .jpg, .pdf
-        const message = `Only ${getExtension} ext are allowed, please check your mimetype file`
+        const errMessage = `Only ${getExtension} ext are allowed, please check your mimetype file`
+
+        const message = `${msgType} - ${errMessage}`
+        logger.error(message)
 
         cb(new Error(message))
         return

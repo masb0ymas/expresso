@@ -12,13 +12,18 @@ import {
   type UploadOptions,
   type UploadResponse,
 } from '@google-cloud/storage'
-import chalk from 'chalk'
+import { green } from 'colorette'
 import { addDays } from 'date-fns'
-import { ms, printLog } from 'expresso-core'
+import { ms } from 'expresso-core'
 import fs from 'fs'
 import * as Minio from 'minio'
 import path from 'path'
+import pino from 'pino'
 import { type FileAttributes } from './interface'
+
+const logger = pino({
+  transport: { target: 'pino-pretty', options: { colorize: true } },
+})
 
 interface DtoExpiresObject {
   expiresIn: number
@@ -96,7 +101,7 @@ export class StorageProvider {
 
     // config client Google Cloud Storage
     if (this._provider === 'gcs') {
-      const msgType = 'Google Cloud Storage'
+      const msgType = `${green('storage - google cloud storage')}`
       const projectId = this._accessKey
 
       // ./your_path/serviceAccount.json
@@ -105,10 +110,8 @@ export class StorageProvider {
       )
 
       if (!projectId && !fs.existsSync(serviceAccountPath)) {
-        const message = 'serviceAccount is missing on root directory'
-        const logMessage = printLog(msgType, message, { label: 'error' })
-
-        console.log(logMessage)
+        const message = `${msgType} - serviceAccount is missing on root directory`
+        logger.error(message)
 
         throw new Error(
           'Missing GCP Service Account!!!\nCopy gcp-serviceAccount from your console google to root directory "gcp-serviceAccount.json"'
@@ -116,8 +119,8 @@ export class StorageProvider {
       }
 
       if (projectId) {
-        const logMessage = printLog(msgType, serviceAccountPath)
-        console.log(logMessage)
+        const message = `${msgType} - ${serviceAccountPath}`
+        logger.info(message)
       }
 
       this._clientGCS = new GoogleCloudStorage({
@@ -191,7 +194,7 @@ export class StorageProvider {
    * Create S3 Bucket
    */
   private async _createS3Bucket(): Promise<void> {
-    const msgType = 'S3'
+    const msgType = `${green('storage - aws s3')}`
     const bucketName = this._bucket
 
     try {
@@ -199,16 +202,14 @@ export class StorageProvider {
         Bucket: bucketName,
       })
 
-      const message = `Success Create Bucket: ${chalk.cyan(bucketName)}`
-      const logMessage = printLog(msgType, message)
+      const storageBucket = `${green(`${bucketName}`)}`
+      const message = `${msgType} - success create bucket: ${storageBucket}`
+      logger.info(message)
 
-      console.log(logMessage, data)
+      console.log(data)
     } catch (err: any) {
-      const message = err?.message ?? err
-      const logMessage = printLog(`${msgType} - Error`, message, {
-        label: 'error',
-      })
-      console.log(logMessage)
+      const message = `${msgType} - err, ${err.message ?? err}`
+      logger.error(message)
 
       process.exit()
     }
@@ -218,7 +219,7 @@ export class StorageProvider {
    * Initial Aws S3
    */
   private async _initialS3(): Promise<any> {
-    const msgType = 'S3'
+    const msgType = `${green('storage - aws s3')}`
     const bucketName = this._bucket
 
     try {
@@ -226,16 +227,14 @@ export class StorageProvider {
         new GetBucketAclCommand({ Bucket: bucketName })
       )
 
-      const message = `Success Get Bucket: ${chalk.cyan(bucketName)}`
-      const logMessage = printLog(msgType, message)
+      const storageBucket = `${green(`${bucketName}`)}`
+      const message = `${msgType} - success get bucket: ${storageBucket}`
+      logger.info(message)
 
-      console.log(logMessage, data?.Grants)
+      console.log(data?.Grants)
     } catch (err: any) {
-      const message = err?.message ?? err
-      const logMessage = printLog(`${msgType} - Error`, message, {
-        label: 'error',
-      })
-      console.log(logMessage)
+      const message = `${msgType} - err, ${err.message ?? err}`
+      logger.error(message)
 
       await this._createS3Bucket()
     }
@@ -245,22 +244,18 @@ export class StorageProvider {
    * Create Minio Bucket
    */
   private async _createMinioBucket(): Promise<void> {
-    const msgType = 'Minio'
+    const msgType = `${green('storage - minio')}`
     const bucketName = this._bucket
 
     try {
       await this._clientMinio?.makeBucket(bucketName, this._region)
 
-      const message = `Success Create Bucket: ${chalk.cyan(bucketName)}`
-      const logMessage = printLog(msgType, message)
-
-      console.log(logMessage)
+      const storageBucket = `${green(`${bucketName}`)}`
+      const message = `${msgType} - success create bucket: ${storageBucket}`
+      logger.info(message)
     } catch (err: any) {
-      const message = err?.message ?? err
-      const logMessage = printLog(`${msgType} - Error`, message, {
-        label: 'error',
-      })
-      console.log(logMessage)
+      const message = `${msgType} - err, ${err.message ?? err}`
+      logger.error(message)
 
       process.exit()
     }
@@ -270,7 +265,7 @@ export class StorageProvider {
    * Initial Minio
    */
   private async _initialMinio(): Promise<void> {
-    const msgType = 'Minio'
+    const msgType = `${green('storage - minio')}`
     const bucketName = this._bucket
 
     const exists = await this._clientMinio?.bucketExists(bucketName)
@@ -278,10 +273,9 @@ export class StorageProvider {
     if (!exists) {
       await this._createMinioBucket()
     } else {
-      const message = `Success Get Bucket: ${chalk.cyan(bucketName)}`
-      const logMessage = printLog(msgType, message)
-
-      console.log(logMessage)
+      const storageBucket = `${green(`${bucketName}`)}`
+      const message = `${msgType} - success get bucket: ${storageBucket}`
+      logger.info(message)
     }
   }
 
@@ -289,22 +283,20 @@ export class StorageProvider {
    * Create Google Cloud Storage Bucket
    */
   private async _createGCSBucket(): Promise<void> {
-    const msgType = 'Google Cloud Storage'
+    const msgType = `${green('storage - google cloud storage')}`
     const bucketName = this._bucket
 
     try {
       const data = await this._clientGCS?.createBucket(bucketName)
 
-      const message = `Success Create Bucket: ${chalk.cyan(bucketName)}`
-      const logMessage = printLog(msgType, message)
+      const storageBucket = `${green(`${bucketName}`)}`
+      const message = `${msgType} - success create bucket: ${storageBucket}`
+      logger.info(message)
 
-      console.log(logMessage, data)
+      console.log(data)
     } catch (err: any) {
-      const message = err?.message ?? err
-      const logMessage = printLog(`${msgType} - Error`, message, {
-        label: 'error',
-      })
-      console.log(logMessage)
+      const message = `${msgType} - err, ${err.message ?? err}`
+      logger.error(message)
 
       process.exit()
     }
@@ -314,7 +306,7 @@ export class StorageProvider {
    * Initial Google Cloud Storage
    */
   private async _initialGCS(): Promise<void> {
-    const msgType = 'Google Cloud Storage'
+    const msgType = `${green('storage - google cloud storage')}`
     const bucketName = this._bucket
 
     try {
@@ -323,17 +315,15 @@ export class StorageProvider {
       const getMetadata = await data?.getMetadata()
 
       if (getBucket?.[0]) {
-        const message = `Success Get Bucket: ${chalk.cyan(bucketName)}`
-        const logMessage = printLog(msgType, message)
+        const storageBucket = `${green(`${bucketName}`)}`
+        const message = `${msgType} - success get bucket: ${storageBucket}`
+        logger.info(message)
 
-        console.log(logMessage, getMetadata?.[0])
+        console.log(getMetadata?.[0])
       }
     } catch (err: any) {
-      const message = err?.message ?? err
-      const logMessage = printLog(`${msgType} - Error`, message, {
-        label: 'error',
-      })
-      console.log(logMessage)
+      const message = `${msgType} - err, ${err.message ?? err}`
+      logger.error(message)
 
       await this._createGCSBucket()
     }
