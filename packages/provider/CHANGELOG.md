@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/masb0ymas/expresso/compare/v0.7.0...v0.7.1) (2023-06-11)
+
+### Bug Fixes
+
+- **provider:** improve code ([a1053ef](https://github.com/masb0ymas/expresso/commit/a1053ef1e324333ba7465409ebe60de465d9537a))
+
 # [0.7.0](https://github.com/masb0ymas/expresso/compare/v0.6.0...v0.7.0) (2023-06-05)
 
 **Note:** Version bump only for package expresso-provider

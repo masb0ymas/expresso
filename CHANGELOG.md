@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/masb0ymas/expresso/compare/v0.7.0...v0.7.1) (2023-06-11)
+
+### Bug Fixes
+
+- colorize ([9d69822](https://github.com/masb0ymas/expresso/commit/9d6982265dae97515244a3cfe1313590fd55d5fa))
+- **core:** improve code ([6b600fb](https://github.com/masb0ymas/expresso/commit/6b600fbf0ec76fd9be2f211b9e7e166b682991c1))
+- **core:** remove logger ([9480be7](https://github.com/masb0ymas/expresso/commit/9480be7c1d20e4710ded3306b195dac26aaa751b))
+- **hooks:** improve code ([e67797a](https://github.com/masb0ymas/expresso/commit/e67797afdcfbda7852cd8f7d2465baa2ea007c9d))
+- **provider:** improve code ([a1053ef](https://github.com/masb0ymas/expresso/commit/a1053ef1e324333ba7465409ebe60de465d9537a))
+
+### Features
+
+- add versioning json ([1beb48e](https://github.com/masb0ymas/expresso/commit/1beb48e2f8634e254f75a03626f11baf97fa499f))
+
 # [0.7.0](https://github.com/masb0ymas/expresso/compare/v0.6.0...v0.7.0) (2023-06-05)
 
 ### Bug Fixes
