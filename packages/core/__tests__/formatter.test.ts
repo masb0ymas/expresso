@@ -3,7 +3,6 @@ import {
   isNumeric,
   mappingToArray,
   ms,
-  printLog,
   validateBoolean,
   validateEmpty,
   validateNumber,
@@ -79,38 +78,5 @@ describe('formatter test', () => {
     console.log(data)
 
     expect(data).not.toBeNull()
-  })
-
-  test('should log server', () => {
-    const anyTitle = 'anyTitle'
-    const anyMessage = 'anyMessage'
-
-    const logMessage = printLog(anyTitle, anyMessage)
-
-    const expectValue = `\x1B[32m[server]:\x1B[39m \x1B[34manyTitle\x1B[39m \x1B[32manyMessage\x1B[39m`
-
-    expect(logMessage).toBe(expectValue)
-  })
-
-  test('should log warning server', () => {
-    const anyTitle = 'anyTitle'
-    const anyMessage = 'anyMessage'
-
-    const logMessage = printLog(anyTitle, anyMessage, { label: 'warning' })
-
-    const expectValue = `\x1B[32m[server]:\x1B[39m \x1B[33manyTitle\x1B[39m \x1B[32manyMessage\x1B[39m`
-
-    expect(logMessage).toBe(expectValue)
-  })
-
-  test('should log error server', () => {
-    const anyTitle = 'anyTitle'
-    const anyMessage = 'anyMessage'
-
-    const logMessage = printLog(anyTitle, anyMessage, { label: 'error' })
-
-    const expectValue = `\x1B[32m[server]:\x1B[39m \x1B[31manyTitle\x1B[39m \x1B[32manyMessage\x1B[39m`
-
-    expect(logMessage).toBe(expectValue)
   })
 })

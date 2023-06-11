@@ -38,9 +38,11 @@
   },
   "gitHead": "cd3933d873c42a1249acd3f62d0724a87a1eeba3",
   "dependencies": {
-    "chalk": "4.1.2",
+    "colorette": "^2.0.20",
     "libphonenumber-js": "^1.10.34",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "pino": "^8.14.1",
+    "pino-pretty": "^10.0.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.195"

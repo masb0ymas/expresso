@@ -1,7 +1,14 @@
+import { green } from 'colorette'
 import fs from 'fs'
 import * as fsAsync from 'fs/promises'
 import path from 'path'
-import { printLog } from './formatter'
+import pino from 'pino'
+
+const logger = pino({
+  transport: { target: 'pino-pretty', options: { colorize: true } },
+})
+
+const msgType = `${green('filesystem')}`
 
 /**
  * Create Dir Not Exist
@@ -11,8 +18,8 @@ export function createDirNotExist(filePath: string): void {
   if (!fs.existsSync(path.resolve(filePath))) {
     fs.mkdirSync(filePath, { recursive: true })
 
-    const logMessage = printLog('FileSystem :', `create directory ${filePath}`)
-    console.log(logMessage)
+    const message = `${msgType} - create directory ${filePath}`
+    logger.info(message)
   }
 }
 
@@ -28,6 +35,9 @@ export async function readHTMLFile(
     const result = await fsAsync.readFile(filePath, { encoding: 'utf-8' })
     return result
   } catch (err) {
+    const message = `${msgType} - invalid html file path`
+    logger.error(message)
+
     throw new Error('invalid html path')
   }
 }
@@ -44,16 +54,12 @@ export async function writeFileStream(
   try {
     await fsAsync.writeFile(filePath, streamFile)
 
-    const msgType = `File : ${filePath}`
-    const message = 'generate file successfully'
-    const logMessage = printLog(msgType, message)
-
-    console.log(logMessage)
+    const message = `${msgType} - generate file successfully ${filePath}`
+    logger.info(message)
   } catch (err) {
-    const msgType = `File : ${filePath}`
-    const logMessage = printLog(msgType, String(err), { label: 'error' })
+    const message = `${msgType} - error generate file${err}`
+    logger.error(message)
 
-    console.log(logMessage)
     throw new Error('failed to generate write file stream')
   }
 }
@@ -65,19 +71,13 @@ export async function writeFileStream(
 export function deleteFile(filePath: string): void {
   const _path = path.resolve(filePath)
 
-  const msgType = `File : ${filePath}`
-
   if (_path && fs.existsSync(_path)) {
-    const message = 'has been deleted'
-    const logMessage = printLog(msgType, message)
-
-    console.log(logMessage)
+    const message = `${msgType} - ${filePath} has been deleted`
+    logger.info(message)
 
     fs.unlinkSync(_path)
   } else {
-    const message = 'not exist'
-    const logMessage = printLog(msgType, message, { label: 'error' })
-
-    console.log(logMessage)
+    const message = `${msgType} - ${filePath} does not exists`
+    logger.error(message)
   }
 }
