@@ -1,4 +1,4 @@
-import { cyan } from 'colorette'
+import { green } from 'colorette'
 import { type Request } from 'express'
 import { ms } from 'expresso-core'
 import { type IncomingHttpHeaders } from 'http'
@@ -19,7 +19,7 @@ const logger = pino({
   transport: { target: 'pino-pretty', options: { colorize: true } },
 })
 
-const msgType = `${cyan('token')}`
+const msgType = `${green('token')}`
 
 export class useToken {
   /**

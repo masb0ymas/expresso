@@ -1,4 +1,4 @@
-import { cyan } from 'colorette'
+import { green } from 'colorette'
 import { type Request } from 'express'
 import multer from 'multer'
 import pino from 'pino'
@@ -17,7 +17,7 @@ const defaultFieldSize = 10 * 1024 * 1024 // 10mb
 const defaultFileSize = 1 * 1024 * 1024 // 1mb
 const defaultDestination = `${process.cwd()}/public/uploads/`
 
-const msgType = `${cyan('multer')}`
+const msgType = `${green('multer')}`
 
 /**
  * useMulter
