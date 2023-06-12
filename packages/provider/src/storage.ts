@@ -12,7 +12,7 @@ import {
   type UploadOptions,
   type UploadResponse,
 } from '@google-cloud/storage'
-import { green } from 'colorette'
+import { green, blue } from 'colorette'
 import { addDays } from 'date-fns'
 import { ms } from 'expresso-core'
 import fs from 'fs'
@@ -119,7 +119,7 @@ export class StorageProvider {
       )
 
       if (!projectId && !fs.existsSync(serviceAccountPath)) {
-        const message = `${msgType} - serviceAccount is missing on root directory`
+        const message = `${msgType} serviceAccount is missing on root directory`
         logger.error(message)
 
         throw new Error(
@@ -211,13 +211,13 @@ export class StorageProvider {
         Bucket: bucketName,
       })
 
-      const storageBucket = `${green(`${bucketName}`)}`
-      const message = `${msgType} - success create bucket: ${storageBucket}`
+      const storageBucket = `${blue(`${bucketName}`)}`
+      const message = `${msgType} success create bucket: ${storageBucket}`
       logger.info(message)
 
       console.log(data)
     } catch (err: any) {
-      const message = `${msgType} - err, ${err.message ?? err}`
+      const message = `${msgType} err, ${err.message ?? err}`
       logger.error(message)
 
       process.exit()
@@ -236,13 +236,13 @@ export class StorageProvider {
         new GetBucketAclCommand({ Bucket: bucketName })
       )
 
-      const storageBucket = `${green(`${bucketName}`)}`
-      const message = `${msgType} - success get bucket: ${storageBucket}`
+      const storageBucket = `${blue(`${bucketName}`)}`
+      const message = `${msgType} success get bucket: ${storageBucket}`
       logger.info(message)
 
       console.log(data?.Grants)
     } catch (err: any) {
-      const message = `${msgType} - err, ${err.message ?? err}`
+      const message = `${msgType} err, ${err.message ?? err}`
       logger.error(message)
 
       await this._createS3Bucket()
@@ -259,11 +259,11 @@ export class StorageProvider {
     try {
       await this._clientMinio?.makeBucket(bucketName, this._region)
 
-      const storageBucket = `${green(`${bucketName}`)}`
-      const message = `${msgType} - success create bucket: ${storageBucket}`
+      const storageBucket = `${blue(`${bucketName}`)}`
+      const message = `${msgType} success create bucket: ${storageBucket}`
       logger.info(message)
     } catch (err: any) {
-      const message = `${msgType} - err, ${err.message ?? err}`
+      const message = `${msgType} err, ${err.message ?? err}`
       logger.error(message)
 
       process.exit()
@@ -282,8 +282,8 @@ export class StorageProvider {
     if (!exists) {
       await this._createMinioBucket()
     } else {
-      const storageBucket = `${green(`${bucketName}`)}`
-      const message = `${msgType} - success get bucket: ${storageBucket}`
+      const storageBucket = `${blue(`${bucketName}`)}`
+      const message = `${msgType} success get bucket: ${storageBucket}`
       logger.info(message)
     }
   }
@@ -298,13 +298,13 @@ export class StorageProvider {
     try {
       const data = await this._clientGCS?.createBucket(bucketName)
 
-      const storageBucket = `${green(`${bucketName}`)}`
-      const message = `${msgType} - success create bucket: ${storageBucket}`
+      const storageBucket = `${blue(`${bucketName}`)}`
+      const message = `${msgType} success create bucket: ${storageBucket}`
       logger.info(message)
 
       console.log(data)
     } catch (err: any) {
-      const message = `${msgType} - err, ${err.message ?? err}`
+      const message = `${msgType} err, ${err.message ?? err}`
       logger.error(message)
 
       process.exit()
@@ -324,14 +324,14 @@ export class StorageProvider {
       const getMetadata = await data?.getMetadata()
 
       if (getBucket?.[0]) {
-        const storageBucket = `${green(`${bucketName}`)}`
-        const message = `${msgType} - success get bucket: ${storageBucket}`
+        const storageBucket = `${blue(`${bucketName}`)}`
+        const message = `${msgType} success get bucket: ${storageBucket}`
         logger.info(message)
 
         console.log(getMetadata?.[0])
       }
     } catch (err: any) {
-      const message = `${msgType} - err, ${err.message ?? err}`
+      const message = `${msgType} err, ${err.message ?? err}`
       logger.error(message)
 
       await this._createGCSBucket()
