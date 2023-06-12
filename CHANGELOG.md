@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.3](https://github.com/masb0ymas/expresso/compare/v0.7.2...v0.7.3) (2023-06-12)
+
+### Bug Fixes
+
+- return type storage s3, gcs, minio ([fa93ea0](https://github.com/masb0ymas/expresso/commit/fa93ea032ad45695af5e9b885fcf1c873c99516f))
+
 ## [0.7.2](https://github.com/masb0ymas/expresso/compare/v0.7.1...v0.7.2) (2023-06-12)
 
 ### Bug Fixes
