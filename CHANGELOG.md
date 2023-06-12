@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.2](https://github.com/masb0ymas/expresso/compare/v0.7.1...v0.7.2) (2023-06-12)
+
+### Bug Fixes
+
+- return type storage ([ef57227](https://github.com/masb0ymas/expresso/commit/ef572271ee02131974cb6fccc9f1e536cd71e57a))
+
 ## [0.7.1](https://github.com/masb0ymas/expresso/compare/v0.7.0...v0.7.1) (2023-06-11)
 
 ### Bug Fixes
