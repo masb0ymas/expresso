@@ -34,13 +34,13 @@ export type StorageType = 's3' | 'gcs' | 'minio'
 export type StorageExpires = '1d' | '2d' | '3d' | '4d' | '5d' | '6d' | '7d'
 
 // return type google cloud storage
-export type TGCS = typeof GoogleCloudStorage
+export type TypeGCS = GoogleCloudStorage
 
 // return type aws s3
-export type TS3 = typeof S3
+export type TypeS3 = S3
 
 // return type minio
-export type TMinio = typeof Minio.Client
+export type TypeMinio = Minio.Client
 
 interface StorageOptions {
   useSSL?: boolean
