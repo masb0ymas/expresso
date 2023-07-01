@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.4](https://github.com/masb0ymas/expresso/compare/v0.7.3...v0.7.4) (2023-07-01)
+
+### Bug Fixes
+
+- logger storage ([9221fa2](https://github.com/masb0ymas/expresso/commit/9221fa24c46def0550d2cc56328dc9524fddc022))
+
 ## [0.7.3](https://github.com/masb0ymas/expresso/compare/v0.7.2...v0.7.3) (2023-06-12)
 
 ### Bug Fixes
