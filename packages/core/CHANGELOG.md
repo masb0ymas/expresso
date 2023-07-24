@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.5](https://github.com/masb0ymas/expresso/compare/v0.7.4...v0.7.5) (2023-07-24)
+
+### Bug Fixes
+
+- update package ([15e96e9](https://github.com/masb0ymas/expresso/commit/15e96e9970059ee074475877b179b32d989fa833))
+
 ## [0.7.4](https://github.com/masb0ymas/expresso/compare/v0.7.3...v0.7.4) (2023-07-01)
 
 **Note:** Version bump only for package expresso-core

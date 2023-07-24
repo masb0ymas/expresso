@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.5](https://github.com/masb0ymas/expresso/compare/v0.7.4...v0.7.5) (2023-07-24)
+
+### Bug Fixes
+
+- add mail from ([f3d7fc9](https://github.com/masb0ymas/expresso/commit/f3d7fc9132c2b0e99763a02271ce55e741b30b47))
+- improve .eslintrc ([9e10629](https://github.com/masb0ymas/expresso/commit/9e106296d3eed464e52149eb9a8d151544735fe9))
+- update package ([15e96e9](https://github.com/masb0ymas/expresso/commit/15e96e9970059ee074475877b179b32d989fa833))
+
 ## [0.7.4](https://github.com/masb0ymas/expresso/compare/v0.7.3...v0.7.4) (2023-07-01)
 
 ### Bug Fixes
