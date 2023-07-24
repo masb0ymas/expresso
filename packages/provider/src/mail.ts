@@ -23,6 +23,7 @@ interface MailProviderEntity {
   driver: MailDriverType
   username: string
   password?: string
+  from?: string
   host?: string
   port?: number
   appName: string
@@ -54,6 +55,7 @@ export class MailProvider {
   private readonly _driver: MailDriverType
   private readonly _username: string
   private readonly _password?: string
+  private readonly _from?: string
   private readonly _host?: string
   private readonly _port?: number
 
@@ -76,6 +78,7 @@ export class MailProvider {
     this._driver = params.driver
     this._username = params.username
     this._password = params?.password
+    this._from = params?.from
     this._host = params?.host
     this._port = params?.port
     this._appName = params.appName
@@ -151,8 +154,12 @@ export class MailProvider {
   private _setMailOptions(params: SendMailOptionsEntity): SendMailOptions {
     const { dest, subject, text } = params
 
+    const mail_from = !_.isEmpty(this._from)
+      ? this._from
+      : `${this._appName} <${this._username}>`
+
     const result = {
-      from: `${this._appName} <${this._username}>`,
+      from: mail_from,
       to: dest,
       subject,
       html: text,
