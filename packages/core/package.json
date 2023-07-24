@@ -42,7 +42,7 @@
     "libphonenumber-js": "^1.10.37",
     "lodash": "^4.17.21",
     "pino": "^8.14.1",
-    "pino-pretty": "^10.0.0"
+    "pino-pretty": "^10.1.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.195"
