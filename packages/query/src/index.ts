@@ -1,2 +1,2 @@
-export * as useTypeOrm from './TypeORM/queryTypeORM'
-export * as useSequelize from './Sequelize/querySequelize'
+export * as useSequelize from './lib/Sequelize/querySequelize'
+export * as useTypeOrm from './lib/TypeORM/queryTypeORM'

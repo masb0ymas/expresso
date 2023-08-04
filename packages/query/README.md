@@ -1,11 +1,11 @@
-# `query`
+# query
 
-> TODO: description
+This library was generated with [Nx](https://nx.dev).
 
-## Usage
+## Building
 
-```
-const query = require('query');
+Run `nx build query` to build the library.
 
-// TODO: DEMONSTRATE API
-```
+## Running unit tests
+
+Run `nx test query` to execute the unit tests via [Jest](https://jestjs.io).

@@ -11,28 +11,58 @@
     "minio",
     "s3"
   ],
-  "author": "masb0ymas <n.fajri@outlook.com>",
-  "homepage": "https://github.com/masb0ymas/expresso#readme",
-  "license": "MIT",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "sideEffects": false,
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/masb0ymas/expresso.git"
-  },
   "scripts": {
     "clean": "npx rimraf lib tsconfig.tsbuildinfo",
     "typecheck": "npx tsc --noEmit",
     "build": "npm run clean && npx tsc --build",
     "test": "npx jest"
+  },
+  "author": "masb0ymas <n.fajri@mail.com>",
+  "homepage": "https://github.com/masb0ymas/expresso#readme",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.383.0",
+    "@aws-sdk/s3-request-presigner": "^3.383.0",
+    "@google-cloud/storage": "^7.0.0",
+    "colorette": "^2.0.20",
+    "convert-excel-to-json": "^1.7.0",
+    "date-fns": "^2.30.0",
+    "dotenv": "^16.3.1",
+    "exceljs": "^4.3.0",
+    "firebase-admin": "^11.10.1",
+    "gaxios": "^6.0.4",
+    "googleapis": "^123.0.0",
+    "handlebars": "^4.7.8",
+    "ioredis": "^5.3.2",
+    "lodash": "^4.17.21",
+    "minio": "^7.1.1",
+    "nodemailer": "^6.9.4",
+    "nodemailer-mailgun-transport": "^2.1.5",
+    "pino": "^8.14.2",
+    "pino-pretty": "^10.2.0",
+    "tslib": "^2.3.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"
+  },
+  "devDependencies": {
+    "@types/convert-excel-to-json": "^1.7.1",
+    "@types/lodash": "^4.14.196",
+    "@types/nodemailer": "^6.4.9",
+    "@types/nodemailer-mailgun-transport": "^1.4.3"
+  },
+  "type": "commonjs",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "sideEffects": false,
+  "directories": {
+    "lib": "dist/src",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist/src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masb0ymas/expresso.git"
   },
   "bugs": {
     "url": "https://github.com/masb0ymas/expresso/issues"
@@ -40,31 +70,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-    "@aws-sdk/client-s3": "^3.374.0",
-    "@aws-sdk/s3-request-presigner": "^3.375.0",
-    "@google-cloud/storage": "^6.12.0",
-    "colorette": "^2.0.20",
-    "convert-excel-to-json": "^1.7.0",
-    "date-fns": "^2.30.0",
-    "dotenv": "^16.3.1",
-    "exceljs": "^4.3.0",
-    "firebase-admin": "^11.10.1",
-    "googleapis": "^111.0.0",
-    "handlebars": "^4.7.7",
-    "ioredis": "^5.3.2",
-    "lodash": "^4.17.21",
-    "minio": "^7.1.1",
-    "nodemailer": "^6.9.4",
-    "nodemailer-mailgun-transport": "^2.1.5",
-    "pino": "^8.14.1",
-    "pino-pretty": "^10.1.0",
-    "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"
-  },
-  "devDependencies": {
-    "@types/convert-excel-to-json": "^1.7.1",
-    "@types/lodash": "^4.14.195",
-    "@types/nodemailer": "^6.4.8",
-    "@types/nodemailer-mailgun-transport": "^1.4.3"
-  }
+  "gitHead": "cd3933d873c42a1249acd3f62d0724a87a1eeba3"
 }

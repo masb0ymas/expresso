@@ -1,18 +1,19 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src"],
-  "exclude": ["**/*.test.ts", "./lib"],
   "compilerOptions": {
-    "rootDir": "src",
-    "baseUrl": ".",
-    "outDir": "./lib",
-    "declaration": true,
-    "declarationMap": true,
-    "declarationDir": "./lib",
-    "composite": true,
-    "paths": {
-      "expresso-hooks": ["../hooks/src"],
-      "expresso-provider": ["../provider/src"]
+    "module": "commonjs",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
     }
-  }
+  ]
 }

@@ -1,15 +1,3 @@
+# Add files here to ignore them from prettier formatting
 /dist
-/node_modules
 /coverage
-/logs
-/packages/core/dist
-/packages/core/lib
-
-/packages/hooks/dist
-/packages/hooks/lib
-
-/packages/query/dist
-/packages/query/lib
-
-/packages/provider/dist
-/packages/provider/lib

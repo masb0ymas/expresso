@@ -1,9 +1,0 @@
-/node_modules
-/dist
-/lib
-tsconfig.tsbuildinfo
-.env
-/assets
-serviceAccount.json
-
-pnpm-lock.yaml
