@@ -12,7 +12,7 @@
     "s3"
   ],
   "scripts": {
-    "clean": "npx rimraf lib tsconfig.tsbuildinfo",
+    "clean": "npx rimraf lib dist tsconfig.tsbuildinfo",
     "typecheck": "npx tsc --noEmit",
     "build": "npm run clean && npx tsc --build",
     "test": "npx jest"
