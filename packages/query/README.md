@@ -1,11 +1,30 @@
-# `query`
+# 🔗 expresso-query
 
-> TODO: description
+{% hint style="info" %}
+Query library for expressjs
+{% endhint %}
 
-## Usage
+### Install expresso-query
 
+Using NPM
+
+```bash
+npm install --save expresso-query
 ```
-const query = require('query');
 
-// TODO: DEMONSTRATE API
+Using Yarn
+
+```bash
+yarn add expresso-query
 ```
+
+Using PNPM
+
+```bash
+pnpm add expresso-query
+```
+
+### Feature
+
+* [TypeORM]([typeorm.md](https://expresso.masb0ymas.com/expresso-library/expresso-query))
+* [Sequelize]([sequelize.md](https://expresso.masb0ymas.com/expresso-library/expresso-query))
