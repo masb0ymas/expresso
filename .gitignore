@@ -1,6 +1,7 @@
 node_modules/
 lib/
 dist/
+assets/output
 
 .env
 tsconfig.tsbuildinfo

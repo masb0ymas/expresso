@@ -5,7 +5,7 @@ import { Excel } from '../src'
 const excel = new Excel()
 
 describe('excel provider', () => {
-  const dummyExcelPath = `${__dirname}/../../../assets/output/dummyExcel.xlsx`
+  const dummyExcelPath = `${__dirname}/../../../assets/uploads/dummyExcel.xlsx`
   const outputExcel = `${__dirname}/../../../assets/output/outputExcel.xlsx`
 
   test('should sheet to json', () => {
