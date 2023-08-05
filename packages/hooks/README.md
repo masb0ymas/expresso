@@ -1,11 +1,11 @@
-# hooks
+# `hooks`
 
-This library was generated with [Nx](https://nx.dev).
+> TODO: description
 
-## Building
+## Usage
 
-Run `nx build hooks` to build the library.
+```
+const hooks = require('hooks');
 
-## Running unit tests
-
-Run `nx test hooks` to execute the unit tests via [Jest](https://jestjs.io).
+// TODO: DEMONSTRATE API
+```

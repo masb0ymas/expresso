@@ -1,14 +1,14 @@
 {
   "name": "expresso-core",
   "version": "0.7.5",
-  "description": "core library expresso",
+  "description": "library expresso-core",
   "keywords": [
-    "expresso",
+    "expressjs",
     "helpers",
     "random-string"
   ],
   "scripts": {
-    "clean": "npx rimraf lib dist tsconfig.tsbuildinfo",
+    "clean": "npx rimraf lib tsconfig.tsbuildinfo",
     "typecheck": "npx tsc --noEmit",
     "build": "npm run clean && npx tsc --build",
     "test": "npx jest"
@@ -16,27 +16,15 @@
   "author": "masb0ymas <n.fajri@mail.com>",
   "homepage": "https://github.com/masb0ymas/expresso#readme",
   "license": "MIT",
-  "dependencies": {
-    "colorette": "^2.0.20",
-    "libphonenumber-js": "^1.10.39",
-    "lodash": "^4.17.21",
-    "pino": "^8.14.2",
-    "pino-pretty": "^10.2.0",
-    "tslib": "^2.3.0"
-  },
-  "devDependencies": {
-    "@types/lodash": "^4.14.196"
-  },
-  "type": "commonjs",
-  "main": "dist/src/index.js",
-  "types": "dist/src/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "sideEffects": false,
   "directories": {
-    "lib": "dist/src",
+    "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "dist/src"
+    "lib"
   ],
   "repository": {
     "type": "git",
@@ -45,8 +33,14 @@
   "bugs": {
     "url": "https://github.com/masb0ymas/expresso/issues"
   },
-  "publishConfig": {
-    "access": "public"
+  "dependencies": {
+    "colorette": "^2.0.20",
+    "libphonenumber-js": "^1.10.39",
+    "lodash": "^4.17.21",
+    "pino": "^8.15.0",
+    "pino-pretty": "^10.2.0"
   },
-  "gitHead": "cd3933d873c42a1249acd3f62d0724a87a1eeba3"
+  "devDependencies": {
+    "@types/lodash": "^4.14.196"
+  }
 }

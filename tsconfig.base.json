@@ -1,27 +1,22 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
+    "incremental": true,
+    "target": "es2022",
     "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2020", "dom"],
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "noImplicitReturns": false,
-    "forceConsistentCasingInFileNames": true,
+    "emitDecoratorMetadata": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
     "baseUrl": ".",
+    "allowJs": true,
     "paths": {
-      "expresso-core": ["packages/core/src/index.ts"],
-      "expresso-hooks": ["packages/hooks/src/index.ts"],
-      "expresso-provider": ["packages/provider/src/index.ts"],
-      "expresso-query": ["packages/query/src/index.ts"]
-    }
+      "expresso-*": ["packages/*"]
+    },
+    "declaration": true,
+    "outDir": "./lib",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules", "jest.config.js", "lib", "lib/**/*"]
 }

@@ -1,3 +1,3 @@
-export * from './lib/multer/useMulter'
-export * from './lib/otp/useOTP'
-export * from './lib/token/useToken'
+export * from './multer/useMulter'
+export * from './token/useToken'
+export * from './otp/useOTP'

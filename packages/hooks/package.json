@@ -1,15 +1,17 @@
 {
   "name": "expresso-hooks",
   "version": "0.7.5",
-  "description": "hooks library expresso",
+  "description": "library expresso-hooks",
   "keywords": [
-    "expresso",
-    "hooks",
+    "expressjs",
     "multer",
-    "expressjs"
+    "jsonwebtoken",
+    "jwt",
+    "otp",
+    "libphonenumber"
   ],
   "scripts": {
-    "clean": "npx rimraf lib dist tsconfig.tsbuildinfo",
+    "clean": "npx rimraf lib tsconfig.tsbuildinfo",
     "typecheck": "npx tsc --noEmit",
     "build": "npm run clean && npx tsc --build",
     "test": "npx jest"
@@ -17,31 +19,15 @@
   "author": "masb0ymas <n.fajri@mail.com>",
   "homepage": "https://github.com/masb0ymas/expresso#readme",
   "license": "MIT",
-  "dependencies": {
-    "colorette": "^2.0.20",
-    "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.1",
-    "multer": "1.4.5-lts.1",
-    "pino": "^8.14.2",
-    "pino-pretty": "^10.2.0",
-    "slugify": "^1.6.6",
-    "tslib": "^2.3.0"
-  },
-  "devDependencies": {
-    "@types/express": "^4.17.17",
-    "@types/jsonwebtoken": "^9.0.2",
-    "@types/multer": "^1.4.7"
-  },
-  "type": "commonjs",
-  "main": "dist/src/index.js",
-  "types": "dist/src/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "sideEffects": false,
   "directories": {
-    "lib": "dist/src",
+    "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "dist/src"
+    "lib"
   ],
   "repository": {
     "type": "git",
@@ -50,8 +36,18 @@
   "bugs": {
     "url": "https://github.com/masb0ymas/expresso/issues"
   },
-  "publishConfig": {
-    "access": "public"
+  "dependencies": {
+    "colorette": "^2.0.20",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.1",
+    "multer": "1.4.5-lts.1",
+    "pino": "^8.15.0",
+    "pino-pretty": "^10.2.0",
+    "slugify": "^1.6.6"
   },
-  "gitHead": "cd3933d873c42a1249acd3f62d0724a87a1eeba3"
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/multer": "^1.4.7"
+  }
 }
