@@ -1,8 +1,6 @@
 # 🔗 expresso-query
 
-{% hint style="info" %}
 Query library for expressjs
-{% endhint %}
 
 ### Install expresso-query
 

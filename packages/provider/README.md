@@ -1,8 +1,6 @@
 # 🚀 expresso-provider
 
-{% hint style="info" %}
 Provider library for expressjs
-{% endhint %}
 
 ### Install expresso-provider
 

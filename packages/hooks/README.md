@@ -1,8 +1,6 @@
 # ⚓ expresso-hooks
 
-{% hint style="info" %}
 Hooks library for expresso
-{% endhint %}
 
 ## Install expresso-hooks
 

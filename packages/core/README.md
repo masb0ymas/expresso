@@ -1,8 +1,6 @@
 # ⚛ expresso-core
 
-{% hint style="info" %}
 Core library used in all other expresso libraries
-{% endhint %}
 
 ### Install expresso-core
 
