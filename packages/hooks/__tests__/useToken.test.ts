@@ -11,6 +11,8 @@ describe('helpers token test', () => {
       expires: '1d',
     })
 
+    console.log(data)
+
     expect(data.token).not.toBeNull()
   })
 
@@ -28,6 +30,8 @@ describe('helpers token test', () => {
       token: data.token,
       secretKey: anySecretKey,
     })
+
+    console.log(data, result)
 
     expect(result?.data).not.toBeNull()
   })

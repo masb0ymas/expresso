@@ -15,6 +15,8 @@ describe('helpers OTP Test', () => {
       secretKey: anySecretKey,
     })
 
+    console.log(data)
+
     expect(data).not.toBeNull()
   })
 
@@ -31,6 +33,8 @@ describe('helpers OTP Test', () => {
     })
 
     const splitData = data.split('.')
+
+    console.log(splitData)
 
     expect(splitData).toHaveLength(2)
   })
@@ -50,6 +54,8 @@ describe('helpers OTP Test', () => {
     const verifyHash = otp.verifyHash(payload, hashOTP, {
       secretKey: anySecretKey,
     })
+
+    console.log(hashOTP, verifyHash)
 
     expect(verifyHash).toBe(true)
   })
