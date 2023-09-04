@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/masb0ymas/expresso/compare/v0.8.0...v0.8.1) (2023-09-04)
+
+
+### Bug Fixes
+
+* add console.log lib hooks ([cf36459](https://github.com/masb0ymas/expresso/commit/cf36459395f87cb01b6d78d9da7773369a6b5d88))
+* add script post release ([17b861b](https://github.com/masb0ymas/expresso/commit/17b861b014360f918e76267335280cd5866ee085))
+* improve extract auth token from request http & fastify ([4e85a3f](https://github.com/masb0ymas/expresso/commit/4e85a3fcbfdd8f8aa3173bfc8cc6d9e7886442c8))
+* rename export mail to smtp ([85a1f29](https://github.com/masb0ymas/expresso/commit/85a1f29a539b8a60b563444a23b8b526f29c6e58))
+* update readme ([9dcb029](https://github.com/masb0ymas/expresso/commit/9dcb029eb76a6bbbd98ee441da79aceaf5eebdc8))
+
+
+
+
+
 # [0.8.0](https://github.com/masb0ymas/expresso/compare/v0.7.5...v0.8.0) (2023-08-05)
 
 
