@@ -1,12 +1,13 @@
 import { green } from 'colorette'
 import { type Request } from 'express'
 import { ms } from 'expresso-core'
-import { type IncomingHttpHeaders } from 'http'
+import { FastifyRequest } from 'fastify'
 import jwt, {
   JsonWebTokenError,
   NotBeforeError,
   TokenExpiredError,
 } from 'jsonwebtoken'
+import _ from 'lodash'
 import pino from 'pino'
 import {
   type DtoGenerateToken,
@@ -44,30 +45,30 @@ export class useToken {
    * @param req
    * @returns
    */
-  public static extract(req: Request): string | null {
-    const query = req.query
-    const cookie = req.cookies
-    const header: IncomingHttpHeaders = req.headers
+  public static extract(req: Request | FastifyRequest): string | null {
+    const authQuery = _.get(req, 'query.token', undefined)
+    const authCookie = _.get(req, 'cookies.token', undefined)
+    const authHeader = _.get(req, 'headers.authorization', undefined)
 
     // extract from query
-    if (query?.token) {
+    if (authQuery) {
       const message = `${msgType} - ${'extract auth from query'}`
       logger.info(message)
 
-      return String(query?.token)
+      return String(authQuery)
     }
 
     // extract from cookie
-    if (cookie?.token) {
+    if (authCookie) {
       const message = `${msgType} - ${'extract auth from cookie'}`
       logger.info(message)
 
-      return String(cookie?.token)
+      return String(authCookie)
     }
 
     // extract from header authorization
-    if (header.authorization) {
-      const splitAuthorize = header.authorization.split(' ')
+    if (authHeader) {
+      const splitAuthorize = authHeader.split(' ')
       const allowedAuthorize = ['Bearer', 'JWT', 'Token']
 
       if (splitAuthorize.length === 2) {

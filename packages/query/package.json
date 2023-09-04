@@ -41,9 +41,9 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.196",
+    "@types/lodash": "^4.14.197",
     "@types/sinon": "^10.0.16",
-    "@types/uuid": "^9.0.2",
+    "@types/uuid": "^9.0.3",
     "sinon": "^15.2.0"
   }
 }
