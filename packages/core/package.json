@@ -35,12 +35,12 @@
   },
   "dependencies": {
     "colorette": "^2.0.20",
-    "libphonenumber-js": "^1.10.39",
+    "libphonenumber-js": "^1.10.44",
     "lodash": "^4.17.21",
     "pino": "^8.15.0",
     "pino-pretty": "^10.2.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.196"
+    "@types/lodash": "^4.14.197"
   }
 }
