@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { isNumeric } from './formatter'
+import { isNumeric } from '../formatter'
 
 type RandomType = 'alphabet' | 'alphabetNumeric' | 'numeric'
 
