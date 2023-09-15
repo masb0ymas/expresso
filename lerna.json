@@ -1,9 +1,6 @@
 {
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "npmClient": "yarn",
-  "npmClientArgs": [
-    "--production",
-    "--no-optional"
-  ]
+  "npmClientArgs": ["--production", "--no-optional"]
 }
