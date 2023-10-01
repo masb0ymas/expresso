@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/masb0ymas/expresso/compare/v0.8.2...v0.9.0) (2023-10-01)
+
+### Features
+
+- add mapping excel alphabet ([f9c6eaf](https://github.com/masb0ymas/expresso/commit/f9c6eafbec8bf7fe30a8a4a9034c7e97b818e7b5))
+
 ## [0.8.2](https://github.com/masb0ymas/expresso/compare/v0.8.1...v0.8.2) (2023-09-15)
 
 ### Bug Fixes
