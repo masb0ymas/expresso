@@ -46,4 +46,52 @@ describe('excel provider', () => {
 
     expect(exists).toBe(true)
   })
+
+  test('should get cell number', () => {
+    const anyValue = 'J'
+
+    const result = excel.getCellNumber(anyValue)
+
+    console.log(result)
+
+    expect(result).toBe(10)
+  })
+
+  test('should get cell title', () => {
+    const anyValue = 11
+
+    const result = excel.getCellTitle(anyValue)
+
+    console.log(result)
+
+    expect(result).toBe('K')
+  })
+
+  test('should mapping cell title', () => {
+    const anyValue = 'AD'
+    const char = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+    const splitChar = char.split('')
+    const expectValue = [...splitChar, 'AA', 'AB', 'AC', 'AD']
+
+    const result = excel.mappingCell(anyValue)
+
+    console.log(result, result.toString())
+
+    expect(result.toString()).toEqual(expectValue.toString())
+  })
+
+  test('should mapping cell number', () => {
+    const anyValue = 29
+    const char = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+    const splitChar = char.split('')
+    const expectValue = [...splitChar, 'AA', 'AB', 'AC']
+
+    const result = excel.mappingCell(anyValue)
+
+    console.log(result, result.toString())
+
+    expect(result.toString()).toEqual(expectValue.toString())
+  })
 })
