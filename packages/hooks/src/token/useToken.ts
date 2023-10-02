@@ -16,10 +16,7 @@ import {
   type VerifyTokenEntity,
 } from './interface'
 
-const logger = pino({
-  transport: { target: 'pino-pretty', options: { colorize: true } },
-})
-
+const logger = pino()
 const msgType = `${green('token')}`
 
 export class useToken {

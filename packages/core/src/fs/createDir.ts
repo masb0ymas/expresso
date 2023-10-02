@@ -3,10 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import pino from 'pino'
 
-const logger = pino({
-  transport: { target: 'pino-pretty', options: { colorize: true } },
-})
-
+const logger = pino()
 const msgType = `${green('filesystem')}`
 
 /**

@@ -7,10 +7,7 @@ import { defaultAllowedExt } from './allowedExtension'
 import { Mimetype } from './allowedMimetype'
 import { type MulterConfigEntity } from './interface'
 
-const logger = pino({
-  transport: { target: 'pino-pretty', options: { colorize: true } },
-})
-
+const logger = pino()
 const mimetype = new Mimetype()
 
 const defaultFieldSize = 10 * 1024 * 1024 // 10mb
