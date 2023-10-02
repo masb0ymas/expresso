@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/masb0ymas/expresso/compare/v0.9.0...v0.9.1) (2023-10-02)
+
+### Bug Fixes
+
+- remove pino transport config ([4c3cf84](https://github.com/masb0ymas/expresso/commit/4c3cf84f26f369725161f851bb366ce87cff736d))
+
 # [0.9.0](https://github.com/masb0ymas/expresso/compare/v0.8.2...v0.9.0) (2023-10-01)
 
 **Note:** Version bump only for package expresso-hooks
