@@ -2,10 +2,7 @@ import { green } from 'colorette'
 import * as fsAsync from 'fs/promises'
 import pino from 'pino'
 
-const logger = pino({
-  transport: { target: 'pino-pretty', options: { colorize: true } },
-})
-
+const logger = pino()
 const msgType = `${green('filesystem')}`
 
 /**

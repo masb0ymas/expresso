@@ -21,9 +21,7 @@ import path from 'path'
 import pino from 'pino'
 import { type FileAttributes } from './interface'
 
-const logger = pino({
-  transport: { target: 'pino-pretty', options: { colorize: true } },
-})
+const logger = pino()
 
 interface DtoExpiresObject {
   expiresIn: number
