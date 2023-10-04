@@ -1,6 +1,6 @@
 import { green } from 'colorette'
 import { type Request } from 'express'
-import { ms } from 'expresso-core'
+import { logger, ms } from 'expresso-core'
 import { FastifyRequest } from 'fastify'
 import jwt, {
   JsonWebTokenError,
@@ -8,7 +8,6 @@ import jwt, {
   TokenExpiredError,
 } from 'jsonwebtoken'
 import _ from 'lodash'
-import pino from 'pino'
 import {
   type DtoGenerateToken,
   type DtoVerifyToken,
@@ -16,7 +15,6 @@ import {
   type VerifyTokenEntity,
 } from './interface'
 
-const logger = pino()
 const msgType = `${green('token')}`
 
 export class useToken {

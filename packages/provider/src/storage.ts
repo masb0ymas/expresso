@@ -12,16 +12,13 @@ import {
   type UploadOptions,
   type UploadResponse,
 } from '@google-cloud/storage'
-import { green, blue } from 'colorette'
+import { blue, green } from 'colorette'
 import { addDays } from 'date-fns'
-import { ms } from 'expresso-core'
+import { logger, ms } from 'expresso-core'
 import fs from 'fs'
 import * as Minio from 'minio'
 import path from 'path'
-import pino from 'pino'
 import { type FileAttributes } from './interface'
-
-const logger = pino()
 
 interface DtoExpiresObject {
   expiresIn: number

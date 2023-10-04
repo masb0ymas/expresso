@@ -1,9 +1,8 @@
 import { green } from 'colorette'
 import fs from 'fs'
 import path from 'path'
-import pino from 'pino'
+import { logger } from '../logger'
 
-const logger = pino()
 const msgType = `${green('filesystem')}`
 
 /**

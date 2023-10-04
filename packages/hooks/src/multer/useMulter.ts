@@ -1,13 +1,12 @@
 import { green } from 'colorette'
 import { type Request } from 'express'
+import { logger } from 'expresso-core'
 import multer from 'multer'
-import pino from 'pino'
 import slugify from 'slugify'
 import { defaultAllowedExt } from './allowedExtension'
 import { Mimetype } from './allowedMimetype'
 import { type MulterConfigEntity } from './interface'
 
-const logger = pino()
 const mimetype = new Mimetype()
 
 const defaultFieldSize = 10 * 1024 * 1024 // 10mb
