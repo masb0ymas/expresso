@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/masb0ymas/expresso/compare/v0.9.1...v0.10.0) (2023-10-04)
+
+### Bug Fixes
+
+- implementation logger core ([140598a](https://github.com/masb0ymas/expresso/commit/140598a4e296de99ddee9ee5fdaf0232bb552ce5))
+- update package ([3b42d43](https://github.com/masb0ymas/expresso/commit/3b42d43ce7231180cb8dda558057d3c63c13fd81))
+
 ## [0.9.1](https://github.com/masb0ymas/expresso/compare/v0.9.0...v0.9.1) (2023-10-02)
 
 ### Bug Fixes
