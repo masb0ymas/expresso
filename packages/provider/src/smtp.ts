@@ -1,4 +1,5 @@
 import { green } from 'colorette'
+import { logger } from 'expresso-core'
 import { type Headers } from 'gaxios'
 import { google } from 'googleapis'
 import _ from 'lodash'
@@ -7,9 +8,7 @@ import nodemailer, {
   type SentMessageInfo,
 } from 'nodemailer'
 import mg from 'nodemailer-mailgun-transport'
-import pino from 'pino'
 
-const logger = pino()
 const msgType = `${green('nodemailer')}`
 
 export type MailDriverType = 'smtp' | 'gmail'

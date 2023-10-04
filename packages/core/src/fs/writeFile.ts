@@ -1,8 +1,7 @@
 import { green } from 'colorette'
 import * as fsAsync from 'fs/promises'
-import pino from 'pino'
+import { logger } from '../logger'
 
-const logger = pino()
 const msgType = `${green('filesystem')}`
 
 /**
