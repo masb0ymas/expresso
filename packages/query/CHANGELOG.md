@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/masb0ymas/expresso/compare/v0.10.0...v0.10.1) (2023-10-23)
+
+### Bug Fixes
+
+- update options limit ([97cdcce](https://github.com/masb0ymas/expresso/commit/97cdcce8de7dda99617feda62769e8163649df87))
+
 # [0.10.0](https://github.com/masb0ymas/expresso/compare/v0.9.1...v0.10.0) (2023-10-04)
 
 ### Bug Fixes

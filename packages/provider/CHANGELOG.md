@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/masb0ymas/expresso/compare/v0.10.0...v0.10.1) (2023-10-23)
+
+### Bug Fixes
+
+- improve smtp config ([7826d43](https://github.com/masb0ymas/expresso/commit/7826d43e5fafc5bd9b631d414e7420118923ee5e))
+
 # [0.10.0](https://github.com/masb0ymas/expresso/compare/v0.9.1...v0.10.0) (2023-10-04)
 
 ### Bug Fixes
