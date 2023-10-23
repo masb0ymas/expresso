@@ -25,7 +25,7 @@ export function queryBuilder<T extends ObjectLiteral>(
   const { entity, query, reqQuery, options: opt } = values
 
   const minLimit = 10
-  const maxLimit = opt?.limit ?? 1000
+  const maxLimit = opt?.limit || 1000
 
   let pageSize = minLimit
 

@@ -151,7 +151,7 @@ function getPaginationQuery(limit?: number): SqlizeQuery {
   const limitId = 'pageSize'
   const defaultOffset = 0
   const minLimit = 10
-  const maxLimit = limit ?? 1000
+  const maxLimit = limit || 1000
 
   sequelizeQuery.addValueParser((value) => {
     let pageSize = minLimit
