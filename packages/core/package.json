@@ -37,13 +37,13 @@
     "argon2": "^0.31.1",
     "bcrypt": "^5.1.1",
     "colorette": "^2.0.20",
-    "libphonenumber-js": "^1.10.45",
+    "libphonenumber-js": "^1.10.48",
     "lodash": "^4.17.21",
-    "pino": "^8.15.4",
-    "pino-pretty": "^10.2.2"
+    "pino": "^8.16.0",
+    "pino-pretty": "^10.2.3"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.0",
-    "@types/lodash": "^4.14.199"
+    "@types/bcrypt": "^5.0.1",
+    "@types/lodash": "^4.14.200"
   }
 }
