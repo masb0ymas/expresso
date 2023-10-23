@@ -11,17 +11,18 @@ import mg from 'nodemailer-mailgun-transport'
 
 const msgType = `${green('nodemailer')}`
 
-export type MailDriverType = 'smtp' | 'gmail'
+export type MailDriverType = 'smtp' | 'gmail' | 'relay'
 
 export type MailAuthType = 'OAuth2'
 
-interface MailProviderEntity {
+export interface MailProviderEntity {
   driver: MailDriverType
-  username: string
+  username?: string
   password?: string
   from?: string
   host?: string
   port?: number
+  secure?: boolean
   appName: string
 }
 
@@ -30,6 +31,7 @@ interface MailProviderOptions {
   mailType?: MailAuthType
   mailApiKey?: string
   mailDomain?: string
+  mailRelayChiper?: string
 
   // OAuth Config
   OAuthClientID?: string
@@ -49,16 +51,18 @@ export class MailProvider {
   private _mailOptions: SendMailOptions
 
   private readonly _driver: MailDriverType
-  private readonly _username: string
+  private readonly _username?: string
   private readonly _password?: string
   private readonly _from?: string
   private readonly _host?: string
   private readonly _port?: number
+  private readonly _secure?: boolean
 
   private readonly _appName?: string
   private readonly _mailType?: MailAuthType
   private readonly _mailApiKey?: string
   private readonly _mailDomain?: string
+  private readonly _mailRelayChiper?: string
 
   private readonly _OAuthClientID?: string
   private readonly _OAuthClientSecret?: string
@@ -72,16 +76,18 @@ export class MailProvider {
     this._mailOptions = {}
 
     this._driver = params.driver
-    this._username = params.username
+    this._username = params?.username
     this._password = params?.password
     this._from = params?.from
     this._host = params?.host
     this._port = params?.port
+    this._secure = params?.secure
     this._appName = params.appName
 
     this._mailType = options?.mailType
     this._mailApiKey = options?.mailApiKey
     this._mailDomain = options?.mailDomain
+    this._mailRelayChiper = options?.mailRelayChiper
 
     this._OAuthClientID = options?.OAuthClientID
     this._OAuthClientSecret = options?.OAuthClientSecret
@@ -105,7 +111,7 @@ export class MailProvider {
     }
 
     // Use Google OAuth
-    if (this._mailType === 'OAuth2') {
+    if (this._driver === 'gmail' && this._mailType === 'OAuth2') {
       const oauth2Client = new google.auth.OAuth2(
         this._OAuthClientID,
         this._OAuthClientSecret,
@@ -127,10 +133,20 @@ export class MailProvider {
       configTransport.auth.clientSecret = this._OAuthClientSecret
       configTransport.auth.refreshToken = this._OAuthRefreshToken
       configTransport.auth.accessToken = accessToken()
-    } else if (this._isMailgunAPI) {
+    } else if (this._driver === 'smtp' && this._isMailgunAPI) {
       // SMTP with Mailgun API
       configTransport.auth.api_key = this._mailApiKey
       configTransport.auth.domain = this._mailDomain
+    } else if (this._driver === 'relay') {
+      configTransport.host = this._host
+      configTransport.port = this._port
+      configTransport.secure = this._secure || false
+
+      configTransport.auth.user = this._username || undefined
+      configTransport.auth.pass = this._password || undefined
+
+      configTransport.tls.rejectUnauthorized = false
+      configTransport.tls.ciphers = this._mailRelayChiper || 'SSLv3'
     } else {
       // SMTP Default
       configTransport.host = this._host
