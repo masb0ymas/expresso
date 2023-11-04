@@ -1,12 +1,6 @@
 import _ from 'lodash'
 import { isNumeric } from '../formatter'
-
-type RandomType = 'alphabet' | 'alphabetNumeric' | 'numeric'
-
-interface GetRandomEntity {
-  type?: RandomType
-  length?: number
-}
+import { GenerateRandom } from './types'
 
 const alphabetLower = 'abcdefghijklmnopqrstuvwxyz'
 const alphabetUpper = alphabetLower.toUpperCase()
@@ -54,7 +48,7 @@ function _randomNumeric(length: number): string {
  * @param params
  * @returns
  */
-export function generate(params?: number | GetRandomEntity): string {
+export function generate(params?: number | GenerateRandom): string {
   let result = ''
 
   // if params empty

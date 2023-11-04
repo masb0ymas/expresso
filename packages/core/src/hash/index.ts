@@ -1,12 +1,11 @@
 import * as argon2 from 'argon2'
 import * as bcrypt from 'bcrypt'
-
-type TypeHash = 'argon2' | 'bcrypt'
+import { HashType } from './types'
 
 export class Hash {
   private readonly _type: string
 
-  constructor(type?: TypeHash) {
+  constructor(type?: HashType) {
     this._type = type || 'argon2'
   }
 

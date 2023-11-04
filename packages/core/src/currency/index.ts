@@ -1,19 +1,15 @@
-interface OptionsFormatEntity extends Intl.NumberFormatOptions {
-  locale: string
-}
-
-interface CurrencyFormatEntity {
-  nominal: string | number
-  options?: OptionsFormatEntity
-}
+import { CurrencyFormat } from './types'
 
 /**
  *
  * @param params
  * @returns
  */
-export function format(params: CurrencyFormatEntity): string {
-  if (typeof params.nominal !== 'string' && typeof params.nominal !== 'number') {
+export function format(params: CurrencyFormat): string {
+  if (
+    typeof params.nominal !== 'string' &&
+    typeof params.nominal !== 'number'
+  ) {
     throw new Error('Invalid nominal type')
   }
 

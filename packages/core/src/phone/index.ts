@@ -3,15 +3,12 @@ import {
   type CountryCode,
   type E164Number,
 } from 'libphonenumber-js'
-
-interface IPhonenumberOptions {
-  country?: CountryCode
-}
+import { PhonenumberOptions } from './types'
 
 export class Phonenumber {
   private readonly _country?: CountryCode
 
-  constructor(options: IPhonenumberOptions) {
+  constructor(options: PhonenumberOptions) {
     this._country = options?.country ?? 'ID'
   }
 
