@@ -1,13 +1,6 @@
 import crypto from 'crypto'
 import { ms } from 'expresso-core'
-
-interface HashEntity {
-  secretKey: string
-}
-
-interface HashOTPEntity extends HashEntity {
-  expires: string
-}
+import { HashEntity, HashOTPEntity } from './types'
 
 export class useOTP {
   /**
