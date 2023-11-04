@@ -13,6 +13,14 @@ interface CurrencyFormatEntity {
  * @returns
  */
 export function format(params: CurrencyFormatEntity): string {
+  if (typeof params.nominal !== 'string' && typeof params.nominal !== 'number') {
+    throw new Error('Invalid nominal type')
+  }
+
+  if (params.options && typeof params.options !== 'object') {
+    throw new Error('Invalid options type')
+  }
+
   const { nominal, options } = params
 
   const defaultLocale = options?.locale ?? 'id-ID'
