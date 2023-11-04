@@ -13,7 +13,7 @@ import {
   type DtoVerifyToken,
   type GenerateTokenEntity,
   type VerifyTokenEntity,
-} from './interface'
+} from './types'
 
 const msgType = `${green('token')}`
 
