@@ -1,23 +1,5 @@
 import * as admin from 'firebase-admin'
-
-interface FCMProviderEntity {
-  name?: string
-  options?: admin.AppOptions
-}
-
-export type FCMSendType = 'all' | 'by-user'
-
-interface sendToMessageAttributes {
-  appName: string
-  title: string
-  message: string
-  type: FCMSendType
-  data: string
-}
-
-interface sendMulticastAttributes extends sendToMessageAttributes {
-  deviceTokens: string[]
-}
+import { FCMProviderEntity, SendMulticastFCM, SendToMessageFCM } from './types'
 
 export class FCMProvider {
   private readonly _name?: string
@@ -42,7 +24,7 @@ export class FCMProvider {
    * @returns
    */
   public async sendMulticast(
-    params: sendMulticastAttributes
+    params: SendMulticastFCM
   ): Promise<admin.messaging.BatchResponse> {
     const { appName, deviceTokens, title, message, type, data } = params
 
@@ -63,7 +45,7 @@ export class FCMProvider {
    * @returns
    */
   public async sendToDevice(
-    params: sendMulticastAttributes
+    params: SendMulticastFCM
   ): Promise<admin.messaging.MessagingDevicesResponse> {
     const { appName, deviceTokens, title, message, type, data } = params
 
@@ -82,9 +64,7 @@ export class FCMProvider {
    * @param values
    * @returns
    */
-  public static async sendTopics(
-    values: sendToMessageAttributes
-  ): Promise<string> {
+  public static async sendTopics(values: SendToMessageFCM): Promise<string> {
     const { appName, title, message, type, data } = values
 
     const clickAction = `${appName}_NOTIFICATION_CLICK`

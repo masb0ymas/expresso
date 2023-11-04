@@ -1,10 +1,6 @@
-import { Redis, type RedisOptions } from 'ioredis'
 import { ms } from 'expresso-core'
-
-interface SetOptions {
-  expiryMode?: string | any[]
-  timeout?: string | number
-}
+import { Redis, type RedisOptions } from 'ioredis'
+import { RedisSetOptions } from './types'
 
 export class RedisProvider {
   private readonly _options: RedisOptions
@@ -27,7 +23,7 @@ export class RedisProvider {
   public async set(
     key: string,
     data: any,
-    options?: SetOptions
+    options?: RedisSetOptions
   ): Promise<void> {
     const client = this.client()
 

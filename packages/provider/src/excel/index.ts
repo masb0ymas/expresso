@@ -4,12 +4,7 @@ import { isNumeric, validateNumber } from 'expresso-core'
 import fs from 'fs'
 import { isString } from 'lodash'
 import * as XLSX from 'xlsx'
-
-interface OptionConvert {
-  header?: any
-  columnToKey?: any
-  sheetName?: string
-}
+import { ExcelOptionConvert } from './types'
 
 export class ExcelProvider {
   /**
@@ -75,7 +70,7 @@ export class ExcelProvider {
    */
   public convertToJson<T>(
     filePath: string | Buffer,
-    options?: OptionConvert
+    options?: ExcelOptionConvert
   ): T[] {
     const resultConvert = excelToJson({
       source: fs.readFileSync(filePath), // fs.readFileSync return a Buffer

@@ -3,54 +3,23 @@ import { logger } from 'expresso-core'
 import { type Headers } from 'gaxios'
 import { google } from 'googleapis'
 import _ from 'lodash'
-import nodemailer, {
-  type SendMailOptions,
-  type SentMessageInfo,
-} from 'nodemailer'
+import nodemailer from 'nodemailer'
 import mg from 'nodemailer-mailgun-transport'
+import {
+  MailAuth,
+  MailDriver,
+  MailOptions,
+  MailProvider,
+  SendMailOptions,
+} from './types'
 
 const msgType = `${green('nodemailer')}`
 
-export type MailDriverType = 'smtp' | 'gmail' | 'relay'
+export class SMTPProvider {
+  private _mailConfig: nodemailer.SentMessageInfo
+  private _mailOptions: nodemailer.SendMailOptions
 
-export type MailAuthType = 'OAuth2'
-
-export interface MailProviderEntity {
-  driver: MailDriverType
-  username?: string
-  password?: string
-  from?: string
-  host?: string
-  port?: number
-  secure?: boolean
-  appName: string
-}
-
-interface MailProviderOptions {
-  // Mail Config
-  mailType?: MailAuthType
-  mailApiKey?: string
-  mailDomain?: string
-  mailRelayChiper?: string
-
-  // OAuth Config
-  OAuthClientID?: string
-  OAuthClientSecret?: string
-  OAuthRefreshToken?: string
-  OAuthRedirectURL?: string
-}
-
-interface SendMailOptionsEntity {
-  dest: string
-  subject: string
-  text: string
-}
-
-export class MailProvider {
-  private _mailConfig: SentMessageInfo
-  private _mailOptions: SendMailOptions
-
-  private readonly _driver: MailDriverType
+  private readonly _driver: MailDriver
   private readonly _username?: string
   private readonly _password?: string
   private readonly _from?: string
@@ -59,7 +28,7 @@ export class MailProvider {
   private readonly _secure?: boolean
 
   private readonly _appName?: string
-  private readonly _mailType?: MailAuthType
+  private readonly _mailType?: MailAuth
   private readonly _mailApiKey?: string
   private readonly _mailDomain?: string
   private readonly _mailRelayChiper?: string
@@ -71,7 +40,7 @@ export class MailProvider {
 
   private readonly _isMailgunAPI: boolean
 
-  constructor(params: MailProviderEntity, options?: MailProviderOptions) {
+  constructor(params: MailProvider, options?: MailOptions) {
     this._mailConfig = {}
     this._mailOptions = {}
 
@@ -102,8 +71,8 @@ export class MailProvider {
    * Set Mail Config
    * @returns
    */
-  private _setMailConfig(): SentMessageInfo {
-    const configTransport: SentMessageInfo = {
+  private _setMailConfig(): nodemailer.SentMessageInfo {
+    const configTransport: nodemailer.SentMessageInfo = {
       service: this._driver,
       auth: {
         user: '',
@@ -163,7 +132,7 @@ export class MailProvider {
    * @param params
    * @returns
    */
-  private _setMailOptions(params: SendMailOptionsEntity): SendMailOptions {
+  private _setMailOptions(params: SendMailOptions): nodemailer.SendMailOptions {
     const { dest, subject, text } = params
 
     const mail_from = !_.isEmpty(this._from)
@@ -184,7 +153,7 @@ export class MailProvider {
    * Client
    * @returns
    */
-  private _client(): SentMessageInfo {
+  private _client(): nodemailer.SentMessageInfo {
     // mail config
     this._mailConfig = this._isMailgunAPI
       ? mg(this._setMailConfig())
@@ -220,7 +189,7 @@ export class MailProvider {
    * Send Mail Config Transporter
    * @param params
    */
-  private _sendMail(params: SendMailOptionsEntity): void {
+  private _sendMail(params: SendMailOptions): void {
     const { dest, subject, text } = params
 
     // client
