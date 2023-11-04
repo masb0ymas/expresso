@@ -22,8 +22,8 @@ export interface ISortQuery {
 export interface ReqQuery {
   filtered?: IFilterQuery[]
   sorted?: ISortQuery[]
-  page?: number
-  pageSize?: number
+  page?: string | number
+  pageSize?: string | number
   [key: string]: any
 }
 

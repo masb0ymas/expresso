@@ -13,6 +13,123 @@ import {
 } from '../interface'
 
 /**
+ *
+ * @param pageSize
+ * @param maxLimit
+ * @returns
+ */
+export function _calculatePageSize(
+  pageSize: string | number,
+  maxLimit: number
+): number {
+  const minLimit = 10
+  const parsedPageSize = validateNumber(pageSize)
+
+  if (parsedPageSize > 0) {
+    return Math.min(parsedPageSize, maxLimit)
+  }
+
+  return minLimit
+}
+
+/**
+ *
+ * @param query
+ * @param page
+ * @param pageSize
+ */
+export function _applyPagination<T extends ObjectLiteral>(
+  query: SelectQueryBuilder<T>,
+  page: string | number,
+  pageSize: number
+): void {
+  const parsedPage = validateNumber(page) || 1
+
+  if (pageSize <= 0) {
+    pageSize = 10
+  }
+
+  query.skip((parsedPage - 1) * pageSize)
+  query.take(pageSize)
+}
+
+/**
+ *
+ * @param query
+ * @param entity
+ * @param filtered
+ * @param options
+ */
+function _applyFilters<T extends ObjectLiteral>(
+  query: SelectQueryBuilder<T>,
+  entity: string,
+  filtered: string,
+  options?: DataSourceOptions
+) {
+  const parsedFiltered = JSON.parse(filtered) as IFilterQuery[]
+
+  if (!_.isEmpty(parsedFiltered)) {
+    for (let i = 0; i < parsedFiltered.length; i += 1) {
+      const item = parsedFiltered[i]
+
+      const check_uuid = uuidValidate(item.value)
+      const check_numeric = validateNumber(item.value)
+      const expect_numberic_or_uuid = !check_numeric && !check_uuid
+
+      const check_query_like_postgres =
+        options?.type === 'postgres' && expect_numberic_or_uuid
+
+      const check_query_like_mysql =
+        ['mysql', 'mariadb'].includes(String(options?.type)) &&
+        expect_numberic_or_uuid
+
+      if (check_uuid || check_numeric) {
+        query.andWhere(`${entity}.${item.id} = :${item.id}`, {
+          [`${item.id}`]: `${item.value}`,
+        })
+      }
+
+      if (check_query_like_postgres) {
+        query.andWhere(`${entity}.${item.id} ILIKE :${item.id}`, {
+          [`${item.id}`]: `%${item.value}%`,
+        })
+      }
+
+      if (check_query_like_mysql) {
+        query.andWhere(`${entity}.${item.id} LIKE :${item.id}`, {
+          [`${item.id}`]: `%${item.value}%`,
+        })
+      }
+    }
+  }
+}
+
+/**
+ *
+ * @param query
+ * @param entity
+ * @param sorted
+ * @param orderKey
+ */
+function _applySorting<T extends ObjectLiteral>(
+  query: SelectQueryBuilder<T>,
+  entity: string,
+  sorted: string,
+  orderKey?: string
+): void {
+  const parsedSorted = JSON.parse(sorted) as ISortQuery[]
+
+  if (!_.isEmpty(parsedSorted)) {
+    for (let i = 0; i < parsedSorted.length; i += 1) {
+      const item = parsedSorted[i]
+      query.addOrderBy(`${entity}.${item.sort}`, item.order)
+    }
+  } else {
+    query.orderBy(`${entity}.${orderKey ?? 'createdAt'}`, 'DESC')
+  }
+}
+
+/**
  * Create Query Builder TypeORM
  * @param values
  * @param options
@@ -24,91 +141,24 @@ export function queryBuilder<T extends ObjectLiteral>(
 ): SelectQueryBuilder<T> {
   const { entity, query, reqQuery, options: opt } = values
 
-  const minLimit = 10
   const maxLimit = opt?.limit || 1000
 
-  let pageSize = minLimit
+  const queryPage = _.get(reqQuery, 'page', 0)
+  const queryPageSize = _.get(reqQuery, 'pageSize', 10)
+  const queryFiltered: any = _.get(reqQuery, 'filtered', '[]')
+  const querySorted: any = _.get(reqQuery, 'sorted', '[]')
 
-  // query pageSize < maxLimit
-  if (Number(reqQuery.pageSize) > 0) {
-    pageSize = Number(reqQuery.pageSize)
-  }
+  // calculate page size
+  const pageSize = _calculatePageSize(queryPageSize, maxLimit)
 
-  // query pageSize > maxLimit
-  if (Number(reqQuery.pageSize) > maxLimit) {
-    pageSize = maxLimit
-  }
+  // apply pagination
+  _applyPagination(query, queryPage, pageSize)
 
-  // pagination
-  const page = Number(reqQuery.page) || 1
+  // apply filters
+  _applyFilters(query, entity, queryFiltered, options)
 
-  query.skip((page - 1) * pageSize)
-  query.take(pageSize)
-
-  // query
-  const filtered: any = _.get(reqQuery, 'filtered', '[]')
-  const parseFiltered = JSON.parse(filtered) as IFilterQuery[]
-
-  const sorted: any = _.get(reqQuery, 'sorted', '[]')
-  const parseSorted = JSON.parse(sorted) as ISortQuery[]
-
-  // check parser filtered
-  if (!_.isEmpty(parseFiltered)) {
-    for (let i = 0; i < parseFiltered.length; i += 1) {
-      const item = parseFiltered[i]
-
-      const check_uuid = uuidValidate(item.value)
-      const check_numeric = validateNumber(item.value)
-      const expect_numberic_or_uuid = !check_numeric && !check_uuid
-
-      // query connection postgres
-      const check_query_like_postgres =
-        options?.type === 'postgres' && expect_numberic_or_uuid
-
-      // query connection mysql
-      const check_query_like_mysql =
-        ['mysql', 'mariadb'].includes(String(options?.type)) &&
-        expect_numberic_or_uuid
-
-      // case UUID
-      if (check_uuid || check_numeric) {
-        // example : query.andWhere('User.RoleId' = :RoleId, { RoleId: 'anyValue' })
-        query.andWhere(`${entity}.${item.id} = :${item.id}`, {
-          [`${item.id}`]: `${item.value}`,
-        })
-      }
-
-      // query ILIKE with PostgreSQL
-      if (check_query_like_postgres) {
-        // example : query.andWhere('User.email' ILIKE :email, { email: '%anyValue%' })
-        query.andWhere(`${entity}.${item.id} ILIKE :${item.id}`, {
-          [`${item.id}`]: `%${item.value}%`,
-        })
-      }
-
-      // query LIKE with MySQL or MariaDB
-      if (check_query_like_mysql) {
-        // example : query.andWhere('User.email' LIKE :email, { email: '%anyValue%' })
-        query.andWhere(`${entity}.${item.id} LIKE :${item.id}`, {
-          [`${item.id}`]: `%${item.value}%`,
-        })
-      }
-    }
-  }
-
-  const orderKey = opt?.orderKey ?? 'createdAt'
-
-  // check parser sorted
-  if (!_.isEmpty(parseSorted)) {
-    for (let i = 0; i < parseSorted.length; i += 1) {
-      const item = parseSorted[i]
-
-      // example : query.addOrderBy('User.email', 'DESC')
-      query.addOrderBy(`${entity}.${item.sort}`, item.order)
-    }
-  } else {
-    query.orderBy(`${entity}.${orderKey}`, 'DESC')
-  }
+  // apply sorting
+  _applySorting(query, entity, querySorted, opt?.orderKey)
 
   return query
 }

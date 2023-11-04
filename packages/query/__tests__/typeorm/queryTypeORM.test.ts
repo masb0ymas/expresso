@@ -1,6 +1,7 @@
 import sandbox from 'sinon'
 import { SelectQueryBuilder } from 'typeorm'
-import { useTypeOrm } from '../src'
+import { useTypeOrm } from '../../src'
+import { _calculatePageSize } from '../../src/typeorm/queryTypeORM'
 
 describe('query package test', () => {
   test('should query typeorm', () => {

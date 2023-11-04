@@ -1,4 +1,4 @@
-import { useSequelize } from '../src'
+import { useSequelize } from '../../src'
 
 describe('sequelize query', () => {
   test('should query builder', () => {
