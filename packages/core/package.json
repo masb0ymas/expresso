@@ -37,9 +37,9 @@
     "argon2": "^0.31.1",
     "bcrypt": "^5.1.1",
     "colorette": "^2.0.20",
-    "libphonenumber-js": "^1.10.48",
+    "libphonenumber-js": "^1.10.49",
     "lodash": "^4.17.21",
-    "pino": "^8.16.0",
+    "pino": "^8.16.1",
     "pino-pretty": "^10.2.3"
   },
   "devDependencies": {
