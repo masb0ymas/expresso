@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/masb0ymas/expresso/compare/v0.10.1...v0.11.0) (2023-11-04)
+
+### Features
+
+- add use multer types ([ceadbb1](https://github.com/masb0ymas/expresso/commit/ceadbb136a39c17ad8cb4e42c32b77df32be026b))
+- add use otp types ([0033b1c](https://github.com/masb0ymas/expresso/commit/0033b1c848c9b180c275b3d7e4dbfb95b24710c2))
+- add use token types ([2debcce](https://github.com/masb0ymas/expresso/commit/2debcce758fc89eb0f9f7e22f02be10fb2febac7))
+
 ## [0.10.1](https://github.com/masb0ymas/expresso/compare/v0.10.0...v0.10.1) (2023-10-23)
 
 **Note:** Version bump only for package expresso-hooks

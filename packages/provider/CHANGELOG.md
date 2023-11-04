@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/masb0ymas/expresso/compare/v0.10.1...v0.11.0) (2023-11-04)
+
+### Features
+
+- improve provider ([a7a90a5](https://github.com/masb0ymas/expresso/commit/a7a90a571770b1dc4b71dd47b889d814eab263f7))
+
 ## [0.10.1](https://github.com/masb0ymas/expresso/compare/v0.10.0...v0.10.1) (2023-10-23)
 
 ### Bug Fixes

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/masb0ymas/expresso/compare/v0.10.1...v0.11.0) (2023-11-04)
+
+### Bug Fixes
+
+- improve currency, formatter test ([0c7c985](https://github.com/masb0ymas/expresso/commit/0c7c985c83b552ca5be4da6de293dc1a00525c37))
+- improve types package core ([316a148](https://github.com/masb0ymas/expresso/commit/316a148d1c5a5b4e04f3886478643730181f1385))
+
 ## [0.10.1](https://github.com/masb0ymas/expresso/compare/v0.10.0...v0.10.1) (2023-10-23)
 
 **Note:** Version bump only for package expresso-core

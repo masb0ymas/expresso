@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/masb0ymas/expresso/compare/v0.10.1...v0.11.0) (2023-11-04)
+
+### Bug Fixes
+
+- improve package query types ([8baaed6](https://github.com/masb0ymas/expresso/commit/8baaed618b303f88325b7393373bcb7ed46882d4))
+- improve query typeorm ([15cdba9](https://github.com/masb0ymas/expresso/commit/15cdba9d1b51f23e18f69be33e481d15e3159fbb))
+
 ## [0.10.1](https://github.com/masb0ymas/expresso/compare/v0.10.0...v0.10.1) (2023-10-23)
 
 ### Bug Fixes

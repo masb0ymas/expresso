@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/masb0ymas/expresso/compare/v0.10.1...v0.11.0) (2023-11-04)
+
+### Bug Fixes
+
+- improve currency, formatter test ([0c7c985](https://github.com/masb0ymas/expresso/commit/0c7c985c83b552ca5be4da6de293dc1a00525c37))
+- improve package query types ([8baaed6](https://github.com/masb0ymas/expresso/commit/8baaed618b303f88325b7393373bcb7ed46882d4))
+- improve query typeorm ([15cdba9](https://github.com/masb0ymas/expresso/commit/15cdba9d1b51f23e18f69be33e481d15e3159fbb))
+- improve types package core ([316a148](https://github.com/masb0ymas/expresso/commit/316a148d1c5a5b4e04f3886478643730181f1385))
+
+### Features
+
+- add use multer types ([ceadbb1](https://github.com/masb0ymas/expresso/commit/ceadbb136a39c17ad8cb4e42c32b77df32be026b))
+- add use otp types ([0033b1c](https://github.com/masb0ymas/expresso/commit/0033b1c848c9b180c275b3d7e4dbfb95b24710c2))
+- add use token types ([2debcce](https://github.com/masb0ymas/expresso/commit/2debcce758fc89eb0f9f7e22f02be10fb2febac7))
+- improve provider ([a7a90a5](https://github.com/masb0ymas/expresso/commit/a7a90a571770b1dc4b71dd47b889d814eab263f7))
+
 ## [0.10.1](https://github.com/masb0ymas/expresso/compare/v0.10.0...v0.10.1) (2023-10-23)
 
 ### Bug Fixes
