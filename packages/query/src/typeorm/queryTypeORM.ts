@@ -6,11 +6,8 @@ import {
   type SelectQueryBuilder,
 } from 'typeorm'
 import { validate as uuidValidate } from 'uuid'
-import {
-  type IFilterQuery,
-  type ISortQuery,
-  type IUseTypeOrmQuery,
-} from '../interface'
+import { QueryFiltered, QuerySorted } from '../types'
+import { UseQueryTypeOrm } from './types'
 
 /**
  *
@@ -66,7 +63,7 @@ function _applyFilters<T extends ObjectLiteral>(
   filtered: string,
   options?: DataSourceOptions
 ) {
-  const parsedFiltered = JSON.parse(filtered) as IFilterQuery[]
+  const parsedFiltered = JSON.parse(filtered) as QueryFiltered[]
 
   if (!_.isEmpty(parsedFiltered)) {
     for (let i = 0; i < parsedFiltered.length; i += 1) {
@@ -117,7 +114,7 @@ function _applySorting<T extends ObjectLiteral>(
   sorted: string,
   orderKey?: string
 ): void {
-  const parsedSorted = JSON.parse(sorted) as ISortQuery[]
+  const parsedSorted = JSON.parse(sorted) as QuerySorted[]
 
   if (!_.isEmpty(parsedSorted)) {
     for (let i = 0; i < parsedSorted.length; i += 1) {
@@ -136,7 +133,7 @@ function _applySorting<T extends ObjectLiteral>(
  * @returns
  */
 export function queryBuilder<T extends ObjectLiteral>(
-  values: IUseTypeOrmQuery<T>,
+  values: UseQueryTypeOrm<T>,
   options?: DataSourceOptions
 ): SelectQueryBuilder<T> {
   const { entity, query, reqQuery, options: opt } = values

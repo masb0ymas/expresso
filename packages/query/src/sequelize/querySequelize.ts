@@ -2,17 +2,18 @@
 import _ from 'lodash'
 import { Op, type IncludeOptions, type Includeable } from 'sequelize'
 import { validate as uuidValidate } from 'uuid'
-import { type DtoSequelizeQuery, type IUseSequelizeQuery } from '../interface'
 import SqlizeQuery, {
   getPrimitiveDataType,
   transfromIncludeToQueryable,
 } from './SqlizeQuery'
 import {
-  type ISequelizeFilterIncludeHandledOnly,
-  type ISequelizeGetFilteredQuery,
-  type ISequelizeIncludeFilteredQuery,
-  type TSequelizeConnectionOptions,
-} from './interface'
+  DtoSequelizeQuery,
+  SequelizeConnectionOptions,
+  SequelizeFilterIncludeHandledOnly,
+  SequelizeGetFilteredQuery,
+  SequelizeIncludeFilteredQuery,
+  UseQuerySequelize,
+} from './types'
 
 /**
  * Parser String
@@ -64,7 +65,7 @@ function getExactQueryIdModel(id: string, prefixName: any): string | undefined {
  * @param params
  * @returns
  */
-function getFilteredQuery(params: ISequelizeGetFilteredQuery): any {
+function getFilteredQuery(params: SequelizeGetFilteredQuery): any {
   const { model, prefixName, options } = params
 
   const sequelizeQuery = new SqlizeQuery()
@@ -199,7 +200,7 @@ function getPaginationQuery(limit?: number): SqlizeQuery {
  * @param params
  * @returns
  */
-function getIncludeFilteredQuery(params: ISequelizeIncludeFilteredQuery): any {
+function getIncludeFilteredQuery(params: SequelizeIncludeFilteredQuery): any {
   const { filteredValue, model, prefixName, options } = params
 
   const where = getFilteredQuery({ model, prefixName }).build(filteredValue)
@@ -227,7 +228,7 @@ function getIncludeFilteredQuery(params: ISequelizeIncludeFilteredQuery): any {
  * @returns
  */
 function filterIncludeHandledOnly(
-  props: ISequelizeFilterIncludeHandledOnly
+  props: SequelizeFilterIncludeHandledOnly
 ): any {
   const { include, filteredInclude } = props
 
@@ -305,8 +306,8 @@ export function makeIncludeQueryable(
  * @returns
  */
 export function queryBulider(
-  params: IUseSequelizeQuery,
-  options?: TSequelizeConnectionOptions
+  params: UseQuerySequelize,
+  options?: SequelizeConnectionOptions
 ): DtoSequelizeQuery {
   const { entity, reqQuery, includeRule, limit } = params
 
