@@ -5,7 +5,7 @@ import multer from 'multer'
 import slugify from 'slugify'
 import { defaultAllowedExt } from './allowedExtension'
 import { Mimetype } from './allowedMimetype'
-import { type MulterConfigEntity } from './interface'
+import { MulterConfig } from './types'
 
 const mimetype = new Mimetype()
 
@@ -20,7 +20,7 @@ const msgType = `${green('multer')}`
  * @param values
  * @returns
  */
-export function useMulter(values: MulterConfigEntity): multer.Multer {
+export function useMulter(values: MulterConfig): multer.Multer {
   // always check destination
   const destination = values.dest ?? defaultDestination
 
