@@ -34,16 +34,16 @@
     "url": "https://github.com/masb0ymas/expresso/issues"
   },
   "dependencies": {
-    "argon2": "^0.31.1",
+    "argon2": "^0.31.2",
     "bcrypt": "^5.1.1",
     "colorette": "^2.0.20",
     "libphonenumber-js": "^1.10.49",
     "lodash": "^4.17.21",
-    "pino": "^8.16.1",
+    "pino": "^8.16.2",
     "pino-pretty": "^10.2.3"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.1",
-    "@types/lodash": "^4.14.200"
+    "@types/bcrypt": "^5.0.2",
+    "@types/lodash": "^4.14.201"
   }
 }

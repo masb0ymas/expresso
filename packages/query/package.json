@@ -36,14 +36,14 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
-    "sequelize": "^6.34.0",
+    "sequelize": "^6.35.0",
     "typeorm": "^0.3.17",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.200",
+    "@types/lodash": "^4.14.201",
     "@types/sinon": "^10.0.20",
-    "@types/uuid": "^9.0.6",
+    "@types/uuid": "^9.0.7",
     "sinon": "^15.2.0"
   }
 }

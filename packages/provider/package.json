@@ -40,9 +40,9 @@
     "url": "https://github.com/masb0ymas/expresso/issues"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.441.0",
-    "@aws-sdk/s3-request-presigner": "^3.441.0",
-    "@google-cloud/storage": "^7.5.0",
+    "@aws-sdk/client-s3": "^3.451.0",
+    "@aws-sdk/s3-request-presigner": "^3.451.0",
+    "@google-cloud/storage": "^7.6.0",
     "colorette": "^2.0.20",
     "convert-excel-to-json": "^1.7.0",
     "date-fns": "^2.30.0",
@@ -60,9 +60,9 @@
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"
   },
   "devDependencies": {
-    "@types/convert-excel-to-json": "^1.7.3",
-    "@types/lodash": "^4.14.200",
-    "@types/nodemailer": "^6.4.13",
-    "@types/nodemailer-mailgun-transport": "^1.4.5"
+    "@types/convert-excel-to-json": "^1.7.4",
+    "@types/lodash": "^4.14.201",
+    "@types/nodemailer": "^6.4.14",
+    "@types/nodemailer-mailgun-transport": "^1.4.6"
   }
 }
