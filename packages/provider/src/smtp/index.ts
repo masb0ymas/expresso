@@ -1,131 +1,90 @@
-import { green } from 'colorette'
+import { green, red } from 'colorette'
 import { logger } from 'expresso-core'
-import { type Headers } from 'gaxios'
-import { google } from 'googleapis'
-import _ from 'lodash'
 import nodemailer from 'nodemailer'
-import mg from 'nodemailer-mailgun-transport'
-import {
-  MailAuth,
-  MailDriver,
-  MailOptions,
-  MailProvider,
-  SendMailOptions,
-} from './types'
+import SMTPTransport from 'nodemailer/lib/smtp-transport'
+import { MailConfig, SendMailOptions } from './types'
 
 const msgType = `${green('nodemailer')}`
+const errMsgType = `${red('nodemailer')}`
 
 export class SMTPProvider {
-  private _mailConfig: nodemailer.SentMessageInfo
-  private _mailOptions: nodemailer.SendMailOptions
+  private readonly _config: MailConfig
+  private readonly _transport:
+    | string
+    | SMTPTransport
+    | SMTPTransport.Options
+    | undefined
+  private readonly _defaults: SMTPTransport.Options | undefined
 
-  private readonly _driver: MailDriver
-  private readonly _username?: string
-  private readonly _password?: string
-  private readonly _from?: string
-  private readonly _host?: string
-  private readonly _port?: number
-  private readonly _secure?: boolean
-
-  private readonly _appName?: string
-  private readonly _mailType?: MailAuth
-  private readonly _mailApiKey?: string
-  private readonly _mailDomain?: string
-  private readonly _mailRelayChiper?: string
-
-  private readonly _OAuthClientID?: string
-  private readonly _OAuthClientSecret?: string
-  private readonly _OAuthRefreshToken?: string
-  private readonly _OAuthRedirectURL?: string
-
-  private readonly _isMailgunAPI: boolean
-
-  constructor(params: MailProvider, options?: MailOptions) {
-    this._mailConfig = {}
-    this._mailOptions = {}
-
-    this._driver = params.driver
-    this._username = params?.username
-    this._password = params?.password
-    this._from = params?.from
-    this._host = params?.host
-    this._port = params?.port
-    this._secure = params?.secure
-    this._appName = params.appName
-
-    this._mailType = options?.mailType
-    this._mailApiKey = options?.mailApiKey
-    this._mailDomain = options?.mailDomain
-    this._mailRelayChiper = options?.mailRelayChiper
-
-    this._OAuthClientID = options?.OAuthClientID
-    this._OAuthClientSecret = options?.OAuthClientSecret
-    this._OAuthRefreshToken = options?.OAuthRefreshToken
-    this._OAuthRedirectURL = options?.OAuthRedirectURL
-
-    this._isMailgunAPI =
-      !_.isEmpty(this._mailApiKey) && !_.isEmpty(this._mailDomain)
+  constructor(
+    config: MailConfig,
+    transport?: string | SMTPTransport | SMTPTransport.Options | undefined,
+    defaults?: SMTPTransport.Options | undefined
+  ) {
+    this._config = config
+    this._transport = transport
+    this._defaults = defaults
   }
 
   /**
    * Set Mail Config
    * @returns
    */
-  private _setMailConfig(): nodemailer.SentMessageInfo {
-    const configTransport: nodemailer.SentMessageInfo = {
-      service: this._driver,
-      auth: {
-        user: '',
-      },
-    }
+  // private _setMailConfig(): nodemailer.SentMessageInfo {
+  //   const configTransport: nodemailer.SentMessageInfo = {
+  //     service: this._driver,
+  //     auth: {
+  //       user: '',
+  //     },
+  //   }
 
-    // Use Google OAuth
-    if (this._driver === 'gmail' && this._mailType === 'OAuth2') {
-      const oauth2Client = new google.auth.OAuth2(
-        this._OAuthClientID,
-        this._OAuthClientSecret,
-        this._OAuthRedirectURL
-      )
+  //   // Use Google OAuth
+  //   if (this._driver === 'gmail' && this._mailType === 'OAuth2') {
+  //     const oauth2Client = new google.auth.OAuth2(
+  //       this._OAuthClientID,
+  //       this._OAuthClientSecret,
+  //       this._OAuthRedirectURL
+  //     )
 
-      oauth2Client.setCredentials({
-        refresh_token: this._OAuthRefreshToken,
-      })
+  //     oauth2Client.setCredentials({
+  //       refresh_token: this._OAuthRefreshToken,
+  //     })
 
-      const accessToken = async (): Promise<Headers> => {
-        const result = await oauth2Client.getRequestHeaders()
-        return result
-      }
+  //     const accessToken = async (): Promise<Headers> => {
+  //       const result = await oauth2Client.getRequestHeaders()
+  //       return result
+  //     }
 
-      configTransport.auth.user = this._username
-      configTransport.auth.type = this._mailType
-      configTransport.auth.clientId = this._OAuthClientID
-      configTransport.auth.clientSecret = this._OAuthClientSecret
-      configTransport.auth.refreshToken = this._OAuthRefreshToken
-      configTransport.auth.accessToken = accessToken()
-    } else if (this._driver === 'smtp' && this._isMailgunAPI) {
-      // SMTP with Mailgun API
-      configTransport.auth.api_key = this._mailApiKey
-      configTransport.auth.domain = this._mailDomain
-    } else if (this._driver === 'relay') {
-      configTransport.host = this._host
-      configTransport.port = this._port
-      configTransport.secure = this._secure || false
+  //     configTransport.auth.user = this._username
+  //     configTransport.auth.type = this._mailType
+  //     configTransport.auth.clientId = this._OAuthClientID
+  //     configTransport.auth.clientSecret = this._OAuthClientSecret
+  //     configTransport.auth.refreshToken = this._OAuthRefreshToken
+  //     configTransport.auth.accessToken = accessToken()
+  //   } else if (this._driver === 'smtp' && this._isMailgunAPI) {
+  //     // SMTP with Mailgun API
+  //     configTransport.auth.api_key = this._mailApiKey
+  //     configTransport.auth.domain = this._mailDomain
+  //   } else if (this._driver === 'relay') {
+  //     configTransport.host = this._host
+  //     configTransport.port = this._port
+  //     configTransport.secure = this._secure || false
 
-      configTransport.auth.user = this._username || undefined
-      configTransport.auth.pass = this._password || undefined
+  //     configTransport.auth.user = this._username || undefined
+  //     configTransport.auth.pass = this._password || undefined
 
-      configTransport.tls.rejectUnauthorized = false
-      configTransport.tls.ciphers = this._mailRelayChiper || 'SSLv3'
-    } else {
-      // SMTP Default
-      configTransport.host = this._host
-      configTransport.port = this._port
-      configTransport.auth.user = this._username
-      configTransport.auth.pass = this._password
-    }
+  //     configTransport.tls.rejectUnauthorized = false
+  //     configTransport.tls.ciphers = this._mailRelayChiper || 'SSLv3'
+  //   } else {
+  //     // SMTP Default
+  //     configTransport.host = this._host
+  //     configTransport.port = this._port
+  //     configTransport.auth.user = this._username
+  //     configTransport.auth.pass = this._password
+  //   }
 
-    return configTransport
-  }
+  //   return configTransport
+  // }
 
   /**
    * Set Mail Options
@@ -135,12 +94,8 @@ export class SMTPProvider {
   private _setMailOptions(params: SendMailOptions): nodemailer.SendMailOptions {
     const { dest, subject, text } = params
 
-    const mail_from = !_.isEmpty(this._from)
-      ? this._from
-      : `${this._appName} <${this._username}>`
-
     const result = {
-      from: mail_from,
+      from: this._config.from,
       to: dest,
       subject,
       html: text,
@@ -153,14 +108,12 @@ export class SMTPProvider {
    * Client
    * @returns
    */
-  private _client(): nodemailer.SentMessageInfo {
-    // mail config
-    this._mailConfig = this._isMailgunAPI
-      ? mg(this._setMailConfig())
-      : this._setMailConfig()
-
+  private _client(): nodemailer.Transporter<SMTPTransport.SentMessageInfo> {
     // Nodemailer Transport
-    const transporter = nodemailer.createTransport(this._mailConfig)
+    const transporter = nodemailer.createTransport(
+      this._transport,
+      this._defaults
+    )
 
     return transporter
   }
@@ -172,15 +125,15 @@ export class SMTPProvider {
     // Nodemailer Transport
     const transporter = this._client()
 
-    transporter.verify(function (err: any, success: any) {
+    transporter.verify(function (err: Error | null, success: boolean) {
       if (err) {
-        const message = `${msgType} - ${err.message ?? err}`
+        const message = `${errMsgType} - ${err.message ?? err}`
         logger.error(message)
 
-        throw new Error(err)
+        throw new Error(err.message)
       } else {
         const message = `${msgType} - mail service is ready to take our messages`
-        logger.info(message)
+        logger.info(message, { success })
       }
     })
   }
@@ -196,15 +149,16 @@ export class SMTPProvider {
     const transporter = this._client()
 
     // mail options
-    this._mailOptions = this._setMailOptions({ dest, subject, text })
+    const mailOptions = this._setMailOptions({ dest, subject, text })
 
+    // transporter send mail
     transporter.sendMail(
-      this._mailOptions,
-      (err: { message: any }, info: any) => {
+      mailOptions,
+      (err: Error | null, info: SMTPTransport.SentMessageInfo) => {
         if (err) {
           const errMessage = `something went wrong!, ${err.message ?? err}`
 
-          const message = `${msgType} - ${errMessage}`
+          const message = `${errMsgType} - ${errMessage}`
           logger.error(message)
 
           throw new Error(errMessage)

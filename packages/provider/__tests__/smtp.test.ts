@@ -9,14 +9,20 @@ describe('mail testing', () => {
     `${__dirname}/../../../assets/templates/register.html`
   )
 
-  const mailService = new SMTP({
-    driver: 'smtp',
-    host: 'smtp.mailtrap.io',
-    port: 2525,
-    username: String(process.env.MAIL_USERNAME),
-    password: String(process.env.MAIL_PASSWORD),
-    appName: 'expresso Monorepo',
-  })
+  const from = `expresso <halo@expresso.com>`
+
+  const mailService = new SMTP(
+    { from },
+    {
+      service: 'smtp',
+      host: 'smtp.mailtrap.io',
+      port: 2525,
+      auth: {
+        user: String(process.env.MAIL_USERNAME),
+        pass: String(process.env.MAIL_PASSWORD),
+      },
+    }
+  )
 
   test('should initial mail service', () => {
     expect(() => {
@@ -27,6 +33,8 @@ describe('mail testing', () => {
   test('should send mail', async () => {
     const anyMailReceiver = String(process.env.MAIL_TO)
     const anySubject = 'Testing App'
+
+    mailService.initialize()
 
     const html = await readHTMLFile(registerHtmlPath)
 

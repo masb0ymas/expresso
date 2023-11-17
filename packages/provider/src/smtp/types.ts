@@ -2,7 +2,11 @@ export type MailDriver = 'smtp' | 'gmail' | 'relay'
 
 export type MailAuth = 'OAuth2'
 
-export interface MailProvider {
+export interface MailConfig {
+  from: string
+}
+
+interface MailProvider {
   driver: MailDriver
   username?: string
   password?: string
@@ -13,7 +17,7 @@ export interface MailProvider {
   appName: string
 }
 
-export interface MailOptions {
+interface MailOptions {
   // Mail Config
   mailType?: MailAuth
   mailApiKey?: string
