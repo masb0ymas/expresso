@@ -1,3 +1,5 @@
+import SMTPTransport from 'nodemailer/lib/smtp-transport'
+
 export type MailDriver = 'smtp' | 'gmail' | 'relay'
 
 export type MailAuth = 'OAuth2'
@@ -5,6 +7,13 @@ export type MailAuth = 'OAuth2'
 export interface MailConfig {
   from: string
 }
+
+export type MailDefaults = SMTPTransport.Options | undefined
+
+export type MailTransporter =
+  | string
+  | SMTPTransport
+  | MailDefaults
 
 interface MailProvider {
   driver: MailDriver

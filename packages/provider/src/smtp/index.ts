@@ -2,24 +2,25 @@ import { green, red } from 'colorette'
 import { logger } from 'expresso-core'
 import nodemailer from 'nodemailer'
 import SMTPTransport from 'nodemailer/lib/smtp-transport'
-import { MailConfig, SendMailOptions } from './types'
+import {
+  MailConfig,
+  MailDefaults,
+  MailTransporter,
+  SendMailOptions,
+} from './types'
 
 const msgType = `${green('nodemailer')}`
 const errMsgType = `${red('nodemailer')}`
 
 export class SMTPProvider {
   private readonly _config: MailConfig
-  private readonly _transport:
-    | string
-    | SMTPTransport
-    | SMTPTransport.Options
-    | undefined
-  private readonly _defaults: SMTPTransport.Options | undefined
+  private readonly _transport: MailTransporter
+  private readonly _defaults: MailDefaults
 
   constructor(
     config: MailConfig,
-    transport?: string | SMTPTransport | SMTPTransport.Options | undefined,
-    defaults?: SMTPTransport.Options | undefined
+    transport?: MailTransporter,
+    defaults?: MailDefaults
   ) {
     this._config = config
     this._transport = transport
