@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.2](https://github.com/masb0ymas/expresso/compare/v0.11.1...v0.11.2) (2023-11-17)
+
+### Bug Fixes
+
+- update types smtp ([e2cad67](https://github.com/masb0ymas/expresso/commit/e2cad6723446575e2d5793c3119776406cfb8f2d))
+
 ## [0.11.1](https://github.com/masb0ymas/expresso/compare/v0.11.0...v0.11.1) (2023-11-17)
 
 **Note:** Version bump only for package expresso-provider
