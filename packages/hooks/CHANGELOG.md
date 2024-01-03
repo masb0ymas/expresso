@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.3](https://github.com/masb0ymas/expresso/compare/v0.11.2...v0.11.3) (2024-01-03)
+
+**Note:** Version bump only for package expresso-hooks
+
 ## [0.11.1](https://github.com/masb0ymas/expresso/compare/v0.11.0...v0.11.1) (2023-11-17)
 
 **Note:** Version bump only for package expresso-hooks
