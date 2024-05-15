@@ -9,7 +9,7 @@
     "typecheck": "NX_BRANCH=typecheck yarn nx run-many --target=typecheck",
     "prerelease": "npm-run-all test typecheck build",
     "release": "npx lerna version --conventional-commits",
-    "publish": "npm publish --workspaces"
+    "publish": "npm publish --workspaces --auth-type=legacy"
   },
   "private": true,
   "author": "masb0ymas <n.fajri@mail.com>",
