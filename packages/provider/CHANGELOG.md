@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.5](https://github.com/masb0ymas/expresso/compare/v0.11.4...v0.11.5) (2024-05-15)
+
+### Bug Fixes
+
+- update deps ([c9afb3a](https://github.com/masb0ymas/expresso/commit/c9afb3a228dce50fe928e0674b382944c802c440))
+
 ## [0.11.4](https://github.com/masb0ymas/expresso/compare/v0.11.3...v0.11.4) (2024-02-25)
 
 **Note:** Version bump only for package expresso-provider
