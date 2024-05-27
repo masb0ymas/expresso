@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.6](https://github.com/masb0ymas/expresso/compare/v0.11.5...v0.11.6) (2024-05-27)
+
+### Bug Fixes
+
+- update script publish ([db62c6d](https://github.com/masb0ymas/expresso/commit/db62c6daba4eb50f1ef5fdabf37268d69ecf9d92))
+
 ## [0.11.5](https://github.com/masb0ymas/expresso/compare/v0.11.4...v0.11.5) (2024-05-15)
 
 ### Bug Fixes
