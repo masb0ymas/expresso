@@ -1,3 +1,4 @@
+import { isValid } from 'date-fns'
 import { isNumeric } from './number'
 
 const emptyValues = [null, undefined, '', 'null', 'undefined']
@@ -6,6 +7,7 @@ const invalidValues = [...emptyValues, false, 0, 'false', '0']
 /**
  *
  * @param value
+ * @deprecated move to validate.number
  * @returns
  */
 export function validateNumber(value: any): number {
@@ -19,6 +21,7 @@ export function validateNumber(value: any): number {
 /**
  *
  * @param value
+ * @deprecated move to validate.empty
  * @returns
  */
 export function validateEmpty(value: any): any {
@@ -32,6 +35,7 @@ export function validateEmpty(value: any): any {
 /**
  *
  * @param value
+ * @deprecated move to validate.boolean
  * @returns
  */
 export function validateBoolean(value: any): boolean {
@@ -40,4 +44,62 @@ export function validateBoolean(value: any): boolean {
   }
 
   return true
+}
+
+export class validate {
+  /**
+   *
+   * @param value
+   * @returns
+   */
+  public static number(value: any) {
+    if (isNumeric(Number(value))) {
+      return Number(value)
+    }
+
+    return 0
+  }
+
+  /**
+   *
+   * @param value
+   * @returns
+   */
+  public static empty(value: any): any {
+    if (emptyValues.includes(value)) {
+      return null
+    }
+
+    return value
+  }
+
+  /**
+   *
+   * @param value
+   * @returns
+   */
+  public static boolean(value: any): boolean {
+    if (invalidValues.includes(value)) {
+      return false
+    }
+
+    return true
+  }
+
+  /**
+   *
+   * @param value
+   * @returns
+   */
+  public static isDate(value: string | number | null) {
+    if (value) {
+      const valueDate = new Date(value)
+
+      if (isValid(valueDate) && valueDate instanceof Date) {
+        return true
+      }
+    }
+
+    return false
+  }
 }

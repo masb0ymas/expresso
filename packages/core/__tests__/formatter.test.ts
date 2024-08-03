@@ -6,6 +6,7 @@ import {
   validateBoolean,
   validateEmpty,
   validateNumber,
+  validate,
 } from '../src'
 
 describe('formatter test', () => {
@@ -59,6 +60,26 @@ describe('formatter test', () => {
     expect(result).toBe(0)
   })
 
+  it('should return a number when given a valid numeric string, validate.number', () => {
+    const result = validate.number('123')
+    expect(result).toBe(123)
+  })
+
+  it('should return 0 when given a non-numeric string, validate.number', () => {
+    const result = validate.number('abc')
+    expect(result).toBe(0)
+  })
+
+  it('should return 0 when given a null value, validate.number', () => {
+    const result = validate.number(null)
+    expect(result).toBe(0)
+  })
+
+  it('should return 0 when given undefined, validate.number', () => {
+    const result = validate.number(undefined)
+    expect(result).toBe(0)
+  })
+
   test('should array formatter', () => {
     const anyArray = [
       { id: 1, name: 'anyName' },
@@ -89,12 +110,54 @@ describe('formatter test', () => {
     expect(result).toBeNull()
   })
 
-  test('should validate boolean', () => {
+  it('should return the input value when it is not included in the emptyValues array, validate.empty', () => {
+    const value = 5
+    const result = validate.empty(value)
+    expect(result).toBe(value)
+  })
+
+  it('should return null when the input value is null, validate.empty', () => {
+    const value = null
+    const result = validate.empty(value)
+    expect(result).toBeNull()
+  })
+
+  it('should return null when the input value is undefined, validate.empty', () => {
+    const value = undefined
+    const result = validate.empty(value)
+    expect(result).toBeNull()
+  })
+
+  test('should validateBoolean', () => {
     const anyValue = 'true'
 
     const data = validateBoolean(anyValue)
 
     expect(data).toBe(true)
+  })
+
+  test('should validate.boolean', () => {
+    const anyValue = 'true'
+
+    const data = validate.boolean(anyValue)
+
+    expect(data).toBe(true)
+  })
+
+  test('should right value validate.date', () => {
+    const anyValue = '2024-01-01'
+
+    const data = validate.isDate(anyValue)
+
+    expect(data).toBe(true)
+  })
+
+  test('should wrong value validate.date', () => {
+    const anyValue = null
+
+    const data = validate.isDate(anyValue)
+
+    expect(data).toBe(false)
   })
 
   it('should return an array of arrays with the same length as the input array', () => {
