@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/masb0ymas/expresso/compare/v0.11.6...v0.12.0) (2024-08-03)
+
+### Features
+
+- add validate class, move from function ([12f5c0d](https://github.com/masb0ymas/expresso/commit/12f5c0d64907ab81e9f6517633d12ba29ea8ab2c))
+
 ## [0.11.6](https://github.com/masb0ymas/expresso/compare/v0.11.5...v0.11.6) (2024-05-27)
 
 **Note:** Version bump only for package expresso-core

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/masb0ymas/expresso/compare/v0.11.6...v0.12.0) (2024-08-03)
+
+### Bug Fixes
+
+- update mimetype ([4adcbd2](https://github.com/masb0ymas/expresso/commit/4adcbd2699c81ca97454389e8f3daa84524d286f))
+
 ## [0.11.6](https://github.com/masb0ymas/expresso/compare/v0.11.5...v0.11.6) (2024-05-27)
 
 **Note:** Version bump only for package expresso-hooks

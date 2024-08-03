@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/masb0ymas/expresso/compare/v0.11.6...v0.12.0) (2024-08-03)
+
+### Bug Fixes
+
+- update mimetype ([4adcbd2](https://github.com/masb0ymas/expresso/commit/4adcbd2699c81ca97454389e8f3daa84524d286f))
+
+### Features
+
+- add validate class, move from function ([12f5c0d](https://github.com/masb0ymas/expresso/commit/12f5c0d64907ab81e9f6517633d12ba29ea8ab2c))
+
 ## [0.11.6](https://github.com/masb0ymas/expresso/compare/v0.11.5...v0.11.6) (2024-05-27)
 
 ### Bug Fixes
