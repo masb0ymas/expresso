@@ -1,7 +1,7 @@
 // extension
 export const allowedZIP = ['.zip', '.7z']
 export const allowedPDF = ['.pdf']
-export const allowedImage = ['.png', '.jpg', '.jpeg', '.svg']
+export const allowedImage = ['.png', '.jpg', '.jpeg', '.svg', '.webp']
 export const allowedExcel = ['.xlsx', '.xls']
 export const allowedDoc = ['.doc', '.docx']
 

@@ -24,7 +24,7 @@ export class Mimetype {
    * @returns
    */
   public get image(): string[] {
-    return ['image/jpeg', 'image/png', 'image/svg+xml']
+    return ['image/jpeg', 'image/png', 'image/svg+xml', 'image/webp']
   }
 
   /**
