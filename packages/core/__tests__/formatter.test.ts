@@ -1,17 +1,16 @@
-import {
-  arrayFormatter,
-  isNumeric,
-  mappingToArray,
-  ms,
-  validateBoolean,
-  validateEmpty,
-  validateNumber,
-  validate,
-} from '../src'
+import { arrayFormatter, isNumeric, mappingToArray, ms, validate } from '../src'
 
 describe('formatter test', () => {
-  it('should return 0 when passed an empty string', () => {
-    expect(ms('')).toBe(0)
+  test('throws error for invalid time unit', () => {
+    expect(() => ms('5x')).toThrow('Invalid time format')
+  })
+
+  test('throws error for invalid numeric value', () => {
+    expect(() => ms('abc5s')).toThrow('Invalid time format')
+  })
+
+  test('throws error for empty string', () => {
+    expect(() => ms('')).toThrow('Invalid time format')
   })
 
   it(`should return the correct value when passed a string in the format of 'Xs'`, () => {
@@ -41,22 +40,22 @@ describe('formatter test', () => {
   })
 
   it('should return a number when given a valid numeric string', () => {
-    const result = validateNumber('123')
+    const result = validate.number('123')
     expect(result).toBe(123)
   })
 
   it('should return 0 when given a non-numeric string', () => {
-    const result = validateNumber('abc')
+    const result = validate.number('abc')
     expect(result).toBe(0)
   })
 
   it('should return 0 when given a null value', () => {
-    const result = validateNumber(null)
+    const result = validate.number(null)
     expect(result).toBe(0)
   })
 
   it('should return 0 when given undefined', () => {
-    const result = validateNumber(undefined)
+    const result = validate.number(undefined)
     expect(result).toBe(0)
   })
 
@@ -94,19 +93,19 @@ describe('formatter test', () => {
 
   it('should return the input value when it is not included in the emptyValues array', () => {
     const value = 5
-    const result = validateEmpty(value)
+    const result = validate.empty(value)
     expect(result).toBe(value)
   })
 
   it('should return null when the input value is null', () => {
     const value = null
-    const result = validateEmpty(value)
+    const result = validate.empty(value)
     expect(result).toBeNull()
   })
 
   it('should return null when the input value is undefined', () => {
     const value = undefined
-    const result = validateEmpty(value)
+    const result = validate.empty(value)
     expect(result).toBeNull()
   })
 
@@ -131,7 +130,7 @@ describe('formatter test', () => {
   test('should validateBoolean', () => {
     const anyValue = 'true'
 
-    const data = validateBoolean(anyValue)
+    const data = validate.boolean(anyValue)
 
     expect(data).toBe(true)
   })

@@ -15,13 +15,9 @@ export async function writeFileStream(
 ): Promise<void> {
   try {
     await fsAsync.writeFile(filePath, streamFile)
-
-    const message = `${msgType} - generate file successfully ${filePath}`
-    logger.info(message)
-  } catch (err) {
-    const message = `${msgType} - error generate file${err}`
-    logger.error(message)
-
-    throw new Error('failed to generate write file stream')
+    logger.info(`${msgType} - File generated successfully: ${filePath}`)
+  } catch (err: any) {
+    logger.error(`${msgType} - Error generating file: ${err}`)
+    throw new Error(`Failed to write file stream: ${err.message}`)
   }
 }

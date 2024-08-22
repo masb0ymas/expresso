@@ -12,17 +12,11 @@ const numeric = '0123456789'
  * @param length
  * @returns
  */
-function _randomCharString(charString: string, length: number): string {
-  let result = ''
-
-  const defaultLength = length ?? 32
-  const charLength = charString.length
-
-  for (let i = 0; i < defaultLength; i += 1) {
-    result += charString.charAt(Math.floor(Math.random() * charLength))
-  }
-
-  return result
+function _randomCharString(charString: string, length: number = 32): string {
+  return Array.from(
+    { length },
+    () => charString[Math.floor(Math.random() * charString.length)]
+  ).join('')
 }
 
 /**
@@ -30,17 +24,11 @@ function _randomCharString(charString: string, length: number): string {
  * @param length
  * @returns
  */
-function _randomNumeric(length: number): string {
-  let result = ''
-
-  const defaultLength = length ?? 6
-  const charLength = numeric.length
-
-  for (let i = 0; i < defaultLength; i += 1) {
-    result += numeric[Math.floor(Math.random() * charLength)]
-  }
-
-  return result
+function _randomNumeric(length: number = 6): string {
+  return Array.from(
+    { length },
+    () => numeric[Math.floor(Math.random() * numeric.length)]
+  ).join('')
 }
 
 /**
@@ -49,52 +37,34 @@ function _randomNumeric(length: number): string {
  * @returns
  */
 export function generate(params?: number | GenerateRandom): string {
-  let result = ''
+  const defaultLength = 32
+  const allChars = `${alphabetLower}${alphabetUpper}${numeric}`
 
-  // if params empty
-  if (_.isEmpty(params)) {
-    const defaultLength = 32
-    const charString = `${alphabetLower}${alphabetUpper}${numeric}`
-
-    result = _randomCharString(charString, defaultLength)
-  }
-
-  // if params typeof Number
   if (isNumeric(params)) {
-    const defaultLength = Number(params) ?? 32
-    const charString = `${alphabetLower}${alphabetUpper}${numeric}`
-
-    result = _randomCharString(charString, defaultLength)
+    return _randomCharString(allChars, Number(params) || defaultLength)
   }
 
-  // if params typeof Object
+  if (_.isEmpty(params)) {
+    return _randomCharString(allChars, defaultLength)
+  }
+
   if (params instanceof Object) {
-    const defaultType = params?.type ?? 'alphabetNumeric'
+    const { type = 'alphabetNumeric', length } = params
 
-    // String Random
-    if (defaultType === 'alphabetNumeric') {
-      const defaultLength = params?.length ?? 32
-
-      const charString = `${alphabetLower}${alphabetUpper}${numeric}`
-
-      result = _randomCharString(charString, defaultLength)
-    }
-
-    // String Random
-    if (defaultType === 'alphabet') {
-      const defaultLength = params?.length ?? 32
-      const charString = `${alphabetLower}${alphabetUpper}`
-
-      result = _randomCharString(charString, defaultLength)
-    }
-
-    // Number Random
-    if (defaultType === 'numeric') {
-      const defaultLength = params?.length ?? 6
-
-      result = _randomNumeric(defaultLength)
+    switch (type) {
+      case 'alphabetNumeric':
+        return _randomCharString(allChars, length || defaultLength)
+      case 'alphabet':
+        return _randomCharString(
+          `${alphabetLower}${alphabetUpper}`,
+          length || defaultLength
+        )
+      case 'numeric':
+        return _randomNumeric(length || 6)
+      default:
+        throw new Error(`Invalid type: ${type}`)
     }
   }
 
-  return result
+  throw new Error('Invalid params')
 }

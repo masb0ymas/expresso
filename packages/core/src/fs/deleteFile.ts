@@ -10,15 +10,12 @@ const msgType = `${green('filesystem')}`
  * @param filePath
  */
 export function deleteFile(filePath: string): void {
-  const _path = path.resolve(filePath)
+  const resolvedPath = path.resolve(filePath)
 
-  if (_path && fs.existsSync(_path)) {
-    const message = `${msgType} - ${filePath} has been deleted`
-    logger.info(message)
-
-    fs.unlinkSync(_path)
+  if (fs.existsSync(resolvedPath)) {
+    fs.unlinkSync(resolvedPath)
+    logger.info(`${msgType} - Deleted file: ${resolvedPath}`)
   } else {
-    const message = `${msgType} - ${filePath} does not exists`
-    logger.error(message)
+    logger.error(`${msgType} - File does not exist: ${resolvedPath}`)
   }
 }

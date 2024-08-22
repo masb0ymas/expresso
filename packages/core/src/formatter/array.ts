@@ -5,22 +5,11 @@ import _ from 'lodash'
  * @param data
  * @returns
  */
-export function mappingToArray(data: any[]): any[][] {
+export function mappingToArray(data: Record<string, any>[]): any[][] {
+  if (data.length === 0) return []
+
   const keys = Object.keys(data[0])
-  const result = [keys]
-
-  data.forEach((x) => {
-    const value = []
-
-    for (let index = 0; index < keys.length; index += 1) {
-      const key = keys[index]
-      value.push(x[key])
-    }
-
-    result.push(value)
-  })
-
-  return result
+  return [keys, ...data.map((item) => keys.map((key) => item[key]))]
 }
 
 /**
@@ -29,22 +18,14 @@ export function mappingToArray(data: any[]): any[][] {
  * @returns
  */
 export function arrayFormatter(value: string | any[]): any[] {
-  // check value not empty
-  if (!_.isEmpty(value)) {
-    // check array value
-    if (Array.isArray(value)) {
-      return value
-    }
+  if (_.isEmpty(value)) return []
 
-    // parse string json to array
-    const parseJson = JSON.parse(JSON.stringify(value))
+  if (Array.isArray(value)) return value
 
-    if (Array.isArray(parseJson)) {
-      return parseJson
-    }
-
+  try {
+    const parsedValue = JSON.parse(value as string)
+    return Array.isArray(parsedValue) ? parsedValue : []
+  } catch {
     return []
   }
-
-  return []
 }

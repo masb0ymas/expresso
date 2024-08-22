@@ -10,10 +10,10 @@ const msgType = `${green('filesystem')}`
  * @param filePath
  */
 export function createDirNotExist(filePath: string): void {
-  if (!fs.existsSync(path.resolve(filePath))) {
-    fs.mkdirSync(filePath, { recursive: true })
+  const resolvedPath = path.resolve(filePath)
 
-    const message = `${msgType} - create directory ${filePath}`
-    logger.info(message)
+  if (!fs.existsSync(resolvedPath)) {
+    fs.mkdirSync(resolvedPath, { recursive: true })
+    logger.info(`${msgType} - created directory: ${resolvedPath}`)
   }
 }

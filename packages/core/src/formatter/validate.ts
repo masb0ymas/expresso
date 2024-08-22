@@ -91,15 +91,12 @@ export class validate {
    * @param value
    * @returns
    */
-  public static isDate(value: string | number | null) {
-    if (value) {
-      const valueDate = new Date(value)
-
-      if (isValid(valueDate) && valueDate instanceof Date) {
-        return true
-      }
+  public static isDate(value: string | number | Date | null): boolean {
+    if (value == null) {
+      return false
     }
 
-    return false
+    const valueDate = value instanceof Date ? value : new Date(value)
+    return isValid(valueDate)
   }
 }

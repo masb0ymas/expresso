@@ -14,12 +14,9 @@ export async function readHTMLFile(
   filePath: fs.PathLike | fs.promises.FileHandle
 ): Promise<string> {
   try {
-    const result = await fsAsync.readFile(filePath, { encoding: 'utf-8' })
-    return result
+    return await fsAsync.readFile(filePath, 'utf-8')
   } catch (err) {
-    const message = `${msgType} - invalid html file path`
-    logger.error(message)
-
-    throw new Error('invalid html path')
+    logger.error(`${msgType} - Invalid HTML file path: ${filePath}`)
+    throw new Error(`Invalid HTML file path: ${filePath}`)
   }
 }
