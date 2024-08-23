@@ -21,37 +21,31 @@ const msgType = `${green('multer')}`
  * @returns
  */
 export function useMulter(values: MulterConfig): multer.Multer {
-  // always check destination
   const destination = values.dest ?? defaultDestination
+  const allowedMimetype = values.allowedMimetype ?? mimetype.default
+  const allowedExt = values.allowedExt ?? defaultAllowedExt
 
-  // config storage
   const storage = multer.diskStorage({
     destination,
-    filename(_req: Request, file: Express.Multer.File, cb): void {
+    filename: (_req: Request, file: Express.Multer.File, cb) => {
       const slugFilename = slugify(file.originalname, {
         replacement: '_',
         lower: true,
       })
-      cb(null, [Date.now(), slugFilename].join('-'))
+      cb(null, `${Date.now()}-${slugFilename}`)
     },
   })
 
-  // config multer upload
-  const configMulter = multer({
+  return multer({
     storage,
-    fileFilter(_req, file, cb) {
-      const allowedMimetype = values.allowedMimetype ?? mimetype.default
-      const allowedExt = values.allowedExt ?? defaultAllowedExt
+    fileFilter: (_req, file, cb) => {
       const newMimetype = file.mimetype.toLowerCase()
 
       if (!allowedMimetype.includes(newMimetype)) {
-        const getExtension = allowedExt.join(', ') // .png, .jpg, .pdf
-        const errMessage = `Only ${getExtension} ext are allowed, please check your mimetype file`
-
-        const message = `${msgType} - ${errMessage}`
-        logger.error(message)
-
-        cb(new Error(message))
+        const extensions = allowedExt.join(', ')
+        const errMessage = `Only ${extensions} extensions are allowed. Please check your file type.`
+        logger.error(`${msgType} - ${errMessage}`)
+        cb(new Error(errMessage))
         return
       }
 
@@ -62,6 +56,4 @@ export function useMulter(values: MulterConfig): multer.Multer {
       fileSize: defaultFileSize,
     },
   })
-
-  return configMulter
 }
