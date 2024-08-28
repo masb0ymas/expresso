@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/masb0ymas/expresso/compare/v0.12.0...v0.12.1) (2024-08-28)
+
+### Bug Fixes
+
+- improve hooks multer ([51f2335](https://github.com/masb0ymas/expresso/commit/51f233503fa219c7dc25f646cf9ca32fdd910b42))
+
 # [0.12.0](https://github.com/masb0ymas/expresso/compare/v0.11.6...v0.12.0) (2024-08-03)
 
 ### Bug Fixes

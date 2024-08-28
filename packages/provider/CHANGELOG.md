@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/masb0ymas/expresso/compare/v0.12.0...v0.12.1) (2024-08-28)
+
+### Bug Fixes
+
+- excel provider test ([d44ebe8](https://github.com/masb0ymas/expresso/commit/d44ebe8c211846899054f4d43081055a42e7aa33))
+
 # [0.12.0](https://github.com/masb0ymas/expresso/compare/v0.11.6...v0.12.0) (2024-08-03)
 
 **Note:** Version bump only for package expresso-provider

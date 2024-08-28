@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/masb0ymas/expresso/compare/v0.12.0...v0.12.1) (2024-08-28)
+
+### Bug Fixes
+
+- excel provider test ([d44ebe8](https://github.com/masb0ymas/expresso/commit/d44ebe8c211846899054f4d43081055a42e7aa33))
+- improve hooks multer ([51f2335](https://github.com/masb0ymas/expresso/commit/51f233503fa219c7dc25f646cf9ca32fdd910b42))
+- improve package core ([13f3945](https://github.com/masb0ymas/expresso/commit/13f3945869acaf098006bcc6279b3019a4929313))
+- update test case query typeorm ([ba0b7fb](https://github.com/masb0ymas/expresso/commit/ba0b7fbc2ec42a55159143a2a36a2e68933a603d))
+
 # [0.12.0](https://github.com/masb0ymas/expresso/compare/v0.11.6...v0.12.0) (2024-08-03)
 
 ### Bug Fixes

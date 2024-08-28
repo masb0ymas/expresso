@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/masb0ymas/expresso/compare/v0.12.0...v0.12.1) (2024-08-28)
+
+### Bug Fixes
+
+- improve package core ([13f3945](https://github.com/masb0ymas/expresso/commit/13f3945869acaf098006bcc6279b3019a4929313))
+
 # [0.12.0](https://github.com/masb0ymas/expresso/compare/v0.11.6...v0.12.0) (2024-08-03)
 
 ### Features

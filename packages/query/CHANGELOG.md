@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/masb0ymas/expresso/compare/v0.12.0...v0.12.1) (2024-08-28)
+
+### Bug Fixes
+
+- update test case query typeorm ([ba0b7fb](https://github.com/masb0ymas/expresso/commit/ba0b7fbc2ec42a55159143a2a36a2e68933a603d))
+
 # [0.12.0](https://github.com/masb0ymas/expresso/compare/v0.11.6...v0.12.0) (2024-08-03)
 
 **Note:** Version bump only for package expresso-query
