@@ -1,6 +1,6 @@
 import excelToJson from 'convert-excel-to-json'
 import * as ExcelJS from 'exceljs'
-import { isNumeric, validateNumber } from 'expresso-core'
+import { isNumeric, validate } from 'expresso-core'
 import fs from 'fs'
 import { isString } from 'lodash'
 import * as XLSX from 'xlsx'
@@ -187,7 +187,7 @@ export class ExcelProvider {
     let cellLength = 26
 
     if (isNumeric(cell)) {
-      cellLength = validateNumber(cell)
+      cellLength = validate.number(cell)
     } else if (isString(cell)) {
       cellLength = this.getCellNumber(cell)
     }

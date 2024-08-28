@@ -39,7 +39,8 @@ describe('excel provider', () => {
       },
     ]
 
-    const streamExcel: Buffer = await excel.generate(headers, anyData)
+    const streamExcel = await excel.generate(headers, anyData)
+    console.log({ streamExcel })
 
     await writeFileStream(outputExcel, streamExcel)
     const exists = fs.existsSync(outputExcel)
