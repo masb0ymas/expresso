@@ -1,4 +1,4 @@
-import { validateNumber } from 'expresso-core'
+import { validate } from 'expresso-core'
 import _ from 'lodash'
 import {
   type DataSourceOptions,
@@ -20,7 +20,7 @@ export function _calculatePageSize(
   maxLimit: number
 ): number {
   const minLimit = 10
-  const parsedPageSize = validateNumber(pageSize)
+  const parsedPageSize = validate.number(pageSize)
 
   if (parsedPageSize > 0) {
     return Math.min(parsedPageSize, maxLimit)
@@ -40,7 +40,7 @@ export function _applyPagination<T extends ObjectLiteral>(
   page: string | number,
   pageSize: number
 ): void {
-  const parsedPage = validateNumber(page) || 1
+  const parsedPage = validate.number(page) || 1
 
   if (pageSize <= 0) {
     pageSize = 10
@@ -70,7 +70,7 @@ function _applyFilters<T extends ObjectLiteral>(
       const item = parsedFiltered[i]
 
       const check_uuid = uuidValidate(item.value)
-      const check_numeric = validateNumber(item.value)
+      const check_numeric = validate.number(item.value)
       const expect_numberic_or_uuid = !check_numeric && !check_uuid
 
       const check_query_like_postgres =
