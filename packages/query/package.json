@@ -6,7 +6,8 @@
     "expressjs",
     "sequelize",
     "typeorm",
-    "mongodb"
+    "mongodb",
+    "uuid"
   ],
   "scripts": {
     "clean": "npx rimraf lib tsconfig.tsbuildinfo",

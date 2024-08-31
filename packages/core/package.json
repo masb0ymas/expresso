@@ -5,7 +5,10 @@
   "keywords": [
     "expressjs",
     "helpers",
-    "random-string"
+    "random-string",
+    "argon2",
+    "bcrypt",
+    "pino"
   ],
   "scripts": {
     "clean": "npx rimraf lib tsconfig.tsbuildinfo",

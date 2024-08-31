@@ -7,11 +7,13 @@
     "nodemailer",
     "mailgun",
     "mailgun-transport",
+    "googleapis",
     "ioredis",
     "aws-s3",
     "gcp",
     "minio",
-    "fcm"
+    "fcm",
+    "exceljs"
   ],
   "scripts": {
     "clean": "npx rimraf lib tsconfig.tsbuildinfo",

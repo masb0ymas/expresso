@@ -4,10 +4,12 @@
   "description": "library expresso-hooks",
   "keywords": [
     "expressjs",
+    "fastify",
     "multer",
     "jsonwebtoken",
     "jwt",
     "otp",
+    "slugify",
     "libphonenumber"
   ],
   "scripts": {
