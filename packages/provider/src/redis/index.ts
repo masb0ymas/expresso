@@ -15,6 +15,21 @@ export class RedisProvider {
   }
 
   /**
+   * Ping
+   * @returns 
+   */
+  public async ping() {
+    const client = this.client()
+
+    const pong = await client.ping((err, result) => {
+      if (err) return 'Failed'
+      return result
+    })
+
+    return pong
+  }
+
+  /**
    *
    * @param key
    * @param data
