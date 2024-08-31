@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.2](https://github.com/masb0ymas/expresso/compare/v0.12.1...v0.12.2) (2024-08-31)
+
+### Bug Fixes
+
+- ping redis ([3d8fccc](https://github.com/masb0ymas/expresso/commit/3d8fccca60550d126f00d1e26b0b597573e4844a))
+
 ## [0.12.1](https://github.com/masb0ymas/expresso/compare/v0.12.0...v0.12.1) (2024-08-28)
 
 ### Bug Fixes
