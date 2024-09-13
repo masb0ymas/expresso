@@ -1,17 +1,6 @@
-import {
-  GetBucketAclCommand,
-  GetObjectCommand,
-  PutObjectCommand,
-  S3,
-  type PutObjectCommandOutput,
-} from '@aws-sdk/client-s3'
+import * as S3_Client from '@aws-sdk/client-s3'
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
-import {
-  Storage as GoogleCloudStorage,
-  type GetSignedUrlConfig,
-  type UploadOptions,
-  type UploadResponse,
-} from '@google-cloud/storage'
+import * as GCS from '@google-cloud/storage'
 import { blue, green } from 'colorette'
 import { addDays } from 'date-fns'
 import { logger, ms } from 'expresso-core'
@@ -38,9 +27,9 @@ export class StorageProvider {
   private readonly _port?: number
   private readonly _options?: StorageOptions
 
-  private readonly _clientS3: S3 | undefined
+  private readonly _clientS3: S3_Client.S3 | undefined
   private readonly _clientMinio: Minio.Client | undefined
-  private readonly _clientGCS: GoogleCloudStorage | undefined
+  private readonly _clientGCS: GCS.Storage | undefined
 
   constructor(params: StorageProviderEntity) {
     // check storage type
@@ -56,7 +45,7 @@ export class StorageProvider {
 
     // config client Aws S3
     if (this._provider === 's3') {
-      this._clientS3 = new S3({
+      this._clientS3 = new S3_Client.S3({
         credentials: {
           accessKeyId: this._accessKey,
           secretAccessKey: String(this._secretKey),
@@ -101,7 +90,7 @@ export class StorageProvider {
         logger.info(message)
       }
 
-      this._clientGCS = new GoogleCloudStorage({
+      this._clientGCS = new GCS.Storage({
         projectId,
         keyFilename: serviceAccountPath,
       })
@@ -128,26 +117,26 @@ export class StorageProvider {
    * @name
    * Using the client with the AWS S3 Provider
    * @example
-   * import { S3 } from '@aws-sdk/client-s3'
+   * import { TypeS3 } from 'expresso-provider/lib/storage/types'
    *
    * const storage = new Storage('s3')
-   * const s3 = storage.client<S3>().getObject()
+   * const s3 = storage.client<TypeS3>().getObject()
    *
    * @name
    * Using the client with the Minio Provider
    * @example
-   * import * as Minio from 'minio'
+   * import { TypeMinio } from 'expresso-provider/lib/storage/types'
    *
    * const storage = new Storage('minio')
-   * const minio = storage.client<Minio.Client>().fGetObject()
+   * const minio = storage.client<TypeMinio>().fGetObject()
    *
    * @name
    * Using the client with the Google Cloud Storage Provider
    * @example
-   * import { Storage as GoogleCloudStorage } from '@google-cloud/storage'
+   * import { TypeGCS } from 'expresso-provider/lib/storage/types'
    *
    * const storage = new Storage('gcs')
-   * const gcs = storage.client<GoogleCloudStorage>().getProjectId()
+   * const gcs = storage.client<TypeGCS>().getProjectId()
    *
    * @returns
    */
@@ -202,7 +191,7 @@ export class StorageProvider {
 
     try {
       const data = await this._clientS3?.send(
-        new GetBucketAclCommand({ Bucket: bucketName })
+        new S3_Client.GetBucketAclCommand({ Bucket: bucketName })
       )
 
       const storageBucket = `${blue(`${bucketName}`)}`
@@ -327,7 +316,7 @@ export class StorageProvider {
    * @returns
    */
   private async _getPresignedURLS3(keyFile: string): Promise<string> {
-    const command = new GetObjectCommand({
+    const command = new S3_Client.GetObjectCommand({
       Bucket: this._bucket,
       Key: keyFile,
     })
@@ -365,7 +354,7 @@ export class StorageProvider {
   private async _getPresignedURLGCS(keyFile: string): Promise<string> {
     const { expiresIn } = this.expiresObject()
 
-    const options: GetSignedUrlConfig = {
+    const options: GCS.GetSignedUrlConfig = {
       version: 'v4',
       action: 'read',
       virtualHostedStyle: true,
@@ -407,6 +396,16 @@ export class StorageProvider {
   }
 
   /**
+   *
+   * @param values
+   * @returns
+   */
+  private _generateKeyFile(values: string[]) {
+    const result = values.join('/')
+    return result
+  }
+
+  /**
    * Upload File from AWS S3
    * @param fieldUpload
    * @param directory
@@ -416,14 +415,14 @@ export class StorageProvider {
     fieldUpload: FileAttributes,
     directory: string
   ): Promise<{
-    data: PutObjectCommandOutput | undefined
+    data: S3_Client.PutObjectCommandOutput | undefined
     signedURL: string
   }> {
-    const keyFile = `${directory}/${fieldUpload.filename}`
+    const keyFile = this._generateKeyFile([directory, fieldUpload.filename])
 
     // send file upload to AWS S3
     const data = await this._clientS3?.send(
-      new PutObjectCommand({
+      new S3_Client.PutObjectCommand({
         Bucket: this._bucket,
         Key: keyFile,
         Body: fs.createReadStream(fieldUpload.path),
@@ -452,7 +451,7 @@ export class StorageProvider {
     data: Minio.UploadedObjectInfo | undefined
     signedURL: string
   }> {
-    const keyFile = `${directory}/${fieldUpload.filename}`
+    const keyFile = this._generateKeyFile([directory, fieldUpload.filename])
 
     const data = await this._clientMinio?.fPutObject(
       this._bucket,
@@ -481,10 +480,10 @@ export class StorageProvider {
     fieldUpload: FileAttributes,
     directory: string
   ): Promise<{
-    data: UploadResponse | undefined
+    data: GCS.UploadResponse | undefined
     signedURL: string
   }> {
-    const keyFile = `${directory}/${fieldUpload.filename}`
+    const keyFile = this._generateKeyFile([directory, fieldUpload.filename])
 
     // For a destination object that does not yet exist,
     // set the ifGenerationMatch precondition to 0
@@ -492,7 +491,7 @@ export class StorageProvider {
     // generation-match precondition using its generation number.
     const generationMatchPrecondition = 0
 
-    const options: UploadOptions = {
+    const options: GCS.UploadOptions = {
       destination: keyFile,
       preconditionOpts: { ifGenerationMatch: generationMatchPrecondition },
     }
