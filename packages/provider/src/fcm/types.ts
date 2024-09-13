@@ -1,8 +1,8 @@
-import * as admin from 'firebase-admin'
+import { AppOptions } from 'firebase-admin/app'
 
 export interface FCMProviderEntity {
   name?: string
-  options?: admin.AppOptions
+  options?: AppOptions
 }
 
 export type FCMSendType = 'all' | 'by-user'
@@ -13,6 +13,7 @@ export interface SendToMessageFCM {
   message: string
   type: FCMSendType
   data: string
+  topic?: string
 }
 
 export interface SendMulticastFCM extends SendToMessageFCM {

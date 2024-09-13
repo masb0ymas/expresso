@@ -1,9 +1,14 @@
-import * as admin from 'firebase-admin'
+import { App, AppOptions, initializeApp } from 'firebase-admin/app'
+import {
+  BatchResponse,
+  getMessaging,
+  MessagingDevicesResponse,
+} from 'firebase-admin/messaging'
 import { FCMProviderEntity, SendMulticastFCM, SendToMessageFCM } from './types'
 
 export class FCMProvider {
   private readonly _name?: string
-  private readonly _options?: admin.AppOptions
+  private readonly _options?: AppOptions
 
   constructor(params: FCMProviderEntity) {
     this._name = params.name
@@ -14,8 +19,17 @@ export class FCMProvider {
    * Initial FCM Provider
    * @returns
    */
-  public initialize(): admin.app.App {
-    return admin.initializeApp(this._options, this._name)
+  public initialize(): App {
+    return initializeApp(this._options, this._name)
+  }
+
+  /**
+   *
+   * @param value
+   * @returns
+   */
+  private _clickToAction(value: string) {
+    return `${value}_NOTIFICATION_CLICK`
   }
 
   /**
@@ -23,14 +37,13 @@ export class FCMProvider {
    * @param params
    * @returns
    */
-  public async sendMulticast(
-    params: SendMulticastFCM
-  ): Promise<admin.messaging.BatchResponse> {
+  public async sendMulticast(params: SendMulticastFCM): Promise<BatchResponse> {
     const { appName, deviceTokens, title, message, type, data } = params
 
-    const clickAction = `${appName}_NOTIFICATION_CLICK`
+    const clickAction = this._clickToAction(appName)
 
-    const result = await admin.messaging().sendMulticast({
+    // Send To Devices
+    const result = await getMessaging().sendMulticast({
       tokens: deviceTokens,
       notification: { title, body: message },
       data: { click_action: clickAction, type, data: JSON.stringify(data) },
@@ -46,12 +59,13 @@ export class FCMProvider {
    */
   public async sendToDevice(
     params: SendMulticastFCM
-  ): Promise<admin.messaging.MessagingDevicesResponse> {
+  ): Promise<MessagingDevicesResponse> {
     const { appName, deviceTokens, title, message, type, data } = params
 
-    const clickAction = `${appName}_NOTIFICATION_CLICK`
+    const clickAction = this._clickToAction(appName)
 
-    const result = await admin.messaging().sendToDevice(deviceTokens, {
+    // Send To Device
+    const result = await getMessaging().sendToDevice(deviceTokens, {
       notification: { title, body: message },
       data: { click_action: clickAction, type, data: JSON.stringify(data) },
     })
@@ -64,13 +78,14 @@ export class FCMProvider {
    * @param values
    * @returns
    */
-  public static async sendTopics(values: SendToMessageFCM): Promise<string> {
-    const { appName, title, message, type, data } = values
+  public async sendTopics(values: SendToMessageFCM): Promise<string> {
+    const { appName, title, message, type, data, topic } = values
 
-    const clickAction = `${appName}_NOTIFICATION_CLICK`
+    const clickAction = this._clickToAction(appName)
 
-    const result = await admin.messaging().send({
-      topic: 'all',
+    // Send By Topic
+    const result = await getMessaging().send({
+      topic: topic || 'all',
       notification: { title, body: message },
       data: { click_action: clickAction, type, data: JSON.stringify(data) },
     })
