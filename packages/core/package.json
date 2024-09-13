@@ -43,8 +43,8 @@
     "date-fns": "^2.30.0",
     "libphonenumber-js": "^1.11.8",
     "lodash": "^4.17.21",
-    "pino": "^8.21.0",
-    "pino-pretty": "^10.3.1"
+    "pino": "^9.4.0",
+    "pino-pretty": "^11.2.2"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
