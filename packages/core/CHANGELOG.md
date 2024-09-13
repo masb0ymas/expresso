@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/masb0ymas/expresso/compare/v0.12.2...v0.13.0) (2024-09-13)
+
+### Features
+
+- add generate invoice ([328f715](https://github.com/masb0ymas/expresso/commit/328f715f96c6cee6bfa749a8342e800329f5195a))
+
 ## [0.12.2](https://github.com/masb0ymas/expresso/compare/v0.12.1...v0.12.2) (2024-08-31)
 
 **Note:** Version bump only for package expresso-core

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/masb0ymas/expresso/compare/v0.12.2...v0.13.0) (2024-09-13)
+
+### Performance Improvements
+
+- improve fcm ([714adce](https://github.com/masb0ymas/expresso/commit/714adce1bedae75c290eac918f8fdcc29ee1b278))
+- improve storage ([accbba4](https://github.com/masb0ymas/expresso/commit/accbba4820d57989e80757e122fede8c1eb7476e))
+
 ## [0.12.2](https://github.com/masb0ymas/expresso/compare/v0.12.1...v0.12.2) (2024-08-31)
 
 ### Bug Fixes
