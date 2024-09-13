@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "colorette": "^2.0.20",
-    "express": "^4.19.2",
+    "express": "^4.21.0",
     "fastify": "^4.28.1",
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
