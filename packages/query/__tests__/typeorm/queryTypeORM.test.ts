@@ -3,7 +3,7 @@ import {
   _applyPagination,
   _calculatePageSize,
   queryBuilder,
-} from '../../src/typeorm/queryTypeORM' // Replace with the actual file name
+} from '../../src/typeorm/queryTypeORM'
 
 // Mock the external dependencies
 jest.mock('expresso-core', () => ({
