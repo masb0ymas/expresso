@@ -57,12 +57,12 @@ export class StorageProvider {
     // config client Minio
     if (this._provider === 'minio') {
       this._clientMinio = new Minio.Client({
-        endPoint: this._host ?? '127.0.0.1',
-        port: this._port,
+        endPoint: this._host || '127.0.0.1',
+        port: this._port || 9000,
         accessKey: this._accessKey,
         secretKey: String(this._secretKey),
         region: this._region,
-        useSSL: this._options?.useSSL ?? false,
+        useSSL: this._options?.useSSL || false,
       })
     }
 
